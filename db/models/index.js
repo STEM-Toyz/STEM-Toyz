@@ -8,6 +8,8 @@ const User = require('./user')
 const Address = require('./address')
 const Item = require('./item')
 const Order = require('./order')
+const Review = require('./review');
+const Product = require('./product');
 
 User.hasMany(Order);
 Order.belongsTo(User);
@@ -21,11 +23,21 @@ Address.belongsTo(User);
 Address.hasMany(Order);
 Order.belongsTo(Address);
 
+Product.hasMany(Review);
+Review.belongsTo(Product);
+
+User.hasMany(Review);
+Review.belongsTo(User);
+
+Product.hasMany(Item);
+Item.belongsTo(Product);
 
 
 module.exports = {
     User,
     Address,
     Item,
-    Order
+    Order,
+    Product,
+    Review
 }
