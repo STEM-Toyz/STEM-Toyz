@@ -5,5 +5,8 @@
 // to get access to the User model.
 
 const User = require('./user')
+const Address = require('./address')
+const Item = require('./item')
+const Order = require('./order')
 
-module.exports = {User}
+module.exports = {User, Address, Item, Order}
