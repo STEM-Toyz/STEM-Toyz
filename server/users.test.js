@@ -41,4 +41,26 @@ describe('/api/users', () => {
         }))
     )
   })
+
+  describe('when logged in', () => {
+    let user;
+    beforeEach(() => {
+      user = User.create({
+        firstName: 'Reico',
+        lastName: 'Lee',
+        phoneNumber: '555.555.5555',
+        email: 'beth@secrets.org',
+        password: '12345'
+      });
+    });
+
+    it.only('PUT /:id updates a user when logged in and returns the updated user', () =>
+      request(app)
+        .put(`/api/users/${user.id}`)
+        .send({
+          phoneNumber: '666.666.6666'
+        })
+        .expect(200)
+    )
+  })
 })
