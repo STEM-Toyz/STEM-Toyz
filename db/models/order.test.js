@@ -16,7 +16,7 @@ describe('Order', () => {
 
   describe('Status', () => {
     it('Defaults to in cart', () => {
-      order.save()
+      return order.save()
         .then(order => expect(order.status).to.equal('in cart'));
     });
   });

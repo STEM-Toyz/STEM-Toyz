@@ -31,17 +31,17 @@ describe('User', () => {
 
   describe('Has a first, last name and phone number', () => {
     it('First Name', () => {
-      user.save()
+      return user.save()
         .then(user => expect(user.firstName).to.equal('Reico'));
     });
 
     it('Last Name', () => {
-      user.save()
+      return user.save()
         .then(user => expect(user.lastName).to.equal('Lee'));
     });
 
     it('Phone Number', () => {
-      user.save()
+      return user.save()
         .then(user => expect(user.phoneNumber).to.equal('555.555.5555'));
     });
   });
