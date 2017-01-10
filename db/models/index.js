@@ -9,4 +9,9 @@ const Address = require('./address')
 const Item = require('./item')
 const Order = require('./order')
 
-module.exports = {User, Address, Item, Order}
+module.exports = {
+    User,
+    Address,
+    Item,
+    Order
+}
