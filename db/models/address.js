@@ -9,8 +9,7 @@ const Address = db.define('address', {
         allowNull: false
     },
     apartment: {
-        type: Sequelize.STRING,
-        notEmpty: false
+        type: Sequelize.STRING
     },
     city: {
         type: Sequelize.STRING,
