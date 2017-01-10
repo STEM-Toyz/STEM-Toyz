@@ -2,16 +2,35 @@
 
 const Sequelize = require('sequelize');
 const db = require('APP/db');
+const Item = require('./item');
 
 const Order = db.define('orders', {
-  status: {
-    type: Sequelize.ENUM,
-    values: ['in cart', 'ordered', 'shipped', 'completed'],
-    defaultValue: 'in cart',
-  },
-  session: {
-    type: Sequelize.INTEGER,
-  },
+    status: {
+        type: Sequelize.ENUM,
+        values: ['in cart', 'ordered', 'shipped', 'completed'],
+        defaultValue: 'in cart',
+    },
+    price: {
+        type: Sequelize.FLOAT,
+        defaultValue: 0
+    },
+}, {
+    instanceMethods: {
+        totalPrice: function() {
+          console.log(this);
+            return Item.findAll({
+                    where: {
+                        order_id: this.id
+                    }
+                })
+                .then(function(items) {
+                  console.log(items);
+                    return items.reduce(function(sum, current) {
+                        return sum + current.totalPrice;
+                    }, 0);
+                });
+        }
+    }
 });
 
 module.exports = Order;
