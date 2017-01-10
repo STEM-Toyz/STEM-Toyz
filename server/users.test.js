@@ -54,7 +54,7 @@ describe('/api/users', () => {
       });
     });
 
-    it.only('PUT /:id updates a user when logged in and returns the updated user', () =>
+    it('PUT /:id updates a user when logged in and returns the updated user', () =>
       request(app)
         .put(`/api/users/${user.id}`)
         .send({
