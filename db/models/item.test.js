@@ -15,12 +15,12 @@ describe('Item', () => {
 
   describe('Quantity', () => {
     it('Defaults to 1', () => {
-      item.save()
+      return item.save()
         .then(item => expect(item.quantity).to.equal(1));
     });
 
     it('Has an instance method for adding qty.', () => {
-      item.save()
+      return item.save()
         .then(item => {
           item.add();
           return item;
@@ -29,7 +29,7 @@ describe('Item', () => {
     });
 
     it('Has an instance method for subtracting qty.', () => {
-      item.save()
+      return item.save()
         .then(item => {
           item.subtract();
           return item;
