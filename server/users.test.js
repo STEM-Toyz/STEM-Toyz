@@ -4,7 +4,29 @@ const db = require('APP/db')
 const User = require('APP/db/models/user')
 const app = require('./start')
 
+const reico = {
+  username: 'reico@secrets.org',
+  password: '6789'
+};
+
 describe('/api/users', () => {
+  let userId;
+  before('create a user', () =>
+    db.didSync
+      .then(() =>
+         User.create({
+          firstName: 'Reico',
+          lastName: 'Lee',
+          phoneNumber: '555.555.5555',
+          email: reico.username,
+          password: reico.password
+        })
+      )
+      .then(user => {
+        userId = user.id;
+      })
+  )
+
   describe('when not logged in', () => {
     it('GET /:id fails 401 (Unauthorized)', () =>
       request(app)
@@ -43,24 +65,20 @@ describe('/api/users', () => {
   })
 
   describe('when logged in', () => {
-    let user;
-    beforeEach(() => {
-      user = User.create({
-        firstName: 'Reico',
-        lastName: 'Lee',
-        phoneNumber: '555.555.5555',
-        email: 'beth@secrets.org',
-        password: '12345'
-      });
-    });
+    const agent = request.agent(app);
+    before('log in', () => agent
+      .post('/api/auth/local/login')
+      .send(reico));
 
-    it.only('PUT /:id updates a user when logged in and returns the updated user', () =>
-      request(app)
-        .put(`/api/users/${user.id}`)
-        .send({
-          phoneNumber: '666.666.6666'
+    it('PUT /:id updates a user when logged in and returns the updated user', () =>
+
+      agent
+        .put(`/api/users/${userId}`)
+        .send({phoneNumber: '666.666.6666'})
+        .then(res => res.body)
+        .then(updatedUser => {
+          expect(updatedUser.phoneNumber).to.equal('666.666.6666');
         })
-        .expect(200)
-    )
-  })
-})
+    );
+  });
+});

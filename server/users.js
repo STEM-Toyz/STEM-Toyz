@@ -20,11 +20,15 @@ module.exports = require('express').Router()
 		.catch(next))
 	.put('/:id', mustBeLoggedIn, (req, res, next) =>
 		User.findById(req.params.id)
-		.then(user => user.update(req.body))
-		.then(updatedUser => res.status(201).send(updatedUser))
+		.then(user => {
+			return user.update(req.body)
+		})
+		.then(updatedUser => {
+			res.status(201).send(updatedUser)
+		})
 		.catch(next))
 	.delete('/:id', mustBeLoggedIn, (req, res, next) =>
 		User.findById(req.params.id)
 		.then(user => user.destroy())
-		.then(() => res.send())
+		.then(() => res.send(200))
 		.catch(next))

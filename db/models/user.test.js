@@ -29,7 +29,7 @@ describe('User', () => {
         .then(result => expect(result).to.be.false));
   });
 
-  describe('Has a first, last name and phone number', () => {
+  describe('Has a first, last name, and phone number', () => {
     it('First Name', () => {
       return user.save()
         .then(user => expect(user.firstName).to.equal('Reico'));
