@@ -31,7 +31,7 @@ const Address = db.define('address', {
 }, {
     getterMethods: {
         fullAddress: function() {
-            return this.street + "\n" + (this.apartment? this.apartment+"\n":"") + this.city + ", " + this.state + " " + this.zip + "\n" + this.country;
+            return this.street + "\n" + (this.apartment ? this.apartment + "\n" : "") + this.city + ", " + this.state + " " + this.zip + "\n" + this.country;
         }
     }
 });

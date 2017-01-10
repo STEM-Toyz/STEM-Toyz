@@ -23,31 +23,37 @@ describe('address', () => {
 
     describe('testing the address fields', () => {
         it('has a street', () => {
-            address.save()
+            return address.save()
                 .then(address => expect(address.street).to.equal("25 Hanover Square"));
         });
+
         it('can have a empty string apartment', () => {
-            address.save()
+            return address.save()
                 .then(address => expect(address.apartment).to.equal(""));
         });
+
         it('has a city', () => {
-            address.save()
+            return address.save()
                 .then(address => expect(address.city).to.equal('NYC'));
         });
+
         it('has a state', () => {
-            address.save()
+            return address.save()
                 .then(address => expect(address.state).to.equal('NY'));
         });
+
         it('has a country', () => {
-            address.save()
+            return address.save()
                 .then(address => expect(address.country).to.equal('USA'));
         });
+
         it('has a zip code', () => {
-            address.save()
+            return address.save()
                 .then(address => expect(address.zip).to.equal('10005'));
         });
+
         it('access to the fullAddress getterMethod', () => {
-            address.save()
+            return address.save()
                 .then(address => expect(address.fullAddress).to.equal(
                     '25 Hanover Square\nNYC, NY 10005\nUSA'
                 ));
