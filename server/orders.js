@@ -12,7 +12,7 @@ module.exports = require('express').Router()
         Order.findAll()
         .then(orders => res.json(orders))
         .catch(next))
-    .get('/:userId', mustBeLoggedIn, (req, res, next) => //review: authenticated user vs. unauthenticated user
+    .get('/:userId', mustBeLoggedIn, (req, res, next) =>
          Order.findAll({
           where: {
             user_id: req.params.userId
@@ -20,15 +20,16 @@ module.exports = require('express').Router()
          })
          .then(userOrders => res.json(userOrders))
          .catch(next))
-    .post('/:userId', mustBeLoggedIn, (req, res, next) => {//registered user
+    .post('/:userId', mustBeLoggedIn, (req, res, next) => {
           req.body.user_id = req.params.userId;
           return Order.create(req.body)
           .then(createdOrder => res.status(201).json(createdOrder))
           .catch(next)})
-    .delete('/:userId', mustBeLoggedIn, (req, res, next) =>  // review: authenticated user vs. unauthenticated user
+    .delete('/:userId/:orderId', mustBeLoggedIn, (req, res, next) =>
         Order.findAll({
           where: {
-            user_id: req.params.userId
+            user_id: req.params.userId,
+            id: req.params.orderId
           }
          })
          .then(userOrders => res.json(userOrders))

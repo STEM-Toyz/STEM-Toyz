@@ -61,12 +61,12 @@ describe('api/orders', () => {
         })
     )
 
-  //   it('DELETE can cancel an order', ()=>
-  //     agent
-  //       .delete(`/api/orders/${userId}`)
-  //       .expect(201)
-  //       .expect()
-  //   )
+    it('DELETE can cancel an order', ()=>
+      agent
+        .delete(`/api/orders/${userId}/${id}`)
+        .expect(201)
+        .expect()
+    )
 
   // })
   // describe('Admin Users', () => {
