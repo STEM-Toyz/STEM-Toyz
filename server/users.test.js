@@ -9,23 +9,41 @@ const reico = {
   password: '6789'
 };
 
+const obama = {
+  username: 'BarryO@whitehouse.gov',
+  password: 'imthepres'
+};
+
 describe('/api/users', () => {
-  let userId;
+  let userId, userIdAdmin;
   before('create a user', () =>
     db.didSync
       .then(() =>
-         User.create({
-          firstName: 'Reico',
-          lastName: 'Lee',
-          phoneNumber: '555.555.5555',
-          email: reico.username,
-          password: reico.password
-        })
+         User.bulkCreate([
+          {
+            firstName: 'Reico',
+            lastName: 'Lee',
+            phoneNumber: '555.555.5555',
+            email: reico.username,
+            password: reico.password,
+            userType: 'Authenticated'
+          },
+          {
+           firstName: 'Barack',
+           lastName: 'Obama',
+           phoneNumber: '555.555.5555',
+           email: obama.username,
+           password: obama.password,
+           userType: 'Admin'
+         }
+      ])
       )
-      .then(user => {
-        userId = user.id;
+      .spread((reico, obama) => {
+        
+        userId = reico.id;
+        userIdAdmin = obama.id;
       })
-  )
+  );
 
   describe('when not logged in', () => {
     it('GET /:id fails 401 (Unauthorized)', () =>
@@ -64,34 +82,39 @@ describe('/api/users', () => {
     )
   })
 
-  describe('when logged in', () => {
+  describe.only('when logged in', () => {
     const agent = request.agent(app);
-    before('log in', () => agent
+    before('log in', () => {
+      console.log('IN THE BEFORE');
+      return agent
       .post('/api/auth/local/login')
-      .send(reico));
+      .send(reico)
+    });
 
-    it('PUT /:id updates a user when logged in and returns the updated user', () =>
-      agent
+    it('PUT /:id updates a user when logged in and returns the updated user', () => {
+      console.log('IN THE FIRST TEST');
+      return agent
         .put(`/api/users/${userId}`)
         .send({phoneNumber: '666.666.6666'})
         .then(res => res.body)
         .then(updatedUser => {
+          console.log('UPDATED USER', updatedUser);
           expect(updatedUser.phoneNumber).to.equal('666.666.6666');
-        })
-    );
+        });
+    });
 
     it('DELETE /:id deletes a user when logged', () =>
       agent
-        .delete(`/api/users/${userId}`)
-        .then(res => {
-          expect(res.status).to.equal(200);
-        })
-        .then(() => {
-          return User.findById(userId);
-        })
-        .then(result =>
-          expect(result).to.equal(null)
-        )
+      .delete(`/api/users/${userIdAdmin}`)
+      .then(res => {
+        return expect(res.status).to.equal(200);
+      })
+      .then(() => {
+        return User.findById(userId);
+      })
+      .then(result =>
+        expect(result).to.equal(null)
+      )
     );
   });
 });

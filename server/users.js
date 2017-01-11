@@ -27,8 +27,9 @@ module.exports = require('express').Router()
 			res.status(201).send(updatedUser)
 		})
 		.catch(next))
-	.delete('/:id', mustBeLoggedIn, (req, res, next) =>
+	.delete('/:id', forbidden('only admins can list users'), (req, res, next) => 
 		User.findById(req.params.id)
 		.then(user => user.destroy())
 		.then(() => res.sendStatus(200))
-		.catch(next))
+		.catch(next)
+	)
