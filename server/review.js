@@ -21,17 +21,17 @@ router.post('/', (req, res, next) => {
   .catch(console.error);
 })
 
-router.delete('/:reviewId', (req, res, next) => {
-  Review.destroy({where: {id: req.params.reviewId}})
-  .then(() => res.sendStatus(200))
-  .catch(console.error);
-})
-
 router.put('/:reviewId', (req,res, next) => {
   Review.update(req.body, {where: {id: req.params.reviewId}})
   .then(updatedCount => {
     res.sendStatus(updatedCount[0] > 0 ? 200 : 304);
   })
+  .catch(console.error);
+})
+
+router.delete('/:reviewId', (req, res, next) => {
+  Review.destroy({where: {id: req.params.reviewId}})
+  .then(() => res.sendStatus(200))
   .catch(console.error);
 })
 
