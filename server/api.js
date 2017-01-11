@@ -9,7 +9,7 @@ api
   .use('/users', require('./users'))
   .use('/addresses', require('./address'))
   .use('/reviews', require('./review'))
-
+  .use('/items', require('./items'))
 // Send along any errors
 api.use((err, req, res, next) => {
   res.status(500).send(err)
