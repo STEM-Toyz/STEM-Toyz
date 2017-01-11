@@ -30,5 +30,5 @@ module.exports = require('express').Router()
 	.delete('/:id', mustBeLoggedIn, (req, res, next) =>
 		User.findById(req.params.id)
 		.then(user => user.destroy())
-		.then(() => res.send(200))
+		.then(() => res.sendStatus(200))
 		.catch(next))

@@ -13,7 +13,7 @@ const selfOnly = action => (req, res, next) => {
 }
 
 const forbidden = message => (req, res, next) => {
-  res.status(403).send(message)
+  if (req.user.userType) res.status(403).send(message)
 }
 
 module.exports = {mustBeLoggedIn, selfOnly, forbidden,}

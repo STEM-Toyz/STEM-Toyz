@@ -71,7 +71,6 @@ describe('/api/users', () => {
       .send(reico));
 
     it('PUT /:id updates a user when logged in and returns the updated user', () =>
-
       agent
         .put(`/api/users/${userId}`)
         .send({phoneNumber: '666.666.6666'})
@@ -79,6 +78,20 @@ describe('/api/users', () => {
         .then(updatedUser => {
           expect(updatedUser.phoneNumber).to.equal('666.666.6666');
         })
+    );
+
+    it('DELETE /:id deletes a user when logged', () =>
+      agent
+        .delete(`/api/users/${userId}`)
+        .then(res => {
+          expect(res.status).to.equal(200);
+        })
+        .then(() => {
+          return User.findById(userId);
+        })
+        .then(result =>
+          expect(result).to.equal(null)
+        )
     );
   });
 });
