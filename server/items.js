@@ -8,33 +8,37 @@ module.exports = router;
 
 router.param('order_id', (req, res, next, id) => {
 	Item.findAll({ where: { order_id: id } })
-	.then(items => req.orderItems = items)
+	.then(items => {
+		req.orderItems = items
+		next();
+	})
 	.catch(next);
-	next();
 })
 
 router.param('item_id', (req, res, next, id) => {
 	Item.findById(id)
-	.then(item => req.item = item)
+	.then(item => {
+		req.item = item
+		next();
+	})
 	.catch(next);
-	next();
 })
 
-router.post('/', (req, res, next) => {
-	Item.create(req.body)
-	.then(newItem => {
-		res.send(newItem);
+router.route('/:order_id')
+	.get((req, res, next) => {
+		res.send(req.orderItems)
 	})
-	.catch(next)
-});
+	.post((req, res, next) => {
+		Item.create(req.body)
+		.then(newItem => {
+			res.send(newItem);
+		})
+		.catch(next)
+	})
 
-router.get('/:order_id', (req, res, next) => {
-	res.send(req.orderItems)
-});
-
-router.route('/:order_id/items/:item_id')
+router.route('/:order_id/item/:item_id')
 	.put((req, res, next) => {
-		req.item.update(req.body)
+		req.item.update(req.body, {returning: true})
 		.then(updatedItem => {
 			res.send(updatedItem);
 		})
