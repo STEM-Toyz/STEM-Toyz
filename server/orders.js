@@ -2,10 +2,12 @@
 
 const db = require('APP/db');
 const Order = db.model('orders');
+const User = db.model('users');
 
 const { forbidden, mustBeLoggedIn } = require('./auth.filters');
 
 module.exports = require('express').Router()
+
     .get('/', forbidden('only admin can view all cart by all users'), (req, res, next) =>
         Order.findAll()
         .then(orders => res.json(orders))
@@ -18,10 +20,11 @@ module.exports = require('express').Router()
          })
          .then(userOrders => res.json(userOrders))
          .catch(next))
-    .post('/:userId', (req, res, next) =>
-          Order.create(req.body)
+    .post('/:userId', mustBeLoggedIn, (req, res, next) => {//registered user
+          req.body.user_id = req.params.userId;
+          return Order.create(req.body)
           .then(createdOrder => res.status(201).json(createdOrder))
-          .catch(next))
+          .catch(next)})
     .delete('/:userId', mustBeLoggedIn, (req, res, next) =>  // review: authenticated user vs. unauthenticated user
         Order.findAll({
           where: {
