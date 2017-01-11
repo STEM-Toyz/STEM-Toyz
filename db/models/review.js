@@ -26,7 +26,7 @@ const Review = db.define('reviews', {
 , {
   classMethods: {
     getAverageScore: function(productId) {
-      return Review.findAll({where: {productId}})
+      return Review.findAll({where: {product_id: productId}})
       .then(reviews => {
         let total = 0;
         for(let review of reviews) total += review.stars;

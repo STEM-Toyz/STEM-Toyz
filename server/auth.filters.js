@@ -20,4 +20,4 @@ const forbidden = message => (req, res, next) => {
   next();
 }
 
-module.exports = {mustBeLoggedIn, selfOnly, forbidden,}
+module.exports = {mustBeLoggedIn, selfOnly, forbidden}
