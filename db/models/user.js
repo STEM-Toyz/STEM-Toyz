@@ -25,7 +25,10 @@ const User = db.define('users', {
     type: Sequelize.STRING,
     allowNull: false
   },
-
+  userType: {
+    type: Sequelize.ENUM('Authenticated', 'Unauthenticated', 'Admin'),
+    defaultValue: 'Unauthenticated'
+  },
 
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING,
