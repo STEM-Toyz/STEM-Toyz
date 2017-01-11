@@ -17,14 +17,12 @@ const Order = db.define('orders', {
 }, {
     instanceMethods: {
         totalPrice: function() {
-          console.log(this);
             return Item.findAll({
                     where: {
                         order_id: this.id
                     }
                 })
                 .then(function(items) {
-                  console.log(items);
                     return items.reduce(function(sum, current) {
                         return sum + current.totalPrice;
                     }, 0);
