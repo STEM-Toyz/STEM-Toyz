@@ -16,15 +16,15 @@ describe('Review', () => {
 
   beforeEach(() => {
     return Review.bulkCreate([
-      {title: "Awesome!", stars: 5, content: "A review", productId: 1},
-      {title: "Pretty good!", stars: 4, content: "A review", productId: 1},
-      {title: "Just okay!", stars: 3, content: "A review", productId: 1},
-      {title: "Meh!", stars: 2, content: "A review", productId: 1},
-      {title: "Terrible!", stars: 1, content: "A review", productId: 1}
+      {title: "Awesome!", stars: 5, content: "A review", product_id: 1},
+      {title: "Pretty good!", stars: 4, content: "A review", product_id: 1},
+      {title: "Just okay!", stars: 3, content: "A review", product_id: 1},
+      {title: "Meh!", stars: 2, content: "A review", product_id: 1},
+      {title: "Terrible!", stars: 1, content: "A review", product_id: 1}
     ]);
   })
 
-  describe('get average review scores', () => {
+  describe('should get average review scores', () => {
     it('should find all reviews of a product and then produces the average score from them', () => {
       return Review.getAverageScore(1).then((averageScore) => {expect(averageScore).to.equal(3)});
     })
