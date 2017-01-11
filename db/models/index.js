@@ -32,7 +32,6 @@ Review.belongsTo(User);
 Product.hasMany(Item);
 Item.belongsTo(Product);
 
-
 module.exports = {
     User,
     Address,

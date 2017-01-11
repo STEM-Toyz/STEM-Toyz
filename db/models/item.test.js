@@ -19,6 +19,7 @@ describe('Item', () => {
         .then(item => expect(item.quantity).to.equal(1));
     });
 
+    // EI: more descriptive here?
     it('Has an instance method for adding qty.', () => {
       return item.save()
         .then(item => {

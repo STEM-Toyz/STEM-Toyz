@@ -26,6 +26,7 @@ const Review = db.define('reviews', {
 , {
   classMethods: {
     getAverageScore: function(productId) {
+      // EI: Sequelize is expecting product_id because of line 19 in `db/index`
       return Review.findAll({where: {productId}})
       .then(reviews => {
         let total = 0;

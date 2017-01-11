@@ -11,7 +11,7 @@ const seedAddresses = () => db.Promise.map([
   {street: '2 Hanover Sq', city: 'New York', state: 'NY', country: 'USA', zip: '10004', user_id: 2}
 ], address => db.model('address').create(address));
 
-
+// EI: seed products, etc.
 
 db.didSync
   .then(() => db.sync({force: true}))
