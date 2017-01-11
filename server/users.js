@@ -18,7 +18,6 @@ module.exports = require('express').Router()
 		User.findById(req.params.id)
 		.then(user => res.json(user))
 		.catch(next))
-<<<<<<< HEAD
 	.put('/:id', mustBeLoggedIn, (req, res, next) =>
 		User.findById(req.params.id)
 		.then(user => {
@@ -34,5 +33,3 @@ module.exports = require('express').Router()
 		.then(() => res.sendStatus(200))
 		.catch(next)
 	)
-=======
->>>>>>> master
