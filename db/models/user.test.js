@@ -45,7 +45,7 @@ describe('User', () => {
         .then(user => expect(user.phoneNumber).to.equal('555.555.5555'));
     });
 
-    it.only('User Type defaults to Unauthenticated', () => {
+    it('User Type defaults to Unauthenticated', () => {
       return user.save()
         .then(user => expect(user.userType).to.equal('Unauthenticated'));
     });
