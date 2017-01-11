@@ -10,8 +10,11 @@ describe('Item', () => {
   let item;
   beforeEach(() => {
     item = Item.build({
+      price: 4
     });
+
   });
+
 
   describe('Quantity', () => {
     it('Defaults to 1', () => {
@@ -35,6 +38,17 @@ describe('Item', () => {
           return item;
         })
         .then(item => expect(item.quantity).to.equal(0));
+    });
+    it('Has an getter method for to calculate total price.', () => {
+      let item2 = Item.build({
+        quantity: 2,
+        price: 4
+      })
+
+      return item2.save()
+        .then(item => {
+          expect(item.totalPrice).to.equal(8);
+        })
     });
   });
 });

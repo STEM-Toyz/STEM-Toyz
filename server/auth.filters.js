@@ -16,4 +16,4 @@ const forbidden = message => (req, res, next) => {
   res.status(403).send(message)
 }
 
-module.exports = {mustBeLoggedIn, selfOnly, forbidden,}
+module.exports = {mustBeLoggedIn, selfOnly, forbidden}

@@ -4,9 +4,10 @@ const db = require('APP/db')
 const api = module.exports = require('express').Router()
 
 api
-  .get('/heartbeat', (req, res) => res.send({ok: true,}))
+  .get('/heartbeat', (req, res) => res.send({ok: true}))
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
+  .use('/orders', require('./orders'))
   .use('/addresses', require('./address'))
   .use('/reviews', require('./review'))
   .use('/items', require('./items'))
