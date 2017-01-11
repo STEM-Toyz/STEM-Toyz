@@ -12,8 +12,10 @@ const alice = {
 
 describe('api/orders', () => {
   let userId;
+  let bulk;
+
   before('create a user', () =>
-    db.didSync
+      db.didSync
       .then(() =>
         User.create({
           firstName: 'Reico',
@@ -26,14 +28,20 @@ describe('api/orders', () => {
           userId = user.id
         })
       )
-      .then(() =>
-        Order.bulkCreate([
+      .then(() => db.Promise.map([
         {status: 'shipped', user_id:userId},
         {status: 'ordered', user_id:userId},
-        {status: 'completed', user_id:userId}
-        ])
+        {status: 'completed', user_id:userId},
+        {status: 'ordered', user_id:userId},
+        {status: 'shipped', user_id: 2},
+        {status: 'ordered', user_id: 2},
+        {status: 'completed', user_id: 2},
+        ], order => db.model('orders').create(order))
       )
-  )
+      .then(function(orders){
+        bulk = orders;
+      })
+    )
 
   describe('Authenticated Users', () => {
     const agent = request.agent(app)
@@ -43,12 +51,12 @@ describe('api/orders', () => {
 
     it('POST can create an order', () =>
        agent
-       .post(`/api/orders/${userId}`)
+       .post(`/api/orders/${6}`)
        .expect(201)
        .expect(function(res) {
           expect(res.body.status).to.equal('in cart');
           expect(res.body.price).to.equal(0);
-          expect(res.body.user_id).to.equal(userId);
+          expect(res.body.user_id).to.equal(6);
        })
     )
 
@@ -61,17 +69,22 @@ describe('api/orders', () => {
         })
     )
 
-    it('DELETE can cancel an order', ()=>
-      agent
-        .delete(`/api/orders/${userId}/${id}`)
-        .expect(201)
-        .expect()
-    )
-
-  // })
+    it('DELETE can cancel an order', () => {
+     return agent
+        .delete(`/api/orders/9`)
+        .expect(function(){
+          User.findAll({
+            where: {
+              user_id: 5
+            }
+          })
+          .then(function(orders){
+            expect(orders.length).to.equal(2);
+          })
+        })
+        // })
+    })
   // describe('Admin Users', () => {
-
-
 
   })
 
