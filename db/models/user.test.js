@@ -29,7 +29,7 @@ describe('User', () => {
         .then(result => expect(result).to.be.false));
   });
 
-  describe('Has a first, last name and phone number', () => {
+  describe('Has a first, last name, phone number, & userType', () => {
     it('First Name', () => {
       return user.save()
         .then(user => expect(user.firstName).to.equal('Reico'));
@@ -43,6 +43,11 @@ describe('User', () => {
     it('Phone Number', () => {
       return user.save()
         .then(user => expect(user.phoneNumber).to.equal('555.555.5555'));
+    });
+
+    it('User Type defaults to Unauthenticated', () => {
+      return user.save()
+        .then(user => expect(user.userType).to.equal('Unauthenticated'));
     });
   });
 });
