@@ -3,11 +3,13 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
+import Navbar from './Navbar';
+
 export default function AppContainer (props) {
   return (
     <div id="app" className="container-fluid">
       <div id="nav" className="row">
-        // Navbar
+        <Navbar />
       </div>
       <div id="views" className="row">
         // Views

@@ -2,9 +2,11 @@
 
 import React from 'react';
 
+import Login from './Login'
+
 export const Navbar = () => (
-  <div>
-
-
-  </div>
-)
+  <nav>
+    <img src="NoLogo.png" className="logo" />
+    <Login />
+  </nav>
+);
