@@ -10,7 +10,7 @@ const reico = {
 };
 
 const obama = {
-  username: 'BarryO@whitehouse.gov',
+  username: 'barryo@whitehouse.gov',
   password: 'imthepres'
 };
 
@@ -83,7 +83,7 @@ describe('/api/users', () => {
     )
   })
 
-  describe.only('when authenticated user is logged in', () => {
+  describe('when authenticated user is logged in', () => {
     const agent = request.agent(app);
     before('log in', () =>
       agent
@@ -109,21 +109,15 @@ describe('/api/users', () => {
           expect(updatedUser.phoneNumber).to.equal('666.666.6666');
         });
     });
-
-    after('logout authenticated user', () => {
-      return agent
-        .post('api/auth/logout')
-        .then(() => console.log('LOGOUT'));
-    });
   });
 
-  xdescribe('when admin logged in', () => {
+  describe('when admin logged in', () => {
     const agent = request.agent(app);
-    before('log in', () =>
-      agent
-      .post('/api/auth/local/login')
-      .send(obama)
-    );
+    before('log in', () => {
+        return agent
+        .post('/api/auth/local/login')
+        .send(obama)
+    });
 
     it('DELETE /:id deletes a user when logged', () => {
       return agent

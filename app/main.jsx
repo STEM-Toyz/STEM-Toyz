@@ -11,17 +11,17 @@ import WhoAmI from './components/WhoAmI'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
-) (
+)(
   ({ user, children }) =>
     <div>
       <nav>
         {user ? <WhoAmI/> : <Login/>}
-      </nav> 
+      </nav>
       {children}
     </div>
-)
+);
 
-render (
+render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
@@ -31,4 +31,4 @@ render (
     </Router>
   </Provider>,
   document.getElementById('main')
-)
+);

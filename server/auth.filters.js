@@ -13,7 +13,6 @@ const selfOnly = action => (req, res, next) => {
 }
 
 const forbidden = message => (req, res, next) => {
-  console.log('USER', req.user);
   if (req.user.dataValues.userType !== 'Admin') {
     return res.status(403).send(message)
   }
