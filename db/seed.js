@@ -56,9 +56,9 @@ const db = require('APP/db')
 
 
   const seedItems = () => db.Promise.map([
-    { quantity: 10, order_id: 1, product_id: 1},
-    { quantity: 15, order_id: 2, product_id: 2},
-    { quantity: 30, order_id: 3, product_id: 3}
+    { quantity: 10, price: 110, order_id: 1, product_id: 1},
+    { quantity: 15, price: 50,  order_id: 2, product_id: 2},
+    { quantity: 30, price: 171,  order_id: 3, product_id: 3}
   ], item => db.model('items').create(item));
 
   db.didSync

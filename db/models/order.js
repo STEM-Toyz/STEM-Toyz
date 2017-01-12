@@ -10,10 +10,6 @@ const Order = db.define('orders', {
         values: ['in cart', 'ordered', 'shipped', 'completed'],
         defaultValue: 'in cart',
     },
-    price: {
-        type: Sequelize.FLOAT,
-        defaultValue: 0
-    },
 }, {
     instanceMethods: {
         totalPrice: function() {
