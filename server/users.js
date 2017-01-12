@@ -34,7 +34,6 @@ module.exports = require('express').Router()
 	})
 	// Delete a user account Admin only
 	.delete('/:id', forbidden('only admins can delete users'), (req, res, next) => {
-		console.log('IN THE ROUTE', req.params.id);
 		User.findById(req.params.id)
 		.then(user => user.destroy())
 		.then(() => res.sendStatus(200))
