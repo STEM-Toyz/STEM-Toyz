@@ -7,11 +7,8 @@ const router = require('express').Router()
 module.exports = router;
 
 router.param('order_id', (req, res, next, id) => {
-	// console.log('hi');
-	const order_id = Number(id);
-	Item.findAll({ where: { order_id: order_id } })
+	Item.findAll({ where: { order_id: id } })
 	.then(items => {
-		// console.log(items);
 		req.orderItems = items
 		next();
 	})
@@ -29,7 +26,6 @@ router.param('item_id', (req, res, next, id) => {
 
 router.route('/:order_id')
 	.get((req, res, next) => {
-		// console.log('get1**********')
 		res.send(req.orderItems)
 	})
 	.post((req, res, next) => {

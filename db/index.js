@@ -22,7 +22,6 @@ const db = module.exports = new Sequelize(url, {
   }
 })
 
-console.log("**")
 // pull in our models
 require('./models')
 
