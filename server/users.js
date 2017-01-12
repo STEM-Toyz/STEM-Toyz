@@ -3,7 +3,7 @@
 const db = require('APP/db');
 const User = db.model('users');
 
-const {mustBeLoggedIn, forbidden, selfOnly} = require('./auth.filters')
+const {mustBeLoggedIn, forbidden, selfOnly} = require('./auth.filters');
 
 module.exports = require('express').Router()
 	// Get all users Admin only
@@ -16,12 +16,12 @@ module.exports = require('express').Router()
 		User.create(req.body)
 		.then(user => res.status(201).json(user))
 		.catch(next))
-	// Get your user data if you are logged in user
+	// Get your user data if you are a logged in user
 	.get('/:id', mustBeLoggedIn, selfOnly('get user data'), (req, res, next) =>
 		User.findById(req.params.id)
 		.then(user => res.json(user))
 		.catch(next))
-	// Updates a user account logged in user only
+	// Update a user account if logged in user only
 	.put('/:id', mustBeLoggedIn, selfOnly('update'), (req, res, next) => {
 		User.update(req.body, {
 			where: { id: req.params.id },
@@ -32,10 +32,11 @@ module.exports = require('express').Router()
 		})
 		.catch(next);
 	})
+	// Delete a user account Admin only
 	.delete('/:id', forbidden('only admins can delete users'), (req, res, next) => {
 		console.log('IN THE ROUTE', req.params.id);
 		User.findById(req.params.id)
 		.then(user => user.destroy())
 		.then(() => res.sendStatus(200))
-		.catch(next)
-	})
+		.catch(next);
+	});
