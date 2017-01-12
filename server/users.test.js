@@ -83,6 +83,7 @@ describe('/api/users', () => {
     )
   })
 
+
   describe('when authenticated user is logged in', () => {
     const agent = request.agent(app);
     before('log in', () =>
