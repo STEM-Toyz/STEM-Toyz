@@ -9,7 +9,8 @@
     "build": "check-node-version --node '>= 6.7.0' && bin/setup && webpack",
     "build-watch": "check-node-version --node '>= 6.7.0' && bin/setup && webpack -w",
     "start": "check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
-    "seed": "node db/seed.js"
+    "seed": "node db/seed.js",
+    "build-css": "node-sass -w public/stylesheets/style.scss -o public/stylesheets"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "cookie-session": "^2.0.0-alpha.1",
     "enzyme": "^2.5.1",
     "express": "^4.14.0",
+    "node-sass": "^4.2.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-github2": "^0.1.10",
