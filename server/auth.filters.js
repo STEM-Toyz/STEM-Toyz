@@ -6,15 +6,15 @@ const mustBeLoggedIn = (req, res, next) => {
 }
 
 const selfOnly = action => (req, res, next) => {
-  if (req.params.id !== req.user.id) {
+  if (+req.params.id !== +req.user.dataValues.id) {
     return res.status(403).send(`You can only ${action} yourself.`)
   }
   next()
 }
 
 const forbidden = message => (req, res, next) => {
-  console.log('USER TYPE', req.user.userType);
-  if (req.user.userType !== 'Admin') {
+  console.log('USER', req.user);
+  if (req.user.dataValues.userType !== 'Admin') {
     return res.status(403).send(message)
   }
   next();
