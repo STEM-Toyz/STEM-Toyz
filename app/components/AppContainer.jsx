@@ -8,7 +8,7 @@ import Navbar from './Navbar';
 export default function AppContainer (props) {
   return (
     <div id="app" className="container-fluid">
-      <div id="nav" className="row">
+      <div id="nav" className="row horizontal">
         <Navbar />
       </div>
       <div id="views" className="row">
