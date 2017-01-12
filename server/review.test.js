@@ -85,15 +85,13 @@ describe('Review route', () => {
   it('should be able to modify a review', () => {
     let oldReview;
     return Review.findById(1)
-    .then(review => {
-      oldReview = review;
-      return Review.update({stars: 4}, {where: {id: 1}, returning: true})
-    })
-    .then(updated => {
-      const updatedReview = updated[1][0];
-      expect(updated[0]).to.equal(1);
-      expect(updatedReview.stars).to.not.equal(oldReview.stars);
-    })
+      .then(review => { oldReview = review; })
+      .then(() => agent.put('/api/reviews/1').send({stars: 4}))
+      .then(() => Review.findById(1))
+      .then(review => {
+        expect(review).to.be.an('object');
+        expect(review.stars).to.not.equal(oldReview.stars);
+      });
   })
 
   it('should be able to delete a review', () => {
@@ -101,7 +99,7 @@ describe('Review route', () => {
     return Review.findAll()
       .then(results => {
         numInitialReviews = results.length;
-        return Review.destroy({where: {id: 1}})
+        return agent.delete('/api/reviews/8')
       })
       .then(() => Review.findAll())
       .then(results => {

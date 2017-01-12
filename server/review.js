@@ -25,9 +25,7 @@ router.post('/', (req, res, next) => {
 
 router.put('/:reviewId', (req,res, next) => {
   Review.update(req.body, {where: {id: req.params.reviewId}})
-  .then(updatedCount => {
-    res.sendStatus(updatedCount[0] > 0 ? 200 : 304);
-  })
+  .then(updatedCount => res.sendStatus(updatedCount[0] > 0 ? 200 : 304))
   .catch(console.error);
 })
 
