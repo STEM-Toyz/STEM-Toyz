@@ -10,16 +10,16 @@ const reico = {
 };
 
 const obama = {
-  username: 'BarryO@whitehouse.gov',
+  username: 'barryo@whitehouse.gov',
   password: 'imthepres'
 };
 
 describe('/api/users', () => {
-  let userId, userIdAdmin;
+  const ids = {};
   before('create a user', () =>
     db.didSync
       .then(() =>
-         User.bulkCreate([
+        db.Promise.map([
           {
             firstName: 'Reico',
             lastName: 'Lee',
@@ -29,19 +29,20 @@ describe('/api/users', () => {
             userType: 'Authenticated'
           },
           {
-           firstName: 'Barack',
-           lastName: 'Obama',
-           phoneNumber: '555.555.5555',
-           email: obama.username,
-           password: obama.password,
-           userType: 'Admin'
-         }
-      ])
+             firstName: 'Barack',
+             lastName: 'Obama',
+             phoneNumber: '555.555.5555',
+             email: obama.username,
+             password: obama.password,
+             userType: 'Admin'
+           }
+        ], user => db.model('users').create(user))
       )
-      .spread((reico, obama) => {
-
-        userId = reico.id;
-        userIdAdmin = obama.id;
+      .then(users => {
+        return users.reduce((accum, user) => {
+          accum[user.dataValues.userType] = user.dataValues.id;
+          return accum;
+        }, ids);
       })
   );
 
@@ -82,39 +83,55 @@ describe('/api/users', () => {
     )
   })
 
-  describe('when logged in', () => {
+
+  describe('when authenticated user is logged in', () => {
     const agent = request.agent(app);
-    before('log in', () => {
-      console.log('IN THE BEFORE');
-      return agent
+    before('log in', () =>
+      agent
       .post('/api/auth/local/login')
       .send(reico)
+    );
+
+    it('gets a users data', () => {
+      return agent
+        .get(`/api/users/${ids.Authenticated}`)
+        .then(res => res.body)
+        .then(userData =>
+          expect(userData.firstName).to.equal('Reico')
+        );
     });
 
     it('PUT /:id updates a user when logged in and returns the updated user', () => {
-      console.log('IN THE FIRST TEST');
       return agent
-        .put(`/api/users/${userId}`)
+        .put(`/api/users/${ids.Authenticated}`)
         .send({phoneNumber: '666.666.6666'})
         .then(res => res.body)
         .then(updatedUser => {
-          console.log('UPDATED USER', updatedUser);
           expect(updatedUser.phoneNumber).to.equal('666.666.6666');
         });
     });
+  });
 
-    it('DELETE /:id deletes a user when logged', () =>
-      agent
-      .delete(`/api/users/${userIdAdmin}`)
+  describe('when admin logged in', () => {
+    const agent = request.agent(app);
+    before('log in', () => {
+        return agent
+        .post('/api/auth/local/login')
+        .send(obama)
+    });
+
+    it('DELETE /:id deletes a user when logged', () => {
+      return agent
+      .delete(`/api/users/${ids.Authenticated}`)
       .then(res => {
         return expect(res.status).to.equal(200);
       })
       .then(() => {
-        return User.findById(userId);
+        return User.findById(ids.Authenticated);
       })
       .then(result =>
         expect(result).to.equal(null)
       )
-    );
-  });
+    });
+  })
 });
