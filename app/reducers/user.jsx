@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from './store';
+import store from '../store';
 
 const initialState = {
   selectUser: {}
@@ -8,8 +8,14 @@ const initialState = {
 const SELECT_USER = 'SELECT_USER';
 
 export const fetchUser = userId => {
-  axios.get(`/api/users/${1}`)
-  .then(user => store.dispatch(setUser()))
+  return function(dispatch) {
+    axios.get(`/api/users/${1}`)
+    .then(user => {
+      console.log('selectedUser', user);
+      store.dispatch(setUser(user));
+    }
+    )
+  }
 }
 
 export const setUser = user => {

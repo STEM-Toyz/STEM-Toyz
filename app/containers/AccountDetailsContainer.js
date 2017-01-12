@@ -1,8 +1,9 @@
-import AccountDetails from './AccountDetails';
+import AccountDetails from '../components/AccountDetails';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  return {};
+  console.log('state', state);
+  return {selectUser: state.user.selectUser};
 }
 
 const mapDispatchToProps = dispatch => {
