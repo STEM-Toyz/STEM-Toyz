@@ -83,7 +83,7 @@ describe('/api/users', () => {
     )
   })
 
-  describe('when authenticated logged in', () => {
+  describe.only('when authenticated user is logged in', () => {
     const agent = request.agent(app);
     before('log in', () =>
       agent
@@ -110,6 +110,11 @@ describe('/api/users', () => {
         });
     });
 
+    after('logout authenticated user', () => {
+      return agent
+        .post('api/auth/logout')
+        .then(() => console.log('LOGOUT'));
+    });
   });
 
   xdescribe('when admin logged in', () => {
