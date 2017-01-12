@@ -4,7 +4,7 @@ const Review = db.model('reviews');
 const router = require('express').Router();
 
 router.get('/product/:productId', (req, res, next) => {
-  Review.findALl({where: {product_id: req.params.productId}})
+  Review.findAll({where: {product_id: req.params.productId}})
   .then(reviews => res.send(reviews))
   .catch(console.error);
 })
@@ -17,7 +17,9 @@ router.get('/user/:userId', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   Review.create(req.body)
-  .then(review => res.send(review))
+  .then(review => {
+    res.send(review)
+  })
   .catch(console.error);
 })
 

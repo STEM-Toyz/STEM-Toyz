@@ -13,10 +13,10 @@ chai.use(chaiThings);
 const expect = chai.expect;
 import supertest from 'supertest-as-promised';
 
-describe('Review route tests', () => {
+describe('Review route', () => {
 
   let agent;
-
+  before('clear the db', () => db.sync({force: true}));
   before('wait for the db', () => db.didSync);
   before('Set up the users/reviews/products', () => {
     agent = supertest(app);
@@ -50,15 +50,63 @@ describe('Review route tests', () => {
   })
 
   it('should be able to get reviews for a specific product', () => {
-    agent.get('/api/reviews/product/3')
-    .then(res => {
-      console.log(res);
-      expect(res.body).to.be.an('array');
-      expect(res.body.length).to.be.equal(3);
-      expect(res.body).to.contain.a.thing.with('title', 'Cool');
-      expect(res.body).to.contain.a.thing.with('stars': 5);
+    return agent.get('/api/reviews/product/3')
+      .then(res => {
+        const review = res.body.filter(review => review.title === 'Cool')[0];
+        expect(res.body).to.be.an('array');
+        expect(res.body.length).to.be.equal(3);
+        expect(review.stars).to.equal(3);
+      })
+  })
+
+  it('should be able to get reviews from a specific user', () => {
+    return agent.get('/api/reviews/user/1')
+      .then(res => {
+        const threeStarReviews = res.body.filter(review => review.stars === 3);
+        expect(res.body).to.be.an('array');
+        expect(res.body.length).to.be.equal(4);
+        expect(threeStarReviews.length).to.equal(2);
+      })
+  })
+
+  it('should be able to add a new review', () => {
+    const newReview = {title: 'New Review', stars: 3, content: 'Test Review', user_id: 1, product_id: 3};
+    return agent.post('/api/reviews/')
+      .send(newReview)
+      .then(res => {
+        const review = res.body;
+        expect(review).to.be.an('object');
+        expect(review.title).to.equal('New Review');
+        expect(review.stars).to.equal(3);
+        expect(review.content).to.equal('Test Review');
+      })
+  })
+
+  it('should be able to modify a review', () => {
+    let oldReview;
+    return Review.findById(1)
+    .then(review => {
+      oldReview = review;
+      return Review.update({stars: 4}, {where: {id: 1}, returning: true})
+    })
+    .then(updated => {
+      const updatedReview = updated[1][0];
+      expect(updated[0]).to.equal(1);
+      expect(updatedReview.stars).to.not.equal(oldReview.stars);
     })
   })
 
+  it('should be able to delete a review', () => {
+    let numInitialReviews;
+    return Review.findAll()
+      .then(results => {
+        numInitialReviews = results.length;
+        return Review.destroy({where: {id: 1}})
+      })
+      .then(() => Review.findAll())
+      .then(results => {
+        expect(results.length).to.equal(numInitialReviews - 1);
+      })
+  })
 
 })

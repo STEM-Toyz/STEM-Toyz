@@ -39,7 +39,7 @@ describe('/api/users', () => {
       ])
       )
       .spread((reico, obama) => {
-        
+
         userId = reico.id;
         userIdAdmin = obama.id;
       })
@@ -82,7 +82,7 @@ describe('/api/users', () => {
     )
   })
 
-  describe.only('when logged in', () => {
+  describe('when logged in', () => {
     const agent = request.agent(app);
     before('log in', () => {
       console.log('IN THE BEFORE');
