@@ -7,6 +7,7 @@ import {connect, Provider} from 'react-redux'
 import store from './store'
 
 import AppContainer from './components/AppContainer'
+import AccountDetailsContainer from './components/AccountDetailsContainer'
 import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
@@ -28,8 +29,8 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
-
       </Route>
+      <Route path="/account" component={AccountDetailsContainer}/>
     </Router>
   </Provider>,
   document.getElementById('main')
