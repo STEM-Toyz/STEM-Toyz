@@ -24,7 +24,7 @@ router.param('item_id', (req, res, next, id) => {
 	.catch(next);
 })
 
-router.route('/:order_id')
+router.route('/:order_id/items')
 	.get((req, res, next) => {
 		res.send(req.orderItems)
 	})
@@ -36,7 +36,7 @@ router.route('/:order_id')
 		.catch(next)
 	})
 
-router.route('/:order_id/item/:item_id')
+router.route('/:order_id/items/:item_id')
 	.put((req, res, next) => {
 		req.item.update(req.body, {returning: true})
 		.then(updatedItem => {
@@ -46,7 +46,7 @@ router.route('/:order_id/item/:item_id')
 	})
 	.delete((req, res, next) => {
 		req.item.destroy()
-		.then(destryedItem => {
-			res.send(destryedItem);
+		.then(numOfDestroyedRows => {
+			res.send(numOfDestroyedRows);
 		})
 	})
