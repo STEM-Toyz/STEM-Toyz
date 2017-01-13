@@ -7,10 +7,11 @@ api
   .get('/heartbeat', (req, res) => res.send({ok: true}))
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
+  .use('/products', require('./products'))
   .use('/orders', require('./orders'))
+  .use('/order', require('./items')) // this is the items route, it needs to start with /order
   .use('/addresses', require('./address'))
   .use('/reviews', require('./review'))
-  .use('/items', require('./items'))
 
 // Send along any errors
 api.use((err, req, res, next) => {
