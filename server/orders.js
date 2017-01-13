@@ -20,16 +20,19 @@ module.exports = require('express').Router()
          })
          .catch(next))
 
-    .get('/', (req, res, next) =>
-        Order.findAll()
-        .then(orders => res.json(orders))
-        .catch(next))
+    .get('/', (req, res, next) => {
+        return Order.findAll()
+        .then(orders => res.status(200).json(orders))
+        .catch(next)
+      })
     .put('/:orderId', (req, res, next) => {
-        console.log("DAIJDAIDJ", req.params.orderId);
-        console.log("idafjsof", req.body);
-         return Order.findById(req.params.orderId)
+        // console.log("DAIJDAIDJ", req.params.orderId);
+        // console.log("idafjsof", req.body);
+         Order.findById(req.params.orderId)
           .then(foundOrder => {
-            foundOrder.update(req.body)
+            console.log('foundOrder', foundOrder)
+            console.log("req.body", req.body)
+            return foundOrder.update(req.body, {returning: true})
           })
           .then(updatedOrder => res.json(updatedOrder))
           .catch(next)
