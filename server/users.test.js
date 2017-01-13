@@ -38,6 +38,7 @@ describe('/api/users', () => {
            }
         ], user => db.model('users').create(user))
       )
+
       .then(users => {
         return users.reduce((accum, user) => {
           accum[user.dataValues.userType] = user.dataValues.id;
@@ -85,6 +86,7 @@ describe('/api/users', () => {
 
 
   describe('when authenticated user is logged in', () => {
+
     const agent = request.agent(app);
     before('log in', () =>
       agent

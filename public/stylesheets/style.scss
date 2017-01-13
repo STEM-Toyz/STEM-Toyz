@@ -1,34 +1,58 @@
+
+
 html {
   box-sizing: border-box;
 }
 
 nav {
   display: flex;
+  text-align: center;
+}
+
+.cart-icon {
+  font-size: 3em;
+  color: #00E571;
+  margin: auto;
 }
 
 .logo {
-  width: 200px;
-  height: 100px;
+  color: #0C18B3;
+  margin-left: 10px;
+  // width: 100px;
+  // height: 50px;
 }
 
 .horizontal {
   list-style-type: none;
-  margin: 0;
   padding: 0;
   overflow: hidden;
   display: inherit;
 }
 
 .whoami-user-name {
-  height: 10em
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.whoami {
+  display: flex;
+}
+
+.vertical {
+  display: block;
+}
+
+.logout {
+  margin: 10px 10px;
 }
 
 #app {
 }
 
 #nav {
-  // display: inline-flex;
-  height: 10em;
+  // padding: 0;
+  // margin: 0;
 }
 
 #views {
@@ -36,22 +60,29 @@ nav {
 }
 
 #footer {
-  background-color: yellow;
   height: 9em;
 }
 
 #search {
   width: 50%;
-  margin: 0 auto;
+  margin: 20px auto 10px auto;
   input {
     width: 500px;
   }
 }
 
 #login {
-
+  margin: 20px auto 10px auto;
 }
 
 #cart {
-  margin-left: 75px;
+  width: 50px;
+  margin: 20px auto 10px auto;
+  // margin-left: 75px;
+}
+
+#user {
+  font-size: 2em;
+  margin: 0 10px 0 10px;
+  color: #FFC420;
 }
