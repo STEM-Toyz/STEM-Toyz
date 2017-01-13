@@ -48,7 +48,7 @@ describe('api/order/:order_id/items', () => {
         userId = user.id
         return testOrders();
       })
-      .then(([order1, order2, order3]) => {
+      .then(() => {
         return testItems();
       })
   )
@@ -75,7 +75,7 @@ describe('api/order/:order_id/items', () => {
         })
     )
 
-    it('POST a new item with an order number', () =>
+    it('POST create a new item with an order number', () =>
       request(app)
         .post('/api/order/2/items')
         .send({ quantity: 99, price: 66, order_id: 2})
