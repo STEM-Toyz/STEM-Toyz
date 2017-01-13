@@ -1,11 +1,24 @@
 html {
   box-sizing: border-box; }
 
-#app {
-  background-color: yellow; }
+nav {
+  display: flex; }
+
+.logo {
+  width: 200px;
+  height: 100px; }
+
+.horizontal {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: inherit; }
+
+.whoami-user-name {
+  height: 10em; }
 
 #nav {
-  background-color: blue;
   height: 10em; }
 
 #views {
@@ -15,3 +28,12 @@ html {
 #footer {
   background-color: yellow;
   height: 9em; }
+
+#search {
+  width: 50%;
+  margin: 0 auto; }
+  #search input {
+    width: 500px; }
+
+#cart {
+  margin-left: 75px; }

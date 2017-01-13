@@ -6,7 +6,7 @@ export default class AccountDetails extends React.Component {
   //Needs a button for changing password, viewing order history and viewing reviews
 
   render() {
-    //console.log(this.props.selectUser);
+    console.log('user', this.props.selectUser);
     return (
       <div>
         <label>Name:</label>

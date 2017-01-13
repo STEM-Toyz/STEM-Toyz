@@ -17,7 +17,7 @@ module.exports = require('express').Router()
 		.then(user => res.status(201).json(user))
 		.catch(next))
 	// Get your user data if you are a logged in user
-	.get('/:id', /*mustBeLoggedIn, selfOnly('get user data'),*/ (req, res, next) =>
+	.get('/:id', mustBeLoggedIn, selfOnly('get user data'), (req, res, next) =>
 		User.findById(req.params.id)
 		.then(user => res.json(user))
 		.catch(next))
