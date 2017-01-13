@@ -3,13 +3,13 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import Navbar from './Navbar';
+import NavbarContainer from './NavbarContainer';
 
 export default function AppContainer (props) {
   return (
     <div id="app" className="container-fluid">
       <div id="nav" className="row horizontal">
-        <Navbar />
+        <NavbarContainer />
       </div>
       <div id="views" className="row">
         // Views
@@ -19,4 +19,4 @@ export default function AppContainer (props) {
       </div>
     </div>
   );
-}
+};

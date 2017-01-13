@@ -13,9 +13,9 @@ import WhoAmI from './components/WhoAmI'
 
 
 const ExampleApp = connect(
-  ({ auth }) => ({ user: auth })
+  ({ auth }) => ({ user: auth }) // map state to props
 )(
-  ({ user, children }) =>
+  ({ user, children }) => // dumb component
     <div>
       <nav>
         {user ? <WhoAmI/> : <Login/>}
@@ -28,7 +28,6 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
-
       </Route>
     </Router>
   </Provider>,

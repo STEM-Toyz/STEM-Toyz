@@ -32,12 +32,5 @@ nav {
   #search input {
     width: 500px; }
 
-#login {
-  position: absolute;
-  top: 0px;
-  right: 200px; }
-
 #cart {
-  position: absolute;
-  top: 0px;
-  right: 0px; }
+  margin-left: 75px; }
