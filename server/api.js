@@ -7,8 +7,9 @@ api
   .get('/heartbeat', (req, res) => res.send({ok: true}))
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
+  .use('/user', require('./userOrder')) // this is the order route, needs to start with /user for RESTapi
   .use('/products', require('./products'))
-  .use('/orders', require('./orders'))
+  .use('/orders', require('./orders')) // this is the order route, needs to start with /user for RESTapi
   .use('/order', require('./items')) // this is the items route, it needs to start with /order
   .use('/addresses', require('./address'))
   .use('/reviews', require('./review'))
