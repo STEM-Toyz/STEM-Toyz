@@ -2,20 +2,37 @@ const request = require('supertest-as-promised')
 const {expect} = require('chai')
 const db = require('APP/db')
 const Order = require('APP/db/models/order')
+const Item = require('APP/db/models/item')
 const User = require('APP/db/models/user')
 const app = require('./start')
 
-const alice = {
+
+describe.only('api/orders', () => {
+  let userId;
+  const alice = {
   username: 'alice@home.org',
   password: '123124124'
-}
+  }
 
-describe('api/orders', () => {
-  let userId;
-  let bulk;
+   const testOrders = () => db.Promise.map([
+    { status: 'in cart', user_id: userId},
+    { status: 'ordered', user_id: userId},
+    { status: 'shipped', user_id: userId}
+  ], order => {
+    db.model('orders').create(order);
+  })
+
+  const testItems = () => db.Promise.map([
+    { quantity: 45, price: 170, order_id: 1},
+    { quantity: 14, price: 210, order_id: 1},
+    { quantity: 34, price: 105, order_id: 2},
+    { quantity: 19, price: 310, order_id: 2},
+    { quantity: 47, price: 140, order_id: 3},
+    { quantity: 93, price: 101, order_id: 3}
+  ], item => db.model('items').create(item));
 
   before('create a user', () =>
-      db.didSync
+      db.sync({force:true})
       .then(() =>
         User.create({
           firstName: 'Reico',
@@ -26,21 +43,11 @@ describe('api/orders', () => {
         })
         .then(user => {
           userId = user.id
+          return testOrders();
         })
       )
-      .then(() => db.Promise.map([
-        {status: 'shipped', user_id:userId},
-        {status: 'ordered', user_id:userId},
-        {status: 'completed', user_id:userId},
-        {status: 'ordered', user_id:userId},
-        {status: 'shipped', user_id: 2},
-        {status: 'ordered', user_id: 2},
-        {status: 'completed', user_id: 2},
-        ], order => db.model('orders').create(order))
+      .then(() => testItems
       )
-      .then(function(orders){
-        bulk = orders;
-      })
     )
 
   describe('Authenticated Users', () => {
@@ -51,7 +58,7 @@ describe('api/orders', () => {
 
     it('POST can create an order', () =>
        agent
-       .post(`/api/orders/${6}`)
+       .post(`/api/orders/1`)
        .expect(201)
        .expect(function(res) {
           expect(res.body.status).to.equal('in cart');
