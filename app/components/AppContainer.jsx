@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import NavbarContainer from './NavbarContainer';
+import NavbarContainer from '../containers/NavbarContainer';
 
 export default function AppContainer (props) {
   return (
