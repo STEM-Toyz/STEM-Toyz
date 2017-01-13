@@ -2,8 +2,8 @@ import React from 'react'
 
 export const WhoAmI = ({ user, logout }) => (
   <div className="whoami">
-    <span className="whoami-user-name">{user && user.name}</span>
-    <button className="logout" onClick={logout}>Logout</button>
+    <span className="whoami-user-name">Hi {user && user.firstName}</span>
+    <button className="logout btn btn-outline-success my-2 my-sm-0" onClick={logout}>Logout</button>
   </div>
 )
 
@@ -12,5 +12,5 @@ import {connect} from 'react-redux'
 
 export default connect (
   ({ auth }) => ({ user: auth }),
-  {logout},
-) (WhoAmI)
+  {logout}
+)(WhoAmI);
