@@ -3,7 +3,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import NavbarContainer from './NavbarContainer';
+import NavbarContainer from '../containers/NavbarContainer';
+import Footer from './Footer';
 
 export default function AppContainer (props) {
   return (
@@ -15,7 +16,7 @@ export default function AppContainer (props) {
         // Views
       </div>
       <div id="footer" className="row">
-        // Footer
+        <Footer />
       </div>
     </div>
   );
