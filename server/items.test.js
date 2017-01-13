@@ -1,3 +1,6 @@
+import chaiProperties from 'chai-properties';
+import chaiThings from 'chai-things';
+
 const request = require('supertest-as-promised')
 const {expect} = require('chai')
 const db = require('APP/db')
@@ -12,8 +15,6 @@ describe('api/order/:order_id/items', () => {
     password: '123124124'
   }
   let userId;
-  let orderId1, orderId2, orderId3;
-  let itemId1, itemId2, itemId3, itemId4, itemId5, itemId6;
 
   const testOrders = () => db.Promise.map([
     { status: 'in cart', user_id: userId},
@@ -59,12 +60,18 @@ describe('api/order/:order_id/items', () => {
         .get('/api/order/1/items')
         .then(res => {
           expect(res.body).to.be.an('array');
-          expect(res.body[0]).to.have.property('quantity', 45)
-          expect(res.body[0]).to.have.property('price', 170)
-          expect(res.body[0]).to.have.property('order_id', 1)
-          expect(res.body[1]).to.have.property('quantity', 14)
-          expect(res.body[1]).to.have.property('price', 210)
-          expect(res.body[1]).to.have.property('order_id', 1)
+          expect(res.body.length).to.be.equal(2);
+          expect(res.body).to.contain.a.thing.with.properties({
+            quantity: 45,
+            price: 170,
+            order_id: 1
+          })
+          expect(res.body).to.contain.a.thing.with.properties({
+            quantity: 14,
+            price: 210,
+            order_id: 1
+          })
+
         })
     )
 
@@ -96,10 +103,7 @@ describe('api/order/:order_id/items', () => {
         .then(res => {
           return Item.findById(7)
             .then((item) => {
-              let found = true;
-              if (!item) {
-                found = false;
-              }
+              const found = item ? true : false;
               expect(found).to.be.equal(false)
             })
         })
