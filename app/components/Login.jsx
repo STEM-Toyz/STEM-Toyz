@@ -7,7 +7,7 @@ export const Login = ({ login }) => (
   } } className="pull-right">
     <input className="form-control mr-sm-2" type="text" placeholder="Username" name="username" />
     <input className="form-control mr-sm-2" type="text" placeholder="Password" name="password" type="password" />
-    <input className="btn btn-outline-success my-2 my-sm-0" type="submit" value="Login" />
+    <input className="btn btn-primary btn-outline-success my-2 my-sm-0" type="submit" value="Login" />
   </form>
 )
 
