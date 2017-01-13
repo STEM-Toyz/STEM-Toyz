@@ -11,7 +11,7 @@ import Navbar from './Navbar';
 import Login from './Login';
 import WhoAmI from './WhoAmI';
 
-describe.only('Navbar component', () => {
+describe('Navbar component', () => {
   const handleChange = () => {};
   const handleSubmit = () => {};
   const user = { firstName: 'Name' };
