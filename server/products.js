@@ -7,7 +7,6 @@ const router = require('express').Router()
 module.exports = router;
 
 router.use('/', (req, res, next) => {
-	console.log('hit products')
 	next()
 })
 
@@ -22,7 +21,6 @@ router.param('product_id', (req, res, next, id) => {
 
 router.route('/')
   .get((req, res, next) => {
-		console.log('hiting get route on products')
     Product.findAll()
       .then(products => {
         res.send(products);
@@ -45,7 +43,6 @@ router.route('/:product_id')
   .delete((req, res, next) => {
     req.product.destroy()
       .then(destroyed => {
-        console.log(destroyed)
         res.send(destroyed);
       })
   })
