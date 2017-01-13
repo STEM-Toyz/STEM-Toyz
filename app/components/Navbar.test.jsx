@@ -7,14 +7,38 @@ import {shallow} from 'enzyme';
 import {spy} from 'sinon';
 chai.use(require('sinon-chai'));
 
-import {Navbar} from './Navbar'
+import Navbar from './Navbar';
+import Login from './Login';
+import WhoAmI from './WhoAmI';
 
-describe('<Navbar />', () => {
-  let root
-  beforeEach('render the root', () =>
-    root = shallow(<Navbar />)
-  )
-  it('contains login component', () =>
-    expect(root.find())
-  )
-})
+describe('Navbar component', () => {
+  const handleChange = () => {};
+  const handleSubmit = () => {};
+  const user = { firstName: 'Name' };
+  let nav;
+
+  describe('when the user isn\'t logged in', () => {
+    beforeEach('render the root', () => {
+      nav = shallow(<Navbar />);
+    });
+
+    it('should be a <nav>', () =>
+      expect(nav.is('nav')).to.equal(true)
+    );
+
+    it('should render <Login > if there isn\'t a user', () => {
+      expect(nav.find(Login).length).to.equal(1);
+    });
+  });
+
+  describe('when the user is logged in', () => {
+    beforeEach('render the root', () => {
+      nav = shallow(<Navbar user={user}/>);
+    });
+
+    it('should render <WhoAmI > if there is a user', () => {
+      expect(nav.find(WhoAmI).length).to.equal(1);
+    });
+  });
+
+});

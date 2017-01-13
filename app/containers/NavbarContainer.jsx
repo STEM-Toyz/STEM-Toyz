@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from './Navbar';
+import Navbar from '../components/Navbar';
 import { connect } from 'react-redux';
 
 // Does nothing right now!!!
