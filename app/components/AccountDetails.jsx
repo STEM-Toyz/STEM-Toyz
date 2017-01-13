@@ -1,9 +1,9 @@
 import React from 'react';
+import Review from './Review';
+import { Link } from 'react-router';
 
 export default class AccountDetails extends React.Component {
-  //Needs currentUser for the user info like name and email
-  //Needs to grab all addresses of currentUser as currentUserAddresses
-  //Needs a button for changing password, viewing order history and viewing reviews
+
   constructor(props) {
     super(props);
   }
@@ -38,15 +38,7 @@ export default class AccountDetails extends React.Component {
               <div>
                 <h2>Reviews</h2>
                   {
-                    reviews.map(review => {
-                      return <div key={review.id}>
-                        <p>{`${review.title}\t${review.created_at.replace(/[A-Z]/, ' ')}`}</p>
-                        <p>By: {review.user.firstName} {review.user.lastName[0]}. Rating: { Array(review.stars).fill(0).map((val, idx) => {
-                          return <span key={idx} className="glyphicon glyphicon-star"/> })}
-                        </p>
-                        <p>{review.content}</p>
-                      </div>
-                    })
+                    reviews.map(review => <Review key={review.id} review={review}/>)
                   }
               </div>
               <div>
@@ -55,7 +47,8 @@ export default class AccountDetails extends React.Component {
               </div>
               <br/>
               <div>
-                <button>View Orders</button><button>View Reviews</button>
+                <Link to={`/account/${profile.id}/orders`}><button>View Orders</button></Link>
+                <Link to={`/account/${profile.id}/reviews`}><button>View Reviews</button></Link>
               </div>
             </div>
           )
