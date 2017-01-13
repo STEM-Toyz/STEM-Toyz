@@ -6,6 +6,7 @@ import { render } from 'react-dom';
 import NavbarContainer from '../containers/NavbarContainer';
 import Footer from './Footer';
 
+
 export default function AppContainer (props) {
   return (
     <div id="app" className="container-fluid">

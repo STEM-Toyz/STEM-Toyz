@@ -25,7 +25,7 @@ export default (props) => {
         {user ? <WhoAmI /> : <Login />}
       </div>
       <div id="cart" className="item pull-right">
-        <span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span>
+        <button type='button' className="btn btn-default btn-primary"><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
       </div>
     </nav>
   );

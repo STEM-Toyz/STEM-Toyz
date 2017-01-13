@@ -10,29 +10,29 @@ export default (props) => {
         <div className="col-md-3">
           <h4>About us</h4>
             <ul className="list-unstyled">
-            <li>Career</li>
-            <li>Our Company</li>
+            <li><Link>Career</Link></li>
+            <li><Link>Our Company</Link></li>
             </ul>
         </div>
         <div className="col-md-3">
           <h4>Link</h4>
-            <ul className="list-inline">
-            <li>Facebook</li>
-            <li>LinkedIn</li>
+            <ul className="list-unstyled">
+            <li><Link>Facebook</Link></li>
+            <li><Link>LinkedIn</Link></li>
             </ul>
         </div>
         <div className="col-md-3">
           <h4>Placeholder</h4>
             <ul className="list-unstyled">
-            <li>Facebook</li>
-            <li>blahblah</li>
+            <li><Link>Facebook</Link></li>
+            <li><Link>blahblah</Link></li>
             </ul>
         </div>
         <div className="col-md-3">
           <h4>Placeholder</h4>
             <ul className='list-unstyled'>
-            <li>Tumblr</li>
-            <li>Instagram</li>
+            <li><Link>Tumblr</Link></li>
+            <li><Link>Instagram</Link></li>
             </ul>
         </div>
       </footer>
