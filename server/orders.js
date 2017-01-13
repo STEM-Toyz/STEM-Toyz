@@ -25,14 +25,15 @@ module.exports = require('express').Router()
           return Order.create(req.body)
           .then(createdOrder => res.status(201).json(createdOrder))
           .catch(next)})
-    .delete('/:userId/:orderId', mustBeLoggedIn, (req, res, next) =>
-        Order.findAll({
-          where: {
-            user_id: req.params.userId,
-            id: req.params.orderId
-          }
+    .delete('/:orderId', mustBeLoggedIn, (req, res, next) =>
+        Order.findById(req.params.orderId)
+         .then(userOrder => {
+          return userOrder.destroy();
+        })
+         .then(function(){
+          res.sendStatus(204);
          })
-         .then(userOrders => res.json(userOrders))
+
          .catch(next))
     .get('/current?status', forbidden('only admin can view orders status'), (req, res, next) =>
         Order.findAll({
