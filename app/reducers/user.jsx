@@ -8,9 +8,23 @@ const initialState = {
 const SELECT_USER = 'SELECT_USER';
 
 export const fetchUser = userId => {
+
+  const user = {};
+
   return function(dispatch) {
     axios.get(`/api/users/${userId}`)
-    .then(user => store.dispatch(setUser(user.data)));
+    .then(profile => {
+      user.profile = profile.data;
+      return axios.get(`/api/reviews/user/${userId}`)
+    })
+    .then(reviews => {
+      user.reviews = reviews.data;
+      return axios.get(`/api/addresses/${userId}`)
+    })
+    .then(addresses => {
+      user.addresses = addresses.data;
+      store.dispatch(setUser(user));
+    })
   }
 }
 
