@@ -2,12 +2,32 @@ html {
   box-sizing: border-box;
 }
 
+nav {
+  display: flex;
+}
+
+.logo {
+  width: 200px;
+  height: 100px;
+}
+
+.horizontal {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: inherit;
+}
+
+.whoami-user-name {
+  height: 10em
+}
+
 #app {
-  background-color: yellow;
 }
 
 #nav {
-  background-color: blue;
+  // display: inline-flex;
   height: 10em;
 }
 
@@ -19,4 +39,20 @@ html {
 #footer {
   background-color: yellow;
   height: 9em;
+}
+
+#search {
+  width: 50%;
+  margin: 0 auto;
+  input {
+    width: 500px;
+  }
+}
+
+#login {
+
+}
+
+#cart {
+  margin-left: 75px;
 }
