@@ -39,7 +39,7 @@ describe('api/product', () => {
 
   before('create a user, orders and items', () =>
     db.sync({force: true})
-      .then((user) => {
+      .then(() => {
         return testProducts();
       })
   )
@@ -58,7 +58,7 @@ describe('api/product', () => {
         })
     )
 
-    it('POST a new product', () =>
+    it('POST create a new product', () =>
       request(app)
         .post('/api/products')
         .send({
