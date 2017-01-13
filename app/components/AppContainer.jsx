@@ -19,4 +19,4 @@ export default function AppContainer (props) {
       </div>
     </div>
   );
-};
+}

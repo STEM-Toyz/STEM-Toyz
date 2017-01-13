@@ -15,6 +15,9 @@ nav {
   overflow: hidden;
   display: inherit; }
 
+.whoami-user-name {
+  height: 10em; }
+
 #nav {
   height: 10em; }
 
