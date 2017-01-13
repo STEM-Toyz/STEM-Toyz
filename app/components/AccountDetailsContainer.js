@@ -2,7 +2,7 @@ import AccountDetails from './AccountDetails';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  return {};
+  return {state: state};
 }
 
 const mapDispatchToProps = dispatch => {

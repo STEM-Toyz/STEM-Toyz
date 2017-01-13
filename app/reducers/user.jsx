@@ -12,7 +12,7 @@ export const fetchUser = userId => {
   const user = {};
 
   return function(dispatch) {
-    axios.get(`/api/users/${userId}`)
+    return axios.get(`/api/users/${userId}`)
     .then(profile => {
       user.profile = profile.data;
       return axios.get(`/api/reviews/user/${userId}`)
@@ -37,6 +37,7 @@ export const setUser = user => {
 
 const reducer = (state = initialState, action) => {
   const newState = Object.assign({}, state);
+
   switch(action.type) {
     case SELECT_USER:
       newState.selectUser = action.user;
