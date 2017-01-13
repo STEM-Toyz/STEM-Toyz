@@ -27,12 +27,17 @@ const ExampleApp = connect(
     </div>
 );
 
+function onAccountEnter() {
+  //Temporarily just fetching user of id 1
+  store.dispatch(fetchUser(1));
+}
+
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
       </Route>
-      <Route path="/account" component={AccountDetailsContainer} onEnter={fetchUser}/>
+      <Route path="/account" component={AccountDetailsContainer} onEnter={onAccountEnter}/>
     </Router>
   </Provider>,
   document.getElementById('main')

@@ -2,7 +2,6 @@ import AccountDetails from '../components/AccountDetails';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  console.log('state', state);
   return {selectUser: state.user.selectUser};
 }
 
