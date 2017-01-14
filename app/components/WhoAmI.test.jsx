@@ -18,8 +18,7 @@ describe('<WhoAmI/>', () => {
     root = shallow(<WhoAmI user={user} logout={logout}/>)
   )
 
-  it.only('greets the user', () => {
-    console.log(user);
+  it('greets the user', () => {
     expect(root.text()).to.contain(user.firstName)
   })
 

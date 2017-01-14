@@ -36,8 +36,8 @@ export default (props) => {
         {user ? <WhoAmI /> : null}
       </div>
       <div id="cart" className="item pull-right">
-        <button type='button' className="btn btn-default btn-primary" onClick={toggleCart}><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
-        {showCart? <ShoppingCart />: null}
+        <button type='button' className="btn btn-default btn-primary"><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
+        
       </div>
     </nav>
   );
