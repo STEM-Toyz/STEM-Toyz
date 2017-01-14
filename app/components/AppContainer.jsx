@@ -14,7 +14,6 @@ export default function AppContainer (props) {
         <NavbarContainer />
       </div>
       <div id="views" className="row">
-        <ShoppingCart />
       </div>
       <div id="footer" className="row">
         <Footer />

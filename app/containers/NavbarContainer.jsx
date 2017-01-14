@@ -38,6 +38,11 @@ export default connect(
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  toggleCart (evt) {
+    let lastState = this.state.showCart;
+    this.setState({ showCart: !lastState});
+  }
+
   handleChange (value) {
     this.setState({ productQuery: value.target.value });
   }
