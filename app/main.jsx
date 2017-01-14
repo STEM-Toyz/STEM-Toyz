@@ -6,7 +6,7 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 
-import AppContainer from './components/AppContainer'
+import AppContainer from './containers/AppContainer'
 import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'

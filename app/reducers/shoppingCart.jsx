@@ -20,6 +20,3 @@ const itemReducer = (state = [], action) => {
   }
   return state;
 }
-
-
-

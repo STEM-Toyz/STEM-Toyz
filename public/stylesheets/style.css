@@ -31,15 +31,26 @@ nav {
 .vertical {
   display: block; }
 
+.verticalLine {
+  border-left: thick solid #ff0000; }
+
+.login {
+  margin: 20px 0;
+  float: right;
+  background: blue;
+  width: 320px;
+  position: relative;
+  border-radius: 3px;
+  padding: 20px;
+  display: flex; }
+
 .logout {
   margin: 10px 10px; }
 
 #views {
-  background-color: white;
   height: 52em; }
 
 #footer {
-  background-color: grey;
   height: 9em; }
 
 #search {
