@@ -7,7 +7,6 @@ import NavbarContainer from '../containers/NavbarContainer';
 import Footer from './Footer';
 import ShoppingCart from './ShoppingCart';
 
-
 export default function AppContainer (props) {
   return (
     <div id="app" className="container-fluid">
