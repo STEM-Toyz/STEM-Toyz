@@ -30,9 +30,8 @@ const ExampleApp = connect(
     </div>
 );
 
-function onAccountEnter() {
-  //Temporarily just fetching user of id 1
-  store.dispatch(fetchUser(1));
+function onAccountEnter(nextRouterState) {
+  store.dispatch(fetchUser(nextRouterState.params.userId));
 }
 
 render(
@@ -40,7 +39,7 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
       </Route>
-      <Route path="/account" component={AccountDetailsContainer} onEnter={onAccountEnter} />
+      <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
       <Route path="/account/:userId/orders" component={Orders} />
       <Route path="/account/:userId/reviews" component={Reviews} />
     </Router>

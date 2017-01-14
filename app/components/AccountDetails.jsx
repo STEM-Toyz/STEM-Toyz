@@ -16,6 +16,9 @@ export default class AccountDetails extends React.Component {
     const reviews = user.reviews;
     console.log(reviews);
 
+    console.log(user);
+
+
     return (
       <div>
         {
