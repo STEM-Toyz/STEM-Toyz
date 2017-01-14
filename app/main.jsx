@@ -6,6 +6,7 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 
+import AppContainer from './containers/AppContainer'
 import Orders from './components/Orders';
 import Reviews from './components/Reviews';
 

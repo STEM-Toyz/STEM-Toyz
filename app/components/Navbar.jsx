@@ -10,13 +10,14 @@ export default (props) => {
 
   const handleChange = props.handleChange;
   const handleSubmit = props.handleSubmit;
-  const toggleLogin = props.toggleLogin;
-  const toggleCart = props.toggleCart;
+  const showLogin = props.showLogin;
+  const toggleView = evt => {
+    evt.preventDefault()
+    props.toggleLogin(!showLogin);
+  }
   const user = props.user;
-  const showLogin = props.showLogin
-  const showCart = props.showCart;
   const loginButton = (
-    <button className="logout btn btn-primary btn-outline-success my-2 my-sm-0" onClick={toggleLogin}>Login</button>
+    <button className="logout btn btn-primary btn-outline-success my-2 my-sm-0" onClick={toggleView}>Login</button>
   );
   const renderLogin = (showLogin ? <Login /> : null);
 
@@ -24,7 +25,7 @@ export default (props) => {
     <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
       <h1 className="logo"> STEM Toyz</h1>
       {/*<img src="" className="logo" />*/}
-      <div id="search" className="item">
+      // <div id="search" className="item">
         <form className="form-inline" onSubmit={handleSubmit}>
           <input className="form-control mr-sm-2" type="text" placeholder="Search" onChange={handleChange}></input>
           <button className="btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -32,7 +33,7 @@ export default (props) => {
       </div>
       <div id="login" className="item pull-right">
         {loginButton}
-        {user ? <WhoAmI /> : renderLogin}
+        {user ? <WhoAmI /> : null}
       </div>
       <div id="cart" className="item pull-right">
         <button type='button' className="btn btn-default btn-primary" onClick={toggleCart}><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
