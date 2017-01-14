@@ -4,6 +4,7 @@ import React from 'react';
 
 import Login from './Login';
 import WhoAmI from './WhoAmI';
+import ShoppingCart from './ShoppingCart'
 
 export default (props) => {
 
@@ -32,7 +33,7 @@ export default (props) => {
         {user ? <WhoAmI /> : renderLogin}
       </div>
       <div id="cart" className="item pull-right">
-        <span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span>
+        <button type='button' className="btn btn-default btn-primary"><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
       </div>
     </nav>
   );

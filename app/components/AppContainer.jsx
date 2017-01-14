@@ -5,6 +5,8 @@ import { render } from 'react-dom';
 
 import NavbarContainer from '../containers/NavbarContainer';
 import Footer from './Footer';
+import ShoppingCart from './ShoppingCart';
+
 
 export default function AppContainer (props) {
   return (
@@ -13,7 +15,7 @@ export default function AppContainer (props) {
         <NavbarContainer />
       </div>
       <div id="views" className="row">
-        // Views
+        <ShoppingCart />
       </div>
       <div id="footer" className="row">
         <Footer />
