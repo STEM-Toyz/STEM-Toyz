@@ -1,4 +1,5 @@
 import React from 'react'
+import Review from './Review';
 
 export default class Reviews extends React.Component {
   constructor(props) {
@@ -6,8 +7,13 @@ export default class Reviews extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
-      <div>Test</div>
+      <div>
+        {
+          this.props.reviews.map(review => <Review key={review.id} review={review} />)
+        }
+      </div>
     )
   }
 }

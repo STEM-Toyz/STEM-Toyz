@@ -1,5 +1,4 @@
 import axios from 'axios';
-import store from '../store';
 
 const initialState = {
   selectUser: {}
@@ -23,7 +22,7 @@ export const fetchUser = userId => {
     })
     .then(addresses => {
       user.addresses = addresses.data;
-      store.dispatch(setUser(user));
+      dispatch(setUser(user));
     })
   }
 }
