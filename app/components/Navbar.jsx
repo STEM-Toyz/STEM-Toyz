@@ -11,8 +11,10 @@ export default (props) => {
   const handleChange = props.handleChange;
   const handleSubmit = props.handleSubmit;
   const toggleLogin = props.toggleLogin;
+  const toggleCart = props.toggleCart;
   const user = props.user;
   const showLogin = props.showLogin
+  const showCart = props.showCart;
   const loginButton = (
     <button className="logout btn btn-primary btn-outline-success my-2 my-sm-0" onClick={toggleLogin}>Login</button>
   );
@@ -33,7 +35,8 @@ export default (props) => {
         {user ? <WhoAmI /> : renderLogin}
       </div>
       <div id="cart" className="item pull-right">
-        <button type='button' className="btn btn-default btn-primary"><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
+        <button type='button' className="btn btn-default btn-primary" onClick={toggleCart}><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
+        {showCart? <ShoppingCart />: null}
       </div>
     </nav>
   );
