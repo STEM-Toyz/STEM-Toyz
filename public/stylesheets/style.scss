@@ -43,6 +43,21 @@ nav {
   display: block;
 }
 
+.verticalLine {
+  border-left: thick solid #ff0000;
+}
+
+.login {
+  margin: 20px 0;
+  float: right;
+  background: blue;
+  width: 320px;
+  position: relative;
+  border-radius: 3px;
+  padding: 20px;
+  display: flex
+}
+
 .logout {
   margin: 10px 10px;
 }

@@ -6,10 +6,10 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 
+import AppContainer from './containers/AppContainer'
 import Orders from './components/Orders';
 import Reviews from './components/Reviews';
 
-import AppContainer from './components/AppContainer'
 import AccountDetailsContainer from './containers/AccountDetailsContainer'
 import ReviewsContainer from './containers/ReviewsContainer';
 import ProductContainer from './containers/ProductsContainer'

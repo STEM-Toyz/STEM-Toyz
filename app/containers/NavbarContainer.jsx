@@ -2,17 +2,26 @@ import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import { connect } from 'react-redux';
 
+import {toggleLogin} from 'APP/app/reducers/login';
+
 // Does nothing right now!!!
 const searchProducts = (state) => {
   console.log(state);
 };
 
-const mapStateToProps = ({auth}) => {
-  return {user: auth};
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth,
+    showLogin: state.showLogin
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    toggleLogin (show) {
+      dispatch(toggleLogin(show));
+    }
+  };
 };
 
 export default connect(
@@ -24,17 +33,14 @@ export default connect(
     super(props);
     this.state = {
       productQuery: '',
-      showLogin: false
      };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggleLogin = this.toggleLogin.bind(this);
   }
 
-  toggleLogin (evt) {
-    console.log('IN THE TOGGLE');
-    let lastState = this.state.showLogin;
-    this.setState({ showLogin: !lastState });
+  toggleCart (evt) {
+    let lastState = this.state.showCart;
+    this.setState({ showCart: !lastState});
   }
 
   handleChange (value) {
@@ -48,13 +54,13 @@ export default connect(
   }
 
   render () {
+    console.log('PROPS IN NAVBAR', this.props);
     return (
       <Navbar
         {...this.state}
         {...this.props}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
-        toggleLogin={this.toggleLogin}
       />
     );
   }
