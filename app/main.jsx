@@ -12,13 +12,18 @@ import Reviews from './components/Reviews';
 import AppContainer from './components/AppContainer'
 import AccountDetailsContainer from './containers/AccountDetailsContainer'
 import ReviewsContainer from './containers/ReviewsContainer';
+import ProductContainer from './containers/ProductsContainer'
 import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 
 import { fetchUser } from './reducers/user';
 import { fetchReviews } from './reducers/reviews';
+import { getAllProducts } from './reducers/products'
 
+const onProductsEnter = (nextRouterState) => {
+  store.dispatch(getAllProducts());
+}
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth }) // map state to props
@@ -44,6 +49,8 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
+        <Route path="/products" component={ProductContainer} onEnter={onProductsEnter} />
+        <IndexRedirect to="/products" />
       </Route>
       <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
       <Route path="/account/:userId/orders" component={Orders} />
