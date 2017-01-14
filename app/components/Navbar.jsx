@@ -4,6 +4,7 @@ import React from 'react';
 
 import Login from './Login';
 import WhoAmI from './WhoAmI';
+import ShoppingCart from './ShoppingCart'
 
 export default (props) => {
 
