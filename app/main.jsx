@@ -6,11 +6,17 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 
-import AppContainer from './components/AppContainer'
-import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 
+import { getAllProducts } from './reducers/products'
+
+import AppContainer from './components/AppContainer'
+import ProductContainer from './containers/ProductsContainer'
+
+const onProductsEnter = (nextRouterState) => {
+  store.dispatch(getAllProducts());
+}
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth }) // map state to props
@@ -28,7 +34,8 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
-
+        <Route path="/products" component={ProductContainer} onEnter={onProductsEnter} />
+        <IndexRedirect to="/products" />
       </Route>
     </Router>
   </Provider>,
