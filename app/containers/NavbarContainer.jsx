@@ -22,9 +22,19 @@ export default connect(
 
   constructor (props) {
     super(props);
-    this.state = { productQuery: '' };
+    this.state = {
+      productQuery: '',
+      showLogin: false
+     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleLogin = this.toggleLogin.bind(this);
+  }
+
+  toggleLogin (evt) {
+    console.log('IN THE TOGGLE');
+    let lastState = this.state.showLogin;
+    this.setState({ showLogin: !lastState });
   }
 
   handleChange (value) {
@@ -44,6 +54,7 @@ export default connect(
         {...this.props}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        toggleLogin={this.toggleLogin}
       />
     );
   }

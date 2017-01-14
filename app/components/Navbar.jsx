@@ -10,7 +10,13 @@ export default (props) => {
 
   const handleChange = props.handleChange;
   const handleSubmit = props.handleSubmit;
+  const toggleLogin = props.toggleLogin;
   const user = props.user;
+  const showLogin = props.showLogin
+  const loginButton = (
+    <button className="logout btn btn-primary btn-outline-success my-2 my-sm-0" onClick={toggleLogin}>Login</button>
+  );
+  const renderLogin = (showLogin ? <Login /> : null);
 
   return (
     <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -23,7 +29,8 @@ export default (props) => {
         </form>
       </div>
       <div id="login" className="item pull-right">
-        {user ? <WhoAmI /> : <Login />}
+        {loginButton}
+        {user ? <WhoAmI /> : renderLogin}
       </div>
       <div id="cart" className="item pull-right">
         <button type='button' className="btn btn-default btn-primary"><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
