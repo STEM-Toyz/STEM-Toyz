@@ -24,17 +24,24 @@ export default connect(
     super(props);
     this.state = {
       productQuery: '',
-      showLogin: false
+      showLogin: false,
+      showCart: false
      };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleLogin = this.toggleLogin.bind(this);
+    this.toggleCart = this.toggleCart.bind(this);
   }
 
   toggleLogin (evt) {
     console.log('IN THE TOGGLE');
     let lastState = this.state.showLogin;
     this.setState({ showLogin: !lastState });
+  }
+
+  toggleCart (evt) {
+    let lastState = this.state.showCart;
+    this.setState({ showCart: !lastState});
   }
 
   handleChange (value) {
@@ -55,6 +62,7 @@ export default connect(
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         toggleLogin={this.toggleLogin}
+        toggleCart={this.toggleCart}
       />
     );
   }
