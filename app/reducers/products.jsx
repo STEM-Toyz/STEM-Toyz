@@ -23,7 +23,7 @@ export const getAllProducts = () => {
 //*********** Reducer ***********:
 const initialState = { allProducts: [] };
 
-export const productReducer = (state = initialState, action) => {
+const productReducer = (state = initialState, action) => {
   const newState = Object.assign({}, state);
   switch (action.type) {
     case LOAD_ALL_PRODUCTS:
@@ -34,3 +34,5 @@ export const productReducer = (state = initialState, action) => {
   }
   return newState;
 }
+
+export default productReducer;

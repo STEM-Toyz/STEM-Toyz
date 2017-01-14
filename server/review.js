@@ -1,16 +1,29 @@
 const db = require('APP/db');
 const Review = db.model('reviews');
+const Product = db.model('product');
+const User = db.model('users');
 
 const router = require('express').Router();
 
 router.get('/product/:productId', (req, res, next) => {
-  Review.findAll({where: {product_id: req.params.productId}})
+  Review.findAll({
+    where: {product_id: req.params.productId},
+    include: [
+      { model: User, as: 'user' },
+      { model: Product, as: 'product' }
+  ]
+  })
   .then(reviews => res.send(reviews))
   .catch(console.error);
 })
 
 router.get('/user/:userId', (req, res, next) => {
-  Review.findAll({where: {user_id: req.params.userId}})
+  Review.findAll({
+    where: {user_id: req.params.userId},
+    include: [
+      { model: Product, as: 'product'},
+      { model: User, as: 'user' }
+    ]})
   .then(reviews => res.send(reviews))
   .catch(console.error);
 })
