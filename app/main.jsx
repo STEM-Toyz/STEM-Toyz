@@ -12,7 +12,7 @@ import Reviews from './components/Reviews';
 
 import AccountDetailsContainer from './containers/AccountDetailsContainer'
 import ReviewsContainer from './containers/ReviewsContainer';
-import ProductContainer from './containers/ProductsContainer'
+import ProductsContainer from './containers/ProductsContainer'
 import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
@@ -49,7 +49,7 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
-        <Route path="/products" component={ProductContainer} onEnter={onProductsEnter} />
+        <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter} />
         <IndexRedirect to="/products" />
       </Route>
       <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
