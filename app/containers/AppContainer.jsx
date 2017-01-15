@@ -7,8 +7,8 @@ import App from 'APP/app/components/App';
 
 import { toggleLogin } from 'APP/app/reducers/login';
 
-function mapStateToProps ({showLogin}) {
-  return {showLogin};
+function mapStateToProps ({showLogin, showShoppingCart}) {
+  return {showLogin, showShoppingCart};
 }
 
 function mapDispatchToProps (dispatch) {

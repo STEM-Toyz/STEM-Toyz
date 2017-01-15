@@ -10,7 +10,7 @@ import AppContainer from './containers/AppContainer'
 import Orders from './components/Orders';
 import Reviews from './components/Reviews';
 
-import AppContainer from './components/AppContainer'
+
 import AccountDetailsContainer from './containers/AccountDetailsContainer'
 import ReviewsContainer from './containers/ReviewsContainer';
 import ProductContainer from './containers/ProductsContainer'
@@ -46,10 +46,14 @@ function onReviewsEnter(nextRouterState) {
   store.dispatch(fetchReviews(nextRouterState.params.userId));
 }
 
+function onItemsEnter(nextRouterState) {
+
+}
+
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={AppContainer}>
+      <Route path="/" component={AppContainer} >
         <Route path="/products" component={ProductContainer} onEnter={onProductsEnter} />
         <IndexRedirect to="/products" />
       </Route>

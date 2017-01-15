@@ -4,22 +4,30 @@ import React from 'react';
 
 import Login from './Login';
 import WhoAmI from './WhoAmI';
-import ShoppingCart from './ShoppingCart'
+
 
 export default (props) => {
 
   const handleChange = props.handleChange;
   const handleSubmit = props.handleSubmit;
   const showLogin = props.showLogin;
-  const toggleView = evt => {
+  const showCart = props.showShoppingCart;
+  const toggleLogin = evt => {
     evt.preventDefault()
     props.toggleLogin(!showLogin);
   }
+  const toggleCart = evt  => {
+    evt.preventDefault();
+    props.toggleShoppingCart(!showCart);
+  }
   const user = props.user;
   const loginButton = (
-    <button className="logout btn btn-primary btn-outline-success my-2 my-sm-0" onClick={toggleView}>Login</button>
+    <button className="logout btn btn-primary btn-outline-success my-2 my-sm-0" onClick={toggleLogin}>Login</button>
   );
-  const renderLogin = (showLogin ? <Login /> : null);
+  const cartButton = (
+     <button type='button' className="btn btn-default btn-primary" onClick={toggleCart}><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
+  );
+
 
   return (
     <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -32,12 +40,10 @@ export default (props) => {
         </form>
       </div>
       <div id="login" className="item pull-right">
-        {loginButton}
-        {user ? <WhoAmI /> : null}
+        {user ? <WhoAmI /> : loginButton}
       </div>
       <div id="cart" className="item pull-right">
-        <button type='button' className="btn btn-default btn-primary" onClick={toggleCart}><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
-        {showCart? <ShoppingCart />: null}
+        {cartButton}
       </div>
     </nav>
   );
