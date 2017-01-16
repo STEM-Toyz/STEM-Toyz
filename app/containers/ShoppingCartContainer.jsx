@@ -8,7 +8,7 @@ import { loadCart } from 'APP/app/reducers/shoppingCart';
 function mapStateToProps(state){
   return {
     order: state.shoppingCart,
-    items: state.shoppingCart.items,
+    items: state.auth ? state.shoppingCart.items : window.localStorage.items,
     selectedUser: state.user.selectUser
   };
 }

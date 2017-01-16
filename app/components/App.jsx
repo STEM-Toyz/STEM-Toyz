@@ -16,7 +16,7 @@ export default class App extends Component {
         x = '__storage_test__';
         storage.setItem(x, x);
         console.log('STORAGE', storage);
-        // storage.removeItem(x);
+        storage.removeItem(x);
         return true;
       }
       catch(e) {
