@@ -4,6 +4,8 @@
 //   showLogin: false
 // };
 
+// EI: is this necessary? could you just use the auth actions?
+
 const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
 
 const reducer = (state = false, action) => {

@@ -2,6 +2,7 @@ import React from 'react'
 
 export const Login = ({ login }) => {
 
+  // EI: might be nice from a readability standpoint to have the onSubmit function defined somewhere other than inline
   return (
     <div className="login">
       <form onSubmit={evt => {

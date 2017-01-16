@@ -11,14 +11,15 @@ export default (props) => {
   const handleChange = props.handleChange;
   const handleSubmit = props.handleSubmit;
   const showLogin = props.showLogin;
+
+  // EI: pass this method in too
   const toggleView = evt => {
     evt.preventDefault()
     props.toggleLogin(!showLogin);
   }
+
   const user = props.user;
-  const loginButton = (
-    <button className="logout btn btn-primary btn-outline-success my-2 my-sm-0" onClick={toggleView}>Login</button>
-  );
+  // EI: take this out
   const renderLogin = (showLogin ? <Login /> : null);
 
   return (
@@ -32,7 +33,7 @@ export default (props) => {
         </form>
       </div>
       <div id="login" className="item pull-right">
-        {loginButton}
+        <button className="logout btn btn-primary btn-outline-success my-2 my-sm-0" onClick={toggleView}>Login</button>
         {user ? <WhoAmI /> : null}
       </div>
       <div id="cart" className="item pull-right">

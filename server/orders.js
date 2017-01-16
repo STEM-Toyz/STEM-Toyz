@@ -30,8 +30,8 @@ module.exports = require('express').Router()
         // console.log("idafjsof", req.body);
          Order.findById(req.params.orderId)
           .then(foundOrder => {
-            console.log('foundOrder', foundOrder)
-            console.log("req.body", req.body)
+            // console.log('foundOrder', foundOrder)
+            // console.log("req.body", req.body)
             return foundOrder.update(req.body, {returning: true})
           })
           .then(updatedOrder => res.json(updatedOrder))

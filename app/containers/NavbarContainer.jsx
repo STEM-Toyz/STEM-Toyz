@@ -57,7 +57,7 @@ export default connect(
     console.log('PROPS IN NAVBAR', this.props);
     return (
       <Navbar
-        {...this.state}
+        {...this.state} {/* EI: why do you need this? */}
         {...this.props}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}

@@ -2,6 +2,7 @@ import React from 'react';
 import Review from './Review';
 import { Link } from 'react-router';
 
+// EI: this could be dumb component
 export default class AccountDetails extends React.Component {
 
   render() {
