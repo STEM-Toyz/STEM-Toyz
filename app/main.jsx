@@ -22,17 +22,6 @@ import { fetchUser } from './reducers/user';
 import { fetchReviews } from './reducers/reviews';
 import { getAllProducts, getSelectedProduct } from './reducers/products';
 
-const ExampleApp = connect(
-  ({ auth }) => ({ user: auth }) // map state to props
-)(
-  ({ user, children }) => // dumb component
-    <div>
-      <nav>
-        {user ? <WhoAmI/> : <Login/>}
-      </nav>
-      {children}
-    </div>
-);
 
 function onAccountEnter(nextRouterState) {
   store.dispatch(fetchUser(nextRouterState.params.userId));
