@@ -47,7 +47,8 @@ nav {
   display: flex; }
 
 .logout {
-  margin: 10px 10px; }
+  margin: 10px 10px;
+  color: red; }
 
 #views {
   height: 52em;
@@ -73,6 +74,17 @@ nav {
   font-size: 2em;
   margin: 0 10px 0 10px;
   color: #FFC420; }
+
+#orderHistoryPrice {
+  color: red; }
+
+.singleOrder {
+  display: block; }
+
+.orderHistoryItems {
+  display: inline;
+  margin-right: 2em;
+  font-size: 1.5em; }
 
 .shopping-cart {
   margin: 10px 0;
@@ -142,3 +154,7 @@ nav {
   content: "";
   display: table;
   clear: both; }
+
+.orderHistoryItemName {
+  border-width: 100px;
+  box-sizing: border-box; }

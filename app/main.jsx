@@ -7,14 +7,14 @@ import {connect, Provider} from 'react-redux'
 import store from './store'
 
 import AppContainer from './containers/AppContainer'
-import Orders from './components/Orders';
 import Reviews from './components/Reviews';
 
 
 import AccountDetailsContainer from './containers/AccountDetailsContainer'
 import ReviewsContainer from './containers/ReviewsContainer';
-import ProductsContainer from './containers/ProductsContainer'
-import ProductContainer from './containers/ProductContainer'
+import ProductsContainer from './containers/ProductsContainer';
+import ProductContainer from './containers/ProductContainer';
+import OrderHistoryContainer from './containers/OrderHistoryContainer';
 
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
@@ -22,7 +22,7 @@ import WhoAmI from './components/WhoAmI'
 import { fetchUser } from './reducers/user';
 import { fetchReviews } from './reducers/reviews';
 import { getAllProducts, getSelectedProduct } from './reducers/products';
-
+import { fetchOrderHistory } from './reducers/orderHistory';
 
 function onAccountEnter(nextRouterState) {
   store.dispatch(fetchUser(nextRouterState.params.userId));
@@ -54,6 +54,10 @@ const unAuthOrder = () => {
     status: 'in cart',
     items: items
   }));
+
+const onOrderHistoryEnter = (nextRouterState) => {
+  store.dispatch(fetchOrderHistory(nextRouterState.params.userId));
+
 }
 
 render(
@@ -66,7 +70,7 @@ render(
         <Route path="/products/:product_id" component={ProductContainer} onEnter={onProductEnter} />
       </Route>
       <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
-      <Route path="/account/:userId/orders" component={Orders} />
+      <Route path="/account/:userId/orders" component={OrderHistoryContainer} onEnter={onOrderHistoryEnter}/>
       <Route path="/account/:userId/reviews" component={ReviewsContainer} onEnter={onReviewsEnter}/>
     </Router>
   </Provider>,

@@ -51,14 +51,19 @@ const db = require('APP/db')
   const seedOrders = () => db.Promise.map([
     { status: 'in cart', user_id: 1, address_id: 1},
     { status: 'ordered', user_id: 2, address_id: 2},
-    { status: 'shipped', user_id: 3, address_id: 3}
+    { status: 'shipped', user_id: 3, address_id: 3},
+    { status: 'shipped', user_id: 3, address_id: 3},
+    { status: 'ordered', user_id: 3, address_id: 3}
   ], order => db.model('orders').create(order));
 
 
   const seedItems = () => db.Promise.map([
     { quantity: 10, price: 110, order_id: 1, product_id: 1},
     { quantity: 15, price: 50,  order_id: 2, product_id: 2},
-    { quantity: 30, price: 171,  order_id: 3, product_id: 3}
+    { quantity: 30, price: 171,  order_id: 3, product_id: 3},
+    { quantity: 2, price: 55, order_id: 3, product_id: 1},
+    { quantity: 4, price: 12, order_id: 4, product_id: 2},
+    {quantity: 3, price: 24, order_id: 4, product_id: 3}
   ], item => db.model('items').create(item));
 
   db.didSync
