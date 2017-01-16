@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import numeral from 'numeral';
 
 
 export default class ShoppingCart extends React.Component {
@@ -12,15 +13,23 @@ export default class ShoppingCart extends React.Component {
   }
 
   render(){
+
     return (
 
       <div className="shopping-cart">
       <div className="shopping-cart-header">
         <i className="glyphicon glyphicon-shopping-cart cart-icon"></i>
-        <span className="badge">{this.props.items && this.props.items.length}</span>
+        <span className="badge">{this.props.items.reduce(function(acc,curr){
+              return acc + curr.quantity
+            }, 0)}</span>
         <div className="shopping-cart-total">
           <span className="lighter-text">Total: </span>
-          <span className="main-color-text"> UNKNOWN</span>
+          <span className="main-color-text"> ${
+            numeral(this.props.items.reduce(function(acc,curr){
+              return acc + (curr.quantity*curr.product.price)
+            }, 0)).format('0,0')
+
+          }</span>
         </div>
       </div>
       <ul className="shopping-cart-items list-unstyled">
@@ -28,10 +37,11 @@ export default class ShoppingCart extends React.Component {
         this.props.items && this.props.items.map((item,index) => {
           return (
           <li className="clearfix" key={item.id||index}>
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
+          <img src={`/img/${item.product.imageUrl}`} height="50" width="50"/>
           <span className="item-name">{item.product.name}</span>
-          <span className="item-price">${item.price}</span>
-          <span className="item-quantity">Quantity:{item.quantity}</span>
+          <span className="item-price">${numeral(item.product.price).format('0,0')}</span>
+          <span className="item-quantity">Quantity: {item.quantity}</span>
+          <span className="item-total">Subtotal: ${numeral(item.quantity*item.product.price).format('0,0')}</span>
         </li>
 
           )

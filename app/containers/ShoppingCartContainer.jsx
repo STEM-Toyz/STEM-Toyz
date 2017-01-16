@@ -6,9 +6,12 @@ import { loadCart } from 'APP/app/reducers/shoppingCart';
 
 
 function mapStateToProps(state){
+  if(!state.auth){
+    state.shoppingCart = JSON.parse(window.localStorage.getItem('order'))
+  }
   return {
     order: state.shoppingCart,
-    items: state.auth ? state.shoppingCart.items : JSON.parse(window.localStorage.getItem('order')).items,
+    items: state.shoppingCart.items,
     selectedUser: state.user.selectUser
   };
 }

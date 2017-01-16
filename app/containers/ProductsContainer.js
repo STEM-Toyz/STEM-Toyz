@@ -5,9 +5,12 @@ import {toggleShoppingCart} from 'APP/app/reducers/toggleShoppingCart';
 
 function unAuthAddToCart (product) {
   const order = JSON.parse(window.localStorage.getItem('order'));
-  let items;
-  if (order) {
-    order.items.push({
+  let items = order.items;
+  let onOrder = items.filter(function(item){
+    return item.productId === product.id;
+  })[0];
+  if (!onOrder){
+    items.push({
       quantity: 1,
       productId: product.id,
       product
@@ -15,13 +18,7 @@ function unAuthAddToCart (product) {
     items = order.items;
     console.log('items', order.items);
   } else {
-    items = [
-      {
-        quantity: 1,
-        productId: product.id,
-        product
-      }
-    ];
+    onOrder.quantity++;
   }
 
   window.localStorage.setItem('order', JSON.stringify({
