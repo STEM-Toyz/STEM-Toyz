@@ -26,9 +26,7 @@ describe('Navbar component', () => {
       expect(nav.is('nav')).to.equal(true)
     );
 
-    it('should render <Login > if there isn\'t a user', () => {
-      expect(nav.find(Login).length).to.equal(1);
-    });
+    //TODO: add more tests
   });
 
   describe('when the user is logged in', () => {

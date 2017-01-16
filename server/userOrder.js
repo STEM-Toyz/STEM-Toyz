@@ -21,6 +21,21 @@ module.exports = require('express').Router()
          .then(userOrders => res.json(userOrders))
          .catch(next))
 
+   .get('/:userId/orders/history', (req, res, next) =>
+        Order.findAll({
+         where: {
+           user_id: req.params.userId,
+           status: {$ne: 'in cart'}
+         },
+         include: [
+           {model: Item, include :[
+             {model: Product}
+           ]}
+         ]
+        })
+        .then(inCartOrder => res.json(inCartOrder))
+        .catch(next))
+
     .post('/:userId/orders', (req, res, next) => {
           req.body.user_id = req.params.userId;
           return Order.create(req.body)
