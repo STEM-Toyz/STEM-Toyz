@@ -34,6 +34,9 @@ router.route('/')
   })
 
 router.route('/:product_id')
+	.get((req, res, next) => {
+		res.send(req.product);
+	})
   .put((req, res, next) => {
     req.product.update(req.body, {returning: true})
       .then(updatedProduct => {
