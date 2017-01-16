@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 html {
   box-sizing: border-box; }
 
@@ -48,7 +50,8 @@ nav {
   margin: 10px 10px; }
 
 #views {
-  height: 52em; }
+  height: 52em;
+  position: relative; }
 
 #footer {
   height: 9em; }
@@ -70,3 +73,70 @@ nav {
   font-size: 2em;
   margin: 0 10px 0 10px;
   color: #FFC420; }
+
+.shopping-cart {
+  margin: 10px 0;
+  float: right;
+  background: white;
+  width: 430px;
+  position: relative;
+  border-radius: 3px;
+  padding: 20px; }
+  .shopping-cart .shopping-cart-header {
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 15px; }
+    .shopping-cart .shopping-cart-header .shopping-cart-total {
+      float: right; }
+  .shopping-cart .shopping-cart-items {
+    padding-top: 20px; }
+    .shopping-cart .shopping-cart-items li {
+      margin-bottom: 18px; }
+    .shopping-cart .shopping-cart-items img {
+      float: left;
+      margin-right: 12px; }
+    .shopping-cart .shopping-cart-items .item-name {
+      display: block;
+      padding-top: 10px;
+      font-size: 16px; }
+    .shopping-cart .shopping-cart-items .item-price {
+      color: #6394F8;
+      margin-right: 8px; }
+    .shopping-cart .shopping-cart-items .item-quantity {
+      color: #ABB0BE; }
+
+.shopping-cart:after {
+  bottom: 100%;
+  left: 89%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: white;
+  border-width: 8px;
+  margin-left: -8px; }
+
+.cart-icon {
+  color: #515783;
+  font-size: 24px;
+  margin-right: 7px;
+  float: left; }
+
+.button {
+  background: #6394F8;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+  border-radius: 3px;
+  font-size: 16px;
+  margin: 25px 0 15px 0; }
+  .button:hover {
+    background: #729ef9; }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }

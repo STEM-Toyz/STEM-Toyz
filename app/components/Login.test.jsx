@@ -33,7 +33,6 @@ describe('<Login />', () => {
     const login = spy()
     const root = shallow(<Login login={login}/>)
     const form = root.find('form');
-    console.log(form);
     const submitEvent = {
       preventDefault: spy(),
       target: {
