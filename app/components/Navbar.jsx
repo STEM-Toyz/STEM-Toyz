@@ -48,3 +48,4 @@ export default (props) => {
     </nav>
   );
 };
+/*{showCart? <ShoppingCart />: null}*/

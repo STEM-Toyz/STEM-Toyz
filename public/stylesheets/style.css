@@ -1,5 +1,7 @@
+
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
 html {
   box-sizing: border-box; }
 
@@ -73,6 +75,7 @@ nav {
   font-size: 2em;
   margin: 0 10px 0 10px;
   color: #FFC420; }
+
 
 .shopping-cart {
   margin: 10px 0;
