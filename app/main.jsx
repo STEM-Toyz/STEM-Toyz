@@ -42,11 +42,25 @@ const onProductEnter = (nextRouterState) => {
   store.dispatch(getSelectedProduct(productId));
 }
 
+const unAuthOrder = () => {
+  const order = JSON.parse(window.localStorage.getItem('order'));
+  let items;
+  if (order) {
+    items = order.items;
+  } else {
+    items = [];
+  }
+  window.localStorage.setItem('order', JSON.stringify({
+    status: 'in cart',
+    items: items
+  }));
+}
+
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
 
-      <Route path="/" component={AppContainer} >
+      <Route path="/" component={AppContainer} onEnter={unAuthOrder}>
         <IndexRedirect to="/products" />
         <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter} />
         <Route path="/products/:product_id" component={ProductContainer} onEnter={onProductEnter} />

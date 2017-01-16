@@ -24,6 +24,7 @@ export default function (props) {
                 <button className="btn btn-primary btn-outline-success my-2 my-sm-0" onClick={() => {
                     console.log(product);
                     props.unAuthAddToCart(product)
+                    props.toggleShoppingCart(props.showShoppingCart);
                   }}>
                   Add to cart
                 </button>

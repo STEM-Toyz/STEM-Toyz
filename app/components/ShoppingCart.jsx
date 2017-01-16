@@ -23,11 +23,11 @@ export default class ShoppingCart extends React.Component {
           <span className="main-color-text"> UNKNOWN</span>
         </div>
       </div>
-      <ul className="shopping-cart-items">
+      <ul className="shopping-cart-items list-unstyled">
       {
-        this.props.items && this.props.items.map(item => {
+        this.props.items && this.props.items.map((item,index) => {
           return (
-          <li className="clearfix" key={item.id}>
+          <li className="clearfix" key={item.id||index}>
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
           <span className="item-name">{item.product.name}</span>
           <span className="item-price">${item.price}</span>

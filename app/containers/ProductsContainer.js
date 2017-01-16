@@ -1,6 +1,7 @@
 'use strict';
 import { connect } from 'react-redux';
 import Products from '../components/Products';
+import {toggleShoppingCart} from 'APP/app/reducers/toggleShoppingCart';
 
 function unAuthAddToCart (product) {
   const order = JSON.parse(window.localStorage.getItem('order'));
@@ -34,12 +35,17 @@ function unAuthAddToCart (product) {
 const mapStateToProps = (state, ownProps) => {
   const allProducts = state.products.allProducts;
   const filteredProducts = state.products.filteredProducts;
+  const showShoppingCart = state.showShoppingCart
 
-  return { allProducts, filteredProducts, unAuthAddToCart };
+  return { allProducts, filteredProducts, unAuthAddToCart,showShoppingCart};
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {};
+  return {
+    toggleShoppingCart(toggle) {
+      dispatch(toggleShoppingCart(toggle));
+    }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
