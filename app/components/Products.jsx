@@ -11,19 +11,20 @@ export default function (props) {
       </div>
       <div className="col-xs-10">
         {
-          props.filteredProducts.length && props.filteredProducts.map(product => {
+          props.filteredProducts.length
+          ? props.filteredProducts.map(product => {
             return (
-              <div className="col-xs-3" key={ product.id }>
-                <ul className="thumbnail" >
-                  <li><img src={`img/${product.imageUrl}`} height="75" width="130"></img></li>
-                  <li>{product.name}</li>
-                  <li>Price: {product.price}</li>
-                  <li>Category: {product.category}</li>
-                  <li>Description: {product.description}</li>
-                </ul>
+              <div className="col-xs-2" key={ product.id }>
+                <Link className="thumbnail" to={`/products/${product.id}`}>
+                  <img src={`/img/${product.imageUrl}`} height="100" width="170" />
+                  <h4>{product.name}</h4>
+                  <h5>Price: {product.price}</h5>
+                  <p>Category: {product.category}</p>
+                </Link>
               </div>
             );
           })
+          : <h3>No Items found</h3>
         }
       </div>
     </div>

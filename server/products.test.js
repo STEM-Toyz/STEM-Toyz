@@ -58,6 +58,7 @@ describe('api/product', () => {
         })
     )
 
+
     it('POST create a new product', () =>
       request(app)
         .post('/api/products')
@@ -74,6 +75,14 @@ describe('api/product', () => {
           const createdProduct = res.body;
           expect(createdProduct).to.have.property('name', 'Ray Gun')
         })
+    )
+
+    it('GET a single product', () =>
+    request(app)
+      .get('/api/products/4')
+      .then(res => {
+        expect(res.body).to.have.property('name', 'Ray Gun')
+      })
     )
 
     it('PUT update a product', () =>

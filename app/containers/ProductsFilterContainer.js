@@ -1,7 +1,7 @@
 'use strict';
 import { connect } from 'react-redux';
 import ProductsFilter from '../components/ProductsFilter';
-import { filterProducts, loadAllProducts } from '../reducers/products';
+import { filterProducts, getAllProducts } from '../reducers/products';
 
 const mapStateToProps = (state, ownProps) => {
   return {};
@@ -14,7 +14,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     });
     dispatch(filterProducts(filteredProducts))
   }
-  return { applyFilter };
+  function unfilter() {
+    dispatch(getAllProducts())
+  }
+  return { applyFilter, unfilter };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsFilter);
