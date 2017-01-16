@@ -4,7 +4,8 @@ import Products from '../components/Products';
 
 const mapStateToProps = (state, ownProps) => {
   const allProducts = state.products.allProducts;
-  return { allProducts };
+  const filteredProducts = state.products.filteredProducts;
+  return { allProducts, filteredProducts };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
