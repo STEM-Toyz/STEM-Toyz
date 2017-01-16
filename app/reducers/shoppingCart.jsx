@@ -41,11 +41,10 @@ export const loadCart = userId => {
 
 
 const initialState = {
-  list: [],
   cartOrder: {}
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = {}, action) => {
 
   const newState = Object.assign({}, state);
 
@@ -53,8 +52,7 @@ const reducer = (state = initialState, action) => {
 
 
     case RECEIVE_CART:
-      newState.cartOrder = action.order;
-      break;
+      return Object.assign({}, state, action.order);
 
     default:
       return state;

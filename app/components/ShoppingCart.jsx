@@ -1,30 +1,48 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-import {loadCart} from 'APP/app/reducers/shoppingCart';
 
-export default (props) => {
+export default class ShoppingCart extends React.Component {
+  constructor(props){
+    super(props);
+  }
 
-  return (
+  componentDidMount(){
+    this.props.loadCart(1);
+  }
 
-    <div className="shopping-cart">
-    <div className="shopping-cart-header">
-      <i className="glyphicon glyphicon-shopping-cart cart-icon"></i>
-      <span className="badge">3</span>
-      <div className="shopping-cart-total">
-        <span className="lighter-text">Total:</span>
-        <span className="main-color-text">$2,229.97</span>
+  render(){
+    return (
+
+      <div className="shopping-cart">
+      <div className="shopping-cart-header">
+        <i className="glyphicon glyphicon-shopping-cart cart-icon"></i>
+        <span className="badge">1</span>
+        <div className="shopping-cart-total">
+          <span className="lighter-text">Total:</span>
+          <span className="main-color-text">$2,229.97</span>
+        </div>
       </div>
-    </div>
-    {
-    loadCart(1)
-    }
-    <ul className="shopping-cart-items">
-    </ul>
-    <Link to="/checkout" className="button">Checkout</Link>
-  </div>
+      <ul className="shopping-cart-items">
+      {
+        this.props.items && this.props.items.map(item => {
+          return (
+          <li className="clearfix" key={item.id}>
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
+          <span className="item-name">{item.product.name}</span>
+          <span className="item-price">{item.price}</span>
+          <span className="item-quantity">Quantity:{item.totalPrice}</span>
+        </li>
 
-  )
+          )
+        })
+      }
+      </ul>
+      <Link to="/checkout" className="button">Checkout</Link>
+    </div>
+
+    )
+  }
 }
 
 
