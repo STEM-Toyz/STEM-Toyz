@@ -1,22 +1,62 @@
+'use strict';
 import axios from 'axios';
 
-const ADD_ITEMS = 'ADD_ITEMS';
 
-export const add = item => ({
-  type: ADD_ITEMS, item
-})
-
-const REMOVE_ITEMS = "REMOVE_ITEMS";
-
-export const remove = item => ({
-  type: REMOVE_ITEMS, item
-})
+const RECEIVE_CART= "RECEIVE_CART"
 
 
-const itemReducer = (state = [], action) => {
-  switch(action.type){
-    case ADD_ITEMS:
-      return action.item;
+export const receiveCart = order => ({
+  type: RECEIVE_CART, order
+});
+
+
+export const deleteItem = (orderId, itemId) =>{
+  return (dispatch) => {
+    axios.delete(`/api/order/${orderId}/items/${itemId}`)
+      .then(response => {
+        dispatch(remove(response.data));
+      })
   }
-  return state;
 }
+
+// export const loadAllItems = orderId => {
+//   return (dispatch) => {
+//     axios.get(`/api/order/${orderId}/items`)
+//       .then(response => {
+//         dispatch(receiveItems(response.data));
+//       });
+//   };
+// };
+
+export const loadCart = userId => {
+  return (dispatch) => {
+    axios.get(`/api/user/${userId}/orders/inCart`)
+      .then(response => {
+        dispatch(receiveCart(response.data));
+      });
+  };
+};
+
+
+
+
+const initialState = {
+  cartOrder: {}
+}
+
+const reducer = (state = {}, action) => {
+
+  const newState = Object.assign({}, state);
+
+  switch(action.type){
+
+
+    case RECEIVE_CART:
+      return Object.assign({}, state, action.order);
+
+    default:
+      return state;
+  }
+}
+
+export default reducer;

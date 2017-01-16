@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import { connect } from 'react-redux';
 
 import {toggleLogin} from 'APP/app/reducers/login';
+import {toggleShoppingCart} from 'APP/app/reducers/toggleShoppingCart';
 
 // Does nothing right now!!!
 const searchProducts = (state) => {
@@ -12,7 +13,8 @@ const searchProducts = (state) => {
 const mapStateToProps = (state) => {
   return {
     user: state.auth,
-    showLogin: state.showLogin
+    showLogin: state.showLogin,
+    showShoppingCart: state.showShoppingCart
   };
 };
 
@@ -20,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     toggleLogin (show) {
       dispatch(toggleLogin(show));
+    },
+    toggleShoppingCart(toggle) {
+      dispatch(toggleShoppingCart(toggle));
     }
   };
 };
