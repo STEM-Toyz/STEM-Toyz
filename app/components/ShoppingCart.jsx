@@ -17,10 +17,10 @@ export default class ShoppingCart extends React.Component {
       <div className="shopping-cart">
       <div className="shopping-cart-header">
         <i className="glyphicon glyphicon-shopping-cart cart-icon"></i>
-        <span className="badge">1</span>
+        <span className="badge">{this.props.items && this.props.items.length}</span>
         <div className="shopping-cart-total">
-          <span className="lighter-text">Total:</span>
-          <span className="main-color-text">$2,229.97</span>
+          <span className="lighter-text">Total: </span>
+          <span className="main-color-text"> UNKNOWN</span>
         </div>
       </div>
       <ul className="shopping-cart-items">
@@ -30,8 +30,8 @@ export default class ShoppingCart extends React.Component {
           <li className="clearfix" key={item.id}>
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
           <span className="item-name">{item.product.name}</span>
-          <span className="item-price">{item.price}</span>
-          <span className="item-quantity">Quantity:{item.totalPrice}</span>
+          <span className="item-price">${item.price}</span>
+          <span className="item-quantity">Quantity:{item.quantity}</span>
         </li>
 
           )

@@ -20,16 +20,10 @@ export default class App extends Component {
         <div id="nav" className="row horizontal">
           <NavbarContainer />
         </div>
-        <div className="cartLog">
-          <div >
-           {showCart ? <ShoppingCartContainer /> : null}
-          </div>
-          <div>
-           {showLogin ? <Login /> : null}
-          </div>
-         </div>
         <div id="views" className="row">
 
+            {showCart ? <ShoppingCartContainer /> : null}
+            {showLogin ? <Login /> : null}
           {
            this.props.children && React.cloneElement(this.props.children, this.props)
           }
