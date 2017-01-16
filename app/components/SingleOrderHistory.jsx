@@ -7,9 +7,14 @@ export default function(props) {
   return (
     <div>
       <h3>Order# {order.id}</h3>
-      {
-          order.items.map((historyItem, idx) => <SingleOrderHistoryItem key={historyItem.id} index={idx + 1} item={historyItem}/>)
-      }
+      <div className="col-xs-4">
+        <div className="thumbnail row">
+          {
+            order.items.map((historyItem, idx) => <SingleOrderHistoryItem key={historyItem.id} index={idx + 1} item={historyItem}/>)
+          }
+        </div>
+
+      </div>
     </div>
   )
 }

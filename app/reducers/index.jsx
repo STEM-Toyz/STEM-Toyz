@@ -7,7 +7,7 @@ const rootReducer = combineReducers({
   user: require('./user').default,
   reviews: require('./reviews').default,
   shoppingCart:require('./shoppingCart').default,
-  showShoppingCart: require('./toggleShoppingCart').default
+  showShoppingCart: require('./toggleShoppingCart').default,
   orderHistory: require('./orderHistory').default
 });
 
