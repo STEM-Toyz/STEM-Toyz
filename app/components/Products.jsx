@@ -17,6 +17,9 @@ export default function (props) {
                 <li>Category: {product.category}</li>
                 <li>Description: {product.description}</li>
               </ul>
+              <button className="btn btn-primary btn-outline-success my-2 my-sm-0" onClick={props.addToCart}>
+                Add to cart
+              </button>
             </div>
           );
           })

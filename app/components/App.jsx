@@ -9,6 +9,23 @@ import Login from './Login';
 
 export default class App extends Component {
 
+  componentDidMount () {
+    function storageAvailable(type) {
+      try {
+        var storage = window[type],
+        x = '__storage_test__';
+        storage.setItem(x, x);
+        console.log('STORAGE', storage);
+        // storage.removeItem(x);
+        return true;
+      }
+      catch(e) {
+        return false;
+      }
+    }
+    console.log(storageAvailable('localStorage'));
+  }
+
   render () {
     const showLogin = this.props.showLogin;
     return (
