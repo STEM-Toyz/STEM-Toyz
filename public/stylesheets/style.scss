@@ -60,7 +60,9 @@ nav {
 
 .logout {
   margin: 10px 10px;
+  color: red;
 }
+
 
 #app {
 }
@@ -104,4 +106,8 @@ nav {
 
 #allProducts.ul {
 
+}
+
+.orderHistoryItems {
+  display: inline;
 }

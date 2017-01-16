@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const inititalState = {
+const initialState = {
   orderHistory: []
 }
 
@@ -9,18 +9,18 @@ const SELECT_USER_HISTORY = 'SELECT_USER_HISTORY';
 export const fetchOrderHistory = userId => {
   return function(dispatch) {
     return axios.get(`/api/user/${userId}/orders/history`)
-      .then(history => dispatch(setUserHistory(history)))
+      .then(history => dispatch(setUserHistory(history.data)))
   }
 }
 
-export const setUserHistory(history) {
+export const setUserHistory = history => {
   return {
-    action: SELECT_USER_HISTORY,
+    type: SELECT_USER_HISTORY,
     history
   }
 }
 
-const reducer = (state = initialState, action) {
+const reducer = (state = initialState, action) => {
   const newState = Object.assign({}, state);
 
   switch(action.type) {
