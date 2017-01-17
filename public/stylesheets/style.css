@@ -178,3 +178,14 @@ nav {
 
 .errorText {
   color: red; }
+
+.reviewFirstItem {
+  display: inline;
+  font-weight: bold; }
+
+.reviewFirstLine {
+  display: inline;
+  margin-left: 2em; }
+
+.reviews {
+  width: 500px; }
