@@ -25,7 +25,7 @@ export default class ShoppingCart extends React.Component {
         <div className="shopping-cart-total">
           <span className="lighter-text">Total: </span>
           <span className="main-color-text"> ${
-            numeral(this.props.items.reduce(function(acc,curr){
+            this.props.items && numeral(this.props.items.reduce(function(acc,curr){
               return acc + (curr.quantity*curr.product.price)
             }, 0)).format('0,0')
 
