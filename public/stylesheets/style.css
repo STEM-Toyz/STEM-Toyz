@@ -179,6 +179,9 @@ nav {
 .errorText {
   color: red; }
 
+.singleReview {
+  font-size: 14pt; }
+
 .reviewFirstItem {
   display: inline;
   font-weight: bold; }
@@ -188,4 +191,4 @@ nav {
   margin-left: 2em; }
 
 .reviews {
-  width: 500px; }
+  width: 750px; }
