@@ -57,10 +57,11 @@ nav {
   float: right;
   background: blue;
   width: 320px;
-  position: relative;
+  position: absolute;
   border-radius: 3px;
   padding: 20px;
   display: flex;
+  right: 200px;
 }
 
 
@@ -138,9 +139,10 @@ nav {
   float: right;
   background: white;
   width: 430px;
-  position: relative;
+  position: absolute;
   border-radius: 3px;
   padding: 20px;
+  right: 0px;
 
 
 
