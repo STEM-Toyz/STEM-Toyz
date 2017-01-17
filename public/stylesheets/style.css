@@ -115,6 +115,8 @@ nav {
       margin-right: 8px; }
     .shopping-cart .shopping-cart-items .item-quantity {
       color: #ABB0BE; }
+    .shopping-cart .shopping-cart-items .item-total {
+      float: right; }
 
 .shopping-cart:after {
   bottom: 100%;
