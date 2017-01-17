@@ -62,6 +62,7 @@ nav {
   padding: 20px;
   display: flex;
   right: 200px;
+  z-index: 30;
 }
 
 
@@ -86,6 +87,7 @@ nav {
 
 #footer {
   height: 9em;
+  margin-left: 50px;
 }
 
 #search {
@@ -143,6 +145,7 @@ nav {
   border-radius: 3px;
   padding: 20px;
   right: 0px;
+  z-index: 40;
 
 
 
@@ -239,5 +242,17 @@ nav {
 }
 
 .sidebar {
-  color: grey;
+    background: white;
+    padding: 0px;
+    min-height: 100%;
+}
+
+
+
+.list>li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-left: 5px solid white;
+    color: white;
+    font-weight: bolder;
+    padding-left: 5px;
 }
