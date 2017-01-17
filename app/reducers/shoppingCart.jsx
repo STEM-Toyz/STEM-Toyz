@@ -2,13 +2,22 @@
 import axios from 'axios';
 
 
-const RECEIVE_CART= "RECEIVE_CART"
+const RECEIVE_CART = "RECEIVE_CART";
+const ADD_ITEM = "ADD_ITEM";
+const CREATE_ORDER = "CREATE_ORDER";
 
 
 export const receiveCart = order => ({
   type: RECEIVE_CART, order
 });
 
+export const addItem = order => ({
+  type: CREATE_ORDER, order
+});
+
+export const createOrder = item => ({
+  type: ADD_ITEM, item
+});
 
 export const deleteItem = (orderId, itemId) =>{
   return (dispatch) => {
@@ -18,6 +27,24 @@ export const deleteItem = (orderId, itemId) =>{
       })
   }
 }
+
+export const saveItem = orderId => {
+  return (dispatch) => {
+    axios.post(`/api/order/${orderId}/items`)
+    .then(response => {
+      dispatch(addItem(response.data));
+    });
+  };
+};
+
+export const saveOrder = userId => {
+  return (dispatch) => {
+    axios.post(`/api/user/${userId}/orders`)
+    .then(response => {
+      dispatch(createOrder(response.data));
+    });
+  };
+};
 
 // export const loadAllItems = orderId => {
 //   return (dispatch) => {
@@ -37,9 +64,6 @@ export const loadCart = userId => {
   };
 };
 
-
-
-
 const initialState = {
   cartOrder: {}
 }
@@ -50,13 +74,18 @@ const reducer = (state = {}, action) => {
 
   switch(action.type){
 
-
     case RECEIVE_CART:
       return Object.assign({}, state, action.order);
+
+    case CREATE_ORDER:
+      return Object.assign({}, state, action.order);
+
+    case ADD_ITEM:
+      return Object.assign({}, state, action.item);
 
     default:
       return state;
   }
-}
+};
 
 export default reducer;

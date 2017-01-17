@@ -8,6 +8,7 @@ import App from 'APP/app/components/App';
 import { toggleLogin } from 'APP/app/reducers/login';
 import {loadCart} from 'APP/app/reducers/shoppingCart'
 
+
 function mapStateToProps ({showLogin, showShoppingCart}) {
   return {showLogin, showShoppingCart};
 }

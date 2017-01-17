@@ -47,7 +47,8 @@ nav {
   display: flex; }
 
 .logout {
-  margin: 10px 10px; }
+  margin: 10px 10px;
+  color: red; }
 
 #views {
   height: 52em;
@@ -73,6 +74,17 @@ nav {
   font-size: 2em;
   margin: 0 10px 0 10px;
   color: #FFC420; }
+
+#orderHistoryPrice {
+  color: red; }
+
+.singleOrder {
+  display: block; }
+
+.orderHistoryItems {
+  display: inline;
+  margin-right: 2em;
+  font-size: 1.5em; }
 
 .shopping-cart {
   margin: 10px 0;
@@ -103,6 +115,8 @@ nav {
       margin-right: 8px; }
     .shopping-cart .shopping-cart-items .item-quantity {
       color: #ABB0BE; }
+    .shopping-cart .shopping-cart-items .item-total {
+      float: right; }
 
 .shopping-cart:after {
   bottom: 100%;
@@ -151,3 +165,10 @@ nav {
 
 .checkout-form-input {
   width: 25px; }
+
+.orderHistoryItemName {
+  border-width: 100px;
+  box-sizing: border-box; }
+
+.sidebar {
+  color: grey; }

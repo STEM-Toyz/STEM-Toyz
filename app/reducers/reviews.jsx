@@ -1,11 +1,21 @@
 import axios from 'axios';
-import store from '../store';
 
 const initialState = {
-  reviews: []
+  reviews: [],
+  reviewProduct: {},
+  reviewUser: null
 }
 
 const SELECT_REVIEWS = 'SELECT_REVIEWS';
+const SET_REVIEW_USER_PRODUCT = "SET_REVIEW_USER_PRODUCT";
+
+export const setReviewUserProduct = (product, user) => {
+  return {
+    type: SET_REVIEW_USER_PRODUCT,
+    product,
+    user
+  }
+}
 
 export const fetchReviews = userId => {
   return function(dispatch) {
@@ -27,6 +37,10 @@ const reducer = (state = initialState, action) => {
   switch(action.type) {
     case SELECT_REVIEWS:
       newState.reviews = action.reviews;
+      break;
+    case SET_REVIEW_USER_PRODUCT:
+      newState.reviewProduct = action.product;
+      newState.reviewUser = action.user;
       break;
   }
 

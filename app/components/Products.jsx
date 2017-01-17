@@ -21,6 +21,13 @@ export default function (props) {
                   <h5>Price: {product.price}</h5>
                   <p>Category: {product.category}</p>
                 </Link>
+                <button className="btn btn-primary btn-outline-success my-2 my-sm-0" onClick={() => {
+                    console.log(product);
+                    props.unAuthAddToCart(product)
+                    props.toggleShoppingCart(props.showShoppingCart);
+                  }}>
+                  Add to cart
+                </button>
               </div>
             );
           })
