@@ -13,8 +13,6 @@ export default class App extends Component {
   render () {
     const showLogin = this.props.showLogin;
     const showCart = this.props.showShoppingCart;
-    console.log('In App ', showCart);
-    // this.props.loadCart(1);
     return (
       <div id="app" className="container-fluid">
         <div id="nav" className="row horizontal">

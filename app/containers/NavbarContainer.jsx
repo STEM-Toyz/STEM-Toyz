@@ -59,7 +59,6 @@ export default connect(
   }
 
   render () {
-    console.log('PROPS IN NAVBAR', this.props);
     return (
       <Navbar
         {...this.state}

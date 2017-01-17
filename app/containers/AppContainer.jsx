@@ -14,9 +14,6 @@ function mapStateToProps ({showLogin, showShoppingCart}) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    // loadCart: function(userId){
-    //   console.log('its been called');
-    //   return loadCart(userId);
   };
 }
 

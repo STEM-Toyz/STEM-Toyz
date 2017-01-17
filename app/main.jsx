@@ -15,6 +15,7 @@ import AccountDetailsContainer from './containers/AccountDetailsContainer'
 import ReviewsContainer from './containers/ReviewsContainer';
 import ProductsContainer from './containers/ProductsContainer'
 import ProductContainer from './containers/ProductContainer'
+import CheckoutContainer from './containers/CheckoutContainer'
 
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
@@ -50,6 +51,7 @@ render(
         <IndexRedirect to="/products" />
         <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter} />
         <Route path="/products/:product_id" component={ProductContainer} onEnter={onProductEnter} />
+        <Route path="/checkout" component={CheckoutContainer} />
       </Route>
       <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
       <Route path="/account/:userId/orders" component={Orders} />
