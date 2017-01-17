@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import numeral from 'numeral';
 
 export default function (props) {
   const item = props.item;
@@ -15,11 +16,14 @@ export default function (props) {
               <p className="checkout-line-item-sec"><img src={`/img/${product.imageUrl}`} height="50" width="85" /></p>
               <p className="checkout-line-item-sec">{product.name}</p>
               <p className="checkout-line-item-sec">Category: {product.category}</p>
-              <p className="checkout-line-item-sec">Price: ${product.price}</p>
-              <p className="checkout-line-item-sec">Quantity: {product.quantity}</p>
-              <form onSubmit={props.submitHandler}>
+              <p className="checkout-line-item-sec">Price: ${item.totalPrice}</p>
+              <p className="checkout-line-item-sec">
+                Quantity:
+                <form onSubmit={event => props.submitHandler(event, item.id)} className="checkout-line-item-sec">
                 <input className="checkout-form-input" name="quantity" type="text" onChange={props.changeHandler} value={props.quantityVal}/>
-              </form>
+              <button type="submit" className="quantity-update-btn" width="5"> update </button>
+                </form>
+            </p>
             </div>
           )
         }

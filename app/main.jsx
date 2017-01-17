@@ -25,6 +25,7 @@ import { fetchUser } from './reducers/user';
 import { fetchReviews } from './reducers/reviews';
 import { getAllProducts, getSelectedProduct } from './reducers/products';
 import { fetchOrderHistory } from './reducers/orderHistory';
+import { loadCart } from './reducers/shoppingCart';
 
 function onAccountEnter(nextRouterState) {
   store.dispatch(fetchUser(nextRouterState.params.userId));
@@ -41,6 +42,12 @@ const onProductsEnter = (nextRouterState) => {
 const onProductEnter = (nextRouterState) => {
   const productId = nextRouterState.params.product_id;
   store.dispatch(getSelectedProduct(productId));
+}
+
+function onCheckoutEnter(nextRouterState) {
+  //this route is just for testing the checkout out page
+  const userId = 1;
+  store.dispatch(loadCart(1));
 }
 
 const unAuthOrder = () => {
@@ -70,7 +77,7 @@ render(
         <IndexRedirect to="/products" />
         <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter} />
         <Route path="/products/:product_id" component={ProductContainer} onEnter={onProductEnter} />
-        <Route path="/checkout" component={CheckoutContainer} />
+        <Route path="/checkout" component={CheckoutContainer} onEnter={onCheckoutEnter} />
       </Route>
       <Route path="/makeReview" component={ReviewFormContainer} />
       <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />

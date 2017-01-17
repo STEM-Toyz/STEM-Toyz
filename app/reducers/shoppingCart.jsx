@@ -64,6 +64,24 @@ export const loadCart = userId => {
   };
 };
 
+export const updateItem = (itemId, order, update) => {
+  return (dispatch) => {
+    axios.put(`/api/order/${order.id}/items/${itemId}`, update)
+    .then(() => {
+      dispatch(loadCart(order.user_id));
+    })
+  };
+};
+
+export const updateOrder = (order, update) => {
+  return (dispatch) => {
+    axios.put(`/api/orders/${order.id}`, update)
+    .then(() => {
+      dispatch(loadCart(order.user_id));
+    })
+  };
+}
+
 const initialState = {
   cartOrder: {}
 }

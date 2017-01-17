@@ -5,19 +5,20 @@ import { Link } from 'react-router';
 import CheckoutLineItemContainer from '../containers/CheckoutLineItemContainer'
 
 export default function (props) {
-  const cartItems = props.shoppingCartOrder.items;
+  const placeOrder = props.placeOrder;
   return (
     <div className="row">
       <div className="col-xs-10">
         {
-          cartItems && cartItems.map((item) => {
+          props.order.items && props.order.items.map((item) => {
             return (
-              <CheckoutLineItemContainer item={item} key={item.id} />
+              <CheckoutLineItemContainer item={item} key={item.id} order={props.order} />
             )
           })
         }
-        <Link to="/products" ><button>back to Products</button></Link>
-      </div>
+        <button onClick={event => placeOrder(event, props.order)}> Place Order </button>
+      <Link to="/products" ><button> Back to Products </button></Link>
+    </div>
     </div>
   )
 }

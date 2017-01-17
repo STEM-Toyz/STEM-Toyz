@@ -14,25 +14,25 @@ const db = require('APP/db')
       imageUrl: 'default.jpg',
       price: 100,
       description: 'Weapon of the Jedi',
-      quantity: 7
+      quantity: 200
     },
     {
-      name: 'Space Ship',
-      category: 'Toy',
+      name: 'Space Odyessey',
+      category: 'Video Game',
       tag: ['Technology'],
       imageUrl: 'default.jpg',
       price: 10000,
       description: 'Space travel in style',
-      quantity: 12
+      quantity: 100
     },
     {
-      name: 'Time Machine',
-      category: 'Toy',
+      name: 'Math Crisis',
+      category: 'Card Game',
       tag: ['Technology', 'Engineering'],
       imageUrl: 'default.jpg',
       price: 999,
       description: 'Undue mistakes of the past',
-      quantity: 1
+      quantity: 300
     }
   ], product => db.model('product').create(product));
 
@@ -63,7 +63,13 @@ const db = require('APP/db')
     { quantity: 30, price: 171,  order_id: 3, product_id: 3},
     { quantity: 2, price: 55, order_id: 3, product_id: 1},
     { quantity: 4, price: 12, order_id: 4, product_id: 2},
-    {quantity: 3, price: 24, order_id: 4, product_id: 3}
+    {quantity: 3, price: 24, order_id: 4, product_id: 3},
+    { quantity: 23, price: 555, order_id: 1, product_id: 1},
+    { quantity: 33, price: 142, order_id: 2, product_id: 1},
+    {quantity: 13, price: 243, order_id: 3, product_id: 2},
+    { quantity: 39, price: 99, order_id: 1, product_id: 2},
+    { quantity: 30, price: 33, order_id: 2, product_id: 3},
+    {quantity: 23, price: 234, order_id: 4, product_id: 3}
   ], item => db.model('items').create(item));
 
   db.didSync
