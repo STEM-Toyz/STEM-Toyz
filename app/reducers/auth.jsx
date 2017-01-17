@@ -9,6 +9,7 @@ const reducer = (state = null, action) => {
 }
 
 const AUTHENTICATED = 'AUTHENTICATED'
+
 export const authenticated = user => ({
   type: AUTHENTICATED, user
 })

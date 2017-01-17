@@ -31,9 +31,9 @@ export default (props) => {
 
   return (
     <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-      <h1 className="logo"> STEM Toyz</h1>
+      <h1 className="logo ">STEM Toyz</h1>
       {/*<img src="" className="logo" />*/}
-      // <div id="search" className="item">
+      <div id="search" className="item">
         <form className="form-inline" onSubmit={handleSubmit}>
           <input className="form-control mr-sm-2" type="text" placeholder="Search" onChange={handleChange}></input>
           <button className="btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
