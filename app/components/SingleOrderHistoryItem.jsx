@@ -12,7 +12,7 @@ export default function(props) {
     <div>
       <div className="orderHistoryItems">{`${props.index}.`}</div>
       <Link to={`/products/${item.product.id}`}><div className="orderHistoryItems orderHistoryItemName">{`${item.product.name}`}</div></Link>
-      <div className="orderHistoryItems">{`${item.quantity}x`}</div>
+      <div className="orderHistoryItems" id="orderHistoryQuantity">{`${item.quantity}`}</div>
       <div className="orderHistoryItems" id="orderHistoryPrice">{`$${item.price}`}</div>
       <div className="orderHistoryItems">{`$${item.totalPrice}`}</div>
       <Link to={'/makeReview'}><div className="orderHistoryItems"><button onClick={setInfo}>Write Review</button></div></Link>
