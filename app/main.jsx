@@ -69,11 +69,11 @@ render(
         <IndexRedirect to="/products" />
         <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter} />
         <Route path="/products/:product_id" component={ProductContainer} onEnter={onProductEnter} />
+        <Route path="/makeReview" component={ReviewFormContainer} />
+        <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
+        <Route path="/account/:userId/orders" component={OrderHistoryContainer} onEnter={onOrderHistoryEnter}/>
+        <Route path="/account/:userId/reviews" component={ReviewsContainer} onEnter={onReviewsEnter}/>
       </Route>
-      <Route path="/makeReview" component={ReviewFormContainer} />
-      <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
-      <Route path="/account/:userId/orders" component={OrderHistoryContainer} onEnter={onOrderHistoryEnter}/>
-      <Route path="/account/:userId/reviews" component={ReviewsContainer} onEnter={onReviewsEnter}/>
     </Router>
   </Provider>,
   document.getElementById('main')

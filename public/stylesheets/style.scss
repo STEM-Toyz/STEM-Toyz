@@ -71,7 +71,6 @@ nav {
   color: red;
 }
 
-
 #app {
 }
 
@@ -255,4 +254,26 @@ nav {
     color: white;
     font-weight: bolder;
     padding-left: 5px;
+}
+
+.errorText {
+  color: red;
+}
+
+.singleReview {
+  font-size: 14pt;
+}
+
+.reviewFirstItem {
+  display: inline;
+  font-weight: bold;
+}
+
+.reviewFirstLine {
+  display: inline;
+  margin-left: 2em;
+}
+
+.reviews {
+  width: 750px;
 }
