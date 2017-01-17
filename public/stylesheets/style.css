@@ -158,3 +158,6 @@ nav {
 .orderHistoryItemName {
   border-width: 100px;
   box-sizing: border-box; }
+
+.sidebar {
+  color: grey; }
