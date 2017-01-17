@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import { Link } from 'react-router';
 
 import Login from './Login';
 import WhoAmI from './WhoAmI';
@@ -40,7 +41,7 @@ export default (props) => {
         </form>
       </div>
       <div id="login" className="item pull-right">
-        {user ? <WhoAmI /> : loginButton}
+        {user ? <Link to={`/account/${user.id}`}><WhoAmI /> </Link> : loginButton}
       </div>
       <div id="cart" className="item pull-right">
         {cartButton}
