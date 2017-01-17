@@ -54,6 +54,7 @@ const unAuthOrder = () => {
     status: 'in cart',
     items: items
   }));
+}
 
 const onOrderHistoryEnter = (nextRouterState) => {
   store.dispatch(fetchOrderHistory(nextRouterState.params.userId));
