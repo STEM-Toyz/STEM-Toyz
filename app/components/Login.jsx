@@ -7,6 +7,10 @@ export default class Login extends Component {
     super(props)
   }
 
+  componentDidMount () {
+    console.log('in the did mount', this.props.auth);
+  }
+
   componentWillReceiveProps () {
     const showLogin = this.props.showLogin;
     this.props.toggleLogin(!showLogin);
@@ -15,14 +19,16 @@ export default class Login extends Component {
   render () {
 
     if (this.props.auth) {
-      console.log('in the conditional');
       let order = JSON.parse(window.localStorage.getItem('order'));
+      // console.log('in the conditional', order.id);
       if (order.items.length) {
-        console.log('LOGIN PROPS', this.props);
-        this.props.saveOrder(this.props.auth.id);
+        console.log('LOGIN PROPS', order);
         order.items.forEach(item => {
-          // this.props.saveItem
+          item.price = item.quantity * item.product.price;
+          item.product_id = item.product.id;
         });
+        order.userId = this.props.auth.id;
+        this.props.saveOrder(order);
       }
     }
 
