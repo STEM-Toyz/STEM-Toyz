@@ -32,6 +32,7 @@ router.route('/:order_id/items')
 		console.log('IN THE ITEM POST', req.body);
 		Item.create(req.body)
 		.then(newItem => {
+			newItem.setOrder()
 			res.send(newItem);
 		})
 		.catch(next)

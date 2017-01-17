@@ -11,11 +11,11 @@ export const receiveCart = order => ({
   type: RECEIVE_CART, order
 });
 
-export const addItem = order => ({
+export const createOrder = order => ({
   type: CREATE_ORDER, order
 });
 
-export const createOrder = items => ({
+export const addItem = items => ({
   type: ADD_ITEM, items
 });
 
@@ -37,22 +37,12 @@ export const saveItem = orderId => {
   };
 };
 
-export const saveOrder = ({userId, items}) => {
+export const saveOrder = (cart) => {
   return (dispatch) => {
-    axios.post(`/api/user/${userId}/orders`)
+    axios.post(`/api/user/${cart.userId}/orders`, cart)
     .then(response => {
-      dispatch(createOrder(response.data));
-      return response.data;
+      dispatch(createOrder(cart));
     })
-    .then(createdOrder => {
-      items.forEach(item => {
-        axios.post(`/api/order/${createdOrder.id}/items`, item)
-        .then(createdItem => {
-          createdItem.setOrder(createdOrder);
-          dispatch(addItem(response.data));
-        });
-      });
-    });
   };
 };
 

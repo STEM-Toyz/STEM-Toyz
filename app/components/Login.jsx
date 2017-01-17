@@ -19,8 +19,11 @@ export default class Login extends Component {
   render () {
 
     if (this.props.auth) {
-      let order = JSON.parse(window.localStorage.getItem('order'));
-      // console.log('in the conditional', order.id);
+      const order = JSON.parse(window.localStorage.getItem('order'));
+      window.localStorage.setItem('order', JSON.stringify({
+    status: 'in cart',
+    items: []
+  }));
       if (order.items.length) {
         console.log('LOGIN PROPS', order);
         order.items.forEach(item => {
