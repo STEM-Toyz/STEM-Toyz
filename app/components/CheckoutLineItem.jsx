@@ -17,7 +17,9 @@ export default function (props) {
               <p className="checkout-line-item-sec">Category: {product.category}</p>
               <p className="checkout-line-item-sec">Price: ${product.price}</p>
               <p className="checkout-line-item-sec">Quantity: {product.quantity}</p>
-              <input className="checkout-form-input" name="quantity" type="text" onChange={props.changeHandler} value={props.state}/>
+              <form onSubmit={props.submitHandler}>
+                <input className="checkout-form-input" name="quantity" type="text" onChange={props.changeHandler} value={props.quantityVal}/>
+              </form>
             </div>
           )
         }

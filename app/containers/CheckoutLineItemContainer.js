@@ -12,18 +12,21 @@ export default class extends React.Component {
   changeHandler (event) {
     const quantityVal = event.target.value;
     this.setState({ quantityVal })
-    console.log('quantityval', quantityVal)
+    // console.log('quantityval', quantityVal)
     console.log('quantityState', this.state.quantityVal)
   }
   submitHandler (event) {
-    // event.preventDefault();
+    event.preventDefault();
     // store.dispatch(addNewCampus(this.state));
-    // this.setState({ name: '', imageURL: '', city: '', state: '' });
+    console.log('submitted', this.state.quantityVal)
+    this.setState({ quantityVal: '' });
   }
   render () {
     return (
       <CheckoutLineItem
         changeHandler={this.changeHandler}
+        submitHandler={this.submitHandler}
+        quantityVal={this.state.quantityVal}
         {...this.state}
       />
     )
