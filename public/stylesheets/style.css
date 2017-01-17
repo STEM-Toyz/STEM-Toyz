@@ -81,6 +81,13 @@ nav {
 #orderHistoryPrice {
   color: red; }
 
+#orderHistoryQuantity {
+  color: gray; }
+
+#reviewForm {
+  margin: 0 auto;
+  width: 400px; }
+
 .singleOrder {
   display: block; }
 
