@@ -53,7 +53,7 @@ export default class MakeReview extends React.Component {
     const product = this.props.product;
     const userId = this.props.user;
     return (
-      <div>
+      <div id="reviewForm">
         <h3>Product: <Link to={`/products/${product.id}`}>{this.props.product.name}</Link></h3>
         <div>
           {
@@ -62,7 +62,7 @@ export default class MakeReview extends React.Component {
             : null
           }
           <form onSubmit={this.onSubmit}>
-            <label>Title:</label><input id="title" type="text" onChange={this.onTitleChange}></input>
+            <label>Title:</label><input id="title" type="text" size="50" onChange={this.onTitleChange}></input>
             <div>
               <label>Rating:</label>
               <select id="stars" onChange={this.onSelectChange}>
@@ -83,7 +83,7 @@ export default class MakeReview extends React.Component {
               </div>
             </div>
           </form>
-      </div>
+        </div>
       </div>
     )
   }

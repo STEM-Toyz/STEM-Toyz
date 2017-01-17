@@ -124,6 +124,15 @@ nav {
   color: red;
 }
 
+#orderHistoryQuantity {
+  color: gray;
+}
+
+#reviewForm {
+  margin: 0 auto;
+  width: 400px;
+}
+
 .singleOrder {
   display: block;
 }
@@ -260,6 +269,10 @@ nav {
   color: red;
 }
 
+.singleReview {
+  font-size: 14pt;
+}
+
 .reviewFirstItem {
   display: inline;
   font-weight: bold;
@@ -271,5 +284,5 @@ nav {
 }
 
 .reviews {
-  width: 500px;
+  width: 750px;
 }
