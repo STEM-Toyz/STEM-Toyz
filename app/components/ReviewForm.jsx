@@ -20,6 +20,30 @@ export default class MakeReview extends React.Component {
     return (
       <div>
         <h3>Product: <Link to={`/products/${product.id}`}>{this.props.product.name}</Link></h3>
+        <div>
+          <form>
+            <label>Title:</label><input type="text"></input>
+          </form>
+        </div>
+        <div>
+          <label>Rating:</label>
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+      </div>
+      <div>
+        <label>Review</label>
+        <div>
+          <textarea rows="5" cols="50"></textarea>
+        </div>
+        <div>
+          <input type="submit"></input>
+        </div>
+      </div>
       </div>
     )
   }

@@ -5,16 +5,28 @@ import React, { Component } from 'react';
 import NavbarContainer from '../containers/NavbarContainer';
 import Footer from './Footer';
 import ShoppingCartContainer from '../containers/ShoppingCartContainer';
-import Login from './Login';
+import LoginContainer from 'APP/app/containers/LoginContainer';
 
 export default class App extends Component {
 
+  componentDidMount () {
+    function storageAvailable(type) {
+      try {
+        var storage = window[type],
+        x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+      }
+      catch(e) {
+        return false;
+      }
+    }
+  }
 
   render () {
     const showLogin = this.props.showLogin;
     const showCart = this.props.showShoppingCart;
-    console.log('In App ', showCart);
-    // this.props.loadCart(1);
     return (
       <div id="app" className="container-fluid">
         <div id="nav" className="row horizontal">
@@ -23,7 +35,7 @@ export default class App extends Component {
         <div id="views" className="row">
 
             {showCart ? <ShoppingCartContainer /> : null}
-            {showLogin ? <Login /> : null}
+            {showLogin ? <LoginContainer /> : null}
           {
            this.props.children && React.cloneElement(this.props.children, this.props)
           }
