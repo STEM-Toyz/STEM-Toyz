@@ -6,7 +6,6 @@ import { updateOrder } from '../reducers/shoppingCart';
 
 const mapStateToProps = (state, ownProps) => {
   const order = state.shoppingCart;
-  // console.log('shoppingCartOrder', order)
   return { order };
 }
 

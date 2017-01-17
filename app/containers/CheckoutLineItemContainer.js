@@ -35,11 +35,6 @@ export default connect(
     const newItemQuantity = Number(this.state.quantityVal);
     const update = { quantity: newItemQuantity }
     const order = this.props.order
-    // console.log('props.order', order);
-    // store.dispatch(addNewCampus(this.state));
-    // console.log('quantity val', this.state.quantityVal)
-    // console.log('itemId', itemId)
-    // console.log('orderId', orderId)
     store.dispatch(updateItem(itemId, order, update))
   }
   render () {
