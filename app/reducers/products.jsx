@@ -6,12 +6,14 @@ import axios from 'axios';
 export const LOAD_ALL_PRODUCTS = 'LOAD_ALL_PRODUCTS';
 export const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
 export const SELECT_PRODUCT = 'SELECT_PRODUCT';
+export const SELECT_PRODUCT_REVIEWS = 'SELECT_PRODUCT_REVIEWS';
 
 
 //*********** Action Creators ***********:
 export const loadAllProducts = (allProducts) => ({ type: LOAD_ALL_PRODUCTS, allProducts });
 export const filterProducts = (filteredProducts) => ({ type: FILTER_PRODUCTS, filteredProducts });
 export const selectProduct = (selectedProduct) => ({ type: SELECT_PRODUCT, selectedProduct });
+export const getProductReviews = (productReviews) => ({ type: SELECT_PRODUCT_REVIEWS, productReviews});
 
 export const getAllProducts = () => {
   return (dispatch, getState) => {

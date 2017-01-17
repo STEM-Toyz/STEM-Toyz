@@ -18,6 +18,11 @@ export default function (props) {
         }
         <Link to="/products" ><button>back to Products</button></Link>
       </div>
+      <div>
+        {
+          
+        }
+      </div>
     </div>
   )
 }
