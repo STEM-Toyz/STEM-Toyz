@@ -32,8 +32,7 @@ export default (props) => {
 
   return (
     <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-      <h1 className="logo ">STEM Toyz</h1>
-      {/*<img src="" className="logo" />*/}
+      <Link to='/products'><img src="/img/STEM-Logo.png" width="355" height="95"/></Link>
       <div id="search" className="item">
         <form className="form-inline" onSubmit={handleSubmit}>
           <input className="form-control mr-sm-2" type="text" placeholder="Search" onChange={handleChange}></input>
