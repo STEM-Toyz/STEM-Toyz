@@ -15,6 +15,7 @@ import ReviewsContainer from './containers/ReviewsContainer';
 import ProductsContainer from './containers/ProductsContainer';
 import ProductContainer from './containers/ProductContainer';
 import OrderHistoryContainer from './containers/OrderHistoryContainer';
+import ReviewFormContainer from './containers/ReviewFormContainer';
 
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
@@ -31,7 +32,6 @@ function onAccountEnter(nextRouterState) {
 function onReviewsEnter(nextRouterState) {
   store.dispatch(fetchReviews(nextRouterState.params.userId));
 }
-
 
 const onProductsEnter = (nextRouterState) => {
   store.dispatch(getAllProducts());
@@ -55,6 +55,7 @@ render(
         <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter} />
         <Route path="/products/:product_id" component={ProductContainer} onEnter={onProductEnter} />
       </Route>
+      <Route path="/makeReview" component={ReviewFormContainer} />
       <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
       <Route path="/account/:userId/orders" component={OrderHistoryContainer} onEnter={onOrderHistoryEnter}/>
       <Route path="/account/:userId/reviews" component={ReviewsContainer} onEnter={onReviewsEnter}/>
