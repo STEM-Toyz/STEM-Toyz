@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import CheckoutLineItem from '../components/CheckoutLineItem'
 
 export default function (props) {
-  console.log(props.order.totalPrice)
+  // console.log(props.order.totalPrice)
   const placeOrder = props.placeOrder;
   return (
     <div className="row">
@@ -18,8 +18,8 @@ export default function (props) {
           })
         }
         <div>total order:{props.order.totalPrice}</div>
-        <div><button onClick={event => placeOrder(event, props.order)} className="button"> Place Order </button></div>
-      <Link to="/products" ><div><button className="small-button"> Back to Products </button></div></Link>
+      <div><button onClick={event => placeOrder(event, props.order)} className="button"> Place Order </button></div>
+      <Link to="/products" ><div><button className="btn btn-primary btn-outline-success"> Back to Products </button></div></Link>
     </div>
     </div>
   )

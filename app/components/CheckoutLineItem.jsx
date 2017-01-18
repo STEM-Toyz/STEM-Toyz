@@ -45,7 +45,7 @@ export default class extends React.Component {
                     Quantity:
                     <form onSubmit={event => submitHandler(event, item.id)} className="checkout-line-item-sec">
                     <input className="checkout-form-input" name="quantity" type="text" onChange={changeHandler} value={this.state.quantityVal} />
-                  <button type="submit" className="small-button" width="5"> update </button>
+                  <button type="submit" className="btn btn-primary btn-outline-success" width="5"> update </button>
                     </form>
                 </div>
                 </div>

@@ -180,10 +180,8 @@ nav {
 .sidebar {
   color: grey; }
 
-.small-button {
-  font-size: 15px;
-  background: #6394F8;
-  color: white; }
+.filter-button {
+  width: 100px; }
 
 .errorText {
   color: red; }

@@ -11,15 +11,15 @@ export default function (props) {
       </br>
       <div className="left-navigation">
         <ul className="list list-unstyled btn-group-vertical">
-          <li><button onClick={props.unfilter}>All Products</button></li>
+          <li><button onClick={props.unfilter} className="btn btn-primary btn-outline-success">All Products</button></li>
 
-          <li><button onClick={() => props.applyFilter('Toy')}>Toys</button></li>
+        <li><button onClick={() => props.applyFilter('Toy')} className="btn btn-primary btn-outline-success" >Toys</button></li>
 
-          <li><button onClick={() => props.applyFilter('Video Game')}>Video Games</button></li>
+          <li><button onClick={() => props.applyFilter('Video Game')} className="btn btn-primary btn-outline-success">Video Games</button></li>
 
-          <li><button onClick={() => props.applyFilter('Board Game')}>Board Games</button></li>
+          <li><button onClick={() => props.applyFilter('Board Game')} className="btn btn-primary btn-outline-success">Board Games</button></li>
 
-          <li><button onClick={() => props.applyFilter('Card Game')}>Card Games</button></li>
+          <li><button onClick={() => props.applyFilter('Card Game')} className="btn btn-primary btn-outline-success">Card Games</button></li>
         </ul>
       </div>
     </div>
