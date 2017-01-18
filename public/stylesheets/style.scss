@@ -54,15 +54,18 @@ nav {
 }
 
 .login {
-  margin: 20px 0;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   float: right;
-  background: blue;
+  background: grey;
   width: 320px;
   position: absolute;
-  border-radius: 3px;
+  border-radius: 10px;
   padding: 20px;
   display: flex;
-  right: 200px;
+  right: 150px;
   z-index: 30;
 }
 
@@ -154,7 +157,7 @@ nav {
   background: white;
   width: 430px;
   position: absolute;
-  border-radius: 3px;
+  border-radius: 8px;
   padding: 20px;
   right: 0px;
   z-index: 40;
