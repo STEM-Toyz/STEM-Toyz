@@ -3,17 +3,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import ProductsFilterContainer from '../containers/ProductsFilterContainer'
-export default class Products extends React.Component {
 
-  constructor (props) {
-    super(props)
-  }
-
-  render () {
-    const order = this.props.shoppingCart;
-
-    return (
-
+export default function (props) {
+  return (
     <div className="row">
       <div className="col-xs-2">
         <ProductsFilterContainer allProducts={this.props.allProducts} />
@@ -23,12 +15,14 @@ export default class Products extends React.Component {
           this.props.filteredProducts.length
           ? this.props.filteredProducts.map(product => {
             return (
-              <div className="col-xs-2" key={ product.id }>
-                <Link className="thumbnail" to={`/products/${product.id}`}>
-                  <img src={`/img/${product.imageUrl}`} height="100" width="170" />
+              <div className="col-md-2 thumbnail product-section" key={ product.id }>
+                <Link to={`/products/${product.id}`}>
+                <img src={`/img/${product.imageUrl}`} height="100" width="170" />
+                <div className="product-content">
                   <h4>{product.name}</h4>
                   <h5>Price: {product.price}</h5>
                   <p>Category: {product.category}</p>
+                </div>
                 </Link>
                 <button className="btn btn-primary btn-outline-success my-2 my-sm-0" onClick={() => {
                     order.product = product;
@@ -53,4 +47,3 @@ export default class Products extends React.Component {
       </div>
     </div>
   )}
-}

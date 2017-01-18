@@ -52,24 +52,3 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
-
-
-// Example:
-// localStorage.order = {
-//   status: 'in cart',
-//   items: [
-//     {
-//       quantity: 1,
-//       price: 12,
-//       productId: 0,
-//       product: {
-//         id: 1,
-//         name: "asdf",
-//         category: "asdf",
-//         tag: "asdf",
-//         imageUrl: "asdf",
-//         price: 123
-//       }
-//     }
-//   ]
-// }

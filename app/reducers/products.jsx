@@ -44,6 +44,15 @@ export const getProductReviews = (productId) => {
   }
 }
 
+export const updateProduct = (productId, update) => {
+  return (dispatch, getState) => {
+    axios.put(`/api/products/${productId}`, update)
+    .then(() => {
+      dispatch(loadCart(order.user_id));
+    })
+  };
+}
+
 
 //*********** Reducer ***********:
 const initialState = { allProducts: [], filteredProducts: [], selectedProduct: {}, selectProductReviews: [] };

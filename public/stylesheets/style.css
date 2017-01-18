@@ -215,3 +215,19 @@ nav {
 .accountDetails {
   width: 400px;
   margin: 0 auto; }
+
+.checkout-line-item-sec {
+  display: inline;
+  margin-right: 2em; }
+
+.checkout-line-item {
+  display: inline;
+  margin-bottom: 1em; }
+
+.checkout-form-input {
+  width: 25px; }
+
+.product-section {
+  width: 200px;
+  height: 350px;
+  margin-bottom: 20px; }

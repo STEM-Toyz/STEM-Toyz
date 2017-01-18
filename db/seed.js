@@ -10,29 +10,74 @@ const db = require('APP/db')
     {
       name: 'Light Saber',
       category: 'Toy',
-      tag: ['Science'],
-      imageUrl: 'default.jpg',
-      price: 100,
+      tag: ['Engineering'],
+      imageUrl: 'light-saber.jpg',
+      price: 180,
       description: 'Weapon of the Jedi',
-      quantity: 7
+      quantity: 200
     },
     {
-      name: 'Space Ship',
-      category: 'Toy',
-      tag: ['Technology'],
-      imageUrl: 'default.jpg',
-      price: 10000,
-      description: 'Space travel in style',
-      quantity: 12
+      name: 'Global Crisis',
+      category: 'Video Game',
+      tag: ['Science', 'Technology'],
+      imageUrl: 'planet-hologram.jpeg',
+      price: 60,
+      description: 'Save the planet in the fight against global warming',
+      quantity: 120
     },
     {
-      name: 'Time Machine',
+      name: 'Robo walkers',
+      category: 'Board Game',
+      tag: ['Engineering'],
+      imageUrl: 'robot-on-tight-rope.jpg',
+      price: 45,
+      description: 'Build a robot that can walk on a tightrope',
+      quantity: 50
+    },
+    {
+      name: 'Wounders of Science',
+      category: 'Card Game',
+      tag: ['Science'],
+      imageUrl: 'wonders-of-science.jpg',
+      price: 10,
+      description: 'Discover real facts about such aspects of science as energy, motion, and gases',
+      quantity: 70
+    },
+    {
+      name: 'RoboBee',
       category: 'Toy',
       tag: ['Technology', 'Engineering'],
-      imageUrl: 'default.jpg',
-      price: 999,
-      description: 'Undue mistakes of the past',
-      quantity: 1
+      imageUrl: 'robotic-bee.png',
+      price: 300,
+      description: 'Fly your very own robotic bee',
+      quantity: 80
+    },
+    {
+      name: 'Science Kombat',
+      category: 'Video Game',
+      tag: ['Science', 'Engineering'],
+      imageUrl: 'science-kombat.jpg',
+      price: 60,
+      description: 'have 1v1 online battles using science in this futuristic kombat game.',
+      quantity: 150
+    },
+    {
+      name: 'SMATH',
+      category: 'Board Game',
+      tag: ['Math'],
+      imageUrl: 'SMATH.jpg',
+      price: 20,
+      description: 'Learning Math is fun witht his educational card game.',
+      quantity: 60
+    },
+    {
+      name: 'The Game of Earth',
+      category: 'Board Game',
+      tag: ['science'],
+      imageUrl: 'the-game-of-earth.jpg',
+      price: 20,
+      description: 'Learning Math is fun witht his educational card game.',
+      quantity: 60
     }
   ], product => db.model('product').create(product));
 
@@ -61,9 +106,15 @@ const db = require('APP/db')
     { quantity: 10, price: 110, order_id: 1, product_id: 1},
     { quantity: 15, price: 50,  order_id: 2, product_id: 2},
     { quantity: 30, price: 171,  order_id: 3, product_id: 3},
-    { quantity: 2, price: 55, order_id: 3, product_id: 1},
-    { quantity: 4, price: 12, order_id: 4, product_id: 2},
-    {quantity: 3, price: 24, order_id: 4, product_id: 3}
+    { quantity: 2, price: 55, order_id: 3, product_id: 4},
+    { quantity: 4, price: 12, order_id: 4, product_id: 5},
+    {quantity: 3, price: 24, order_id: 4, product_id: 6},
+    { quantity: 23, price: 555, order_id: 1, product_id: 7},
+    { quantity: 33, price: 142, order_id: 2, product_id: 8},
+    {quantity: 13, price: 243, order_id: 3, product_id: 1},
+    { quantity: 39, price: 99, order_id: 1, product_id: 2},
+    { quantity: 30, price: 33, order_id: 2, product_id: 3},
+    {quantity: 23, price: 234, order_id: 4, product_id: 4}
   ], item => db.model('items').create(item));
 
   db.didSync

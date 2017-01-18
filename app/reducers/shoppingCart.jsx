@@ -56,12 +56,25 @@ export const loadCart = userId => {
   };
 };
 
-const initialState = {
-  // items: []
+export const updateItem = (itemId, order, update) => {
+  return (dispatch) => {
+    axios.put(`/api/order/${order.id}/items/${itemId}`, update)
+    .then(() => {
+      dispatch(loadCart(order.user_id));
+    })
+  };
+};
+
+export const updateOrder = (order, update) => {
+  return (dispatch) => {
+    axios.put(`/api/orders/${order.id}`, update)
+    .then(() => {
+      dispatch(loadCart(order.user_id));
+    })
+  };
 }
 
-const reducer = (state = initialState, action) => {
-
+const reducer = (state = {}, action) => {
   const newState = Object.assign({}, state);
 
   switch(action.type){
