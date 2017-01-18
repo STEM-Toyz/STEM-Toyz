@@ -46,7 +46,8 @@ const onProductEnter = (nextRouterState) => {
 }
 
 function onCheckoutEnter(nextRouterState) {
-  const currentUserId = store.getState().user.id;
+  //loading the current user's cart
+  const currentUserId = store.getState().auth.id;
   store.dispatch(loadCart(currentUserId));
 }
 
@@ -62,6 +63,7 @@ const unAuthOrder = () => {
     status: 'in cart',
     items: items
   }));
+
 }
 
 const onOrderHistoryEnter = (nextRouterState) => {
