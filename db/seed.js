@@ -35,7 +35,7 @@ const db = require('APP/db')
       quantity: 50
     },
     {
-      name: 'Wounders of Science',
+      name: 'Wonders of Science',
       category: 'Card Game',
       tag: ['Science'],
       imageUrl: 'wonders-of-science.jpg',
