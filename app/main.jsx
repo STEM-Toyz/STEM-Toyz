@@ -46,9 +46,8 @@ const onProductEnter = (nextRouterState) => {
 }
 
 function onCheckoutEnter(nextRouterState) {
-  //this route is just for testing the checkout out page
-  const userId = 1;
-  store.dispatch(loadCart(1));
+  const currentUserId = store.getState().user.id;
+  store.dispatch(loadCart(currentUserId));
 }
 
 const unAuthOrder = () => {
