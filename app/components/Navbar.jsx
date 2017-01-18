@@ -26,7 +26,7 @@ export default (props) => {
     <button className="logout btn btn-primary btn-outline-success my-2 my-sm-0" onClick={toggleLogin}>Login</button>
   );
   const cartButton = (
-     <button type='button' className="btn btn-default btn-primary" onClick={toggleCart}><span className="glyphicon glyphicon-shopping-cart cart-icon" type="submit"></span></button>
+     <button type='button' className="btn btn-default btn-primary" onClick={toggleCart}><span className="glyphicon glyphicon-shopping-cart cart-icon1" type="submit"></span></button>
   );
 
 
