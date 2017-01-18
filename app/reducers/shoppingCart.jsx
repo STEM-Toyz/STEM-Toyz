@@ -46,14 +46,6 @@ export const saveOrder = (cart) => {
   };
 };
 
-// export const loadAllItems = orderId => {
-//   return (dispatch) => {
-//     axios.get(`/api/order/${orderId}/items`)
-//       .then(response => {
-//         dispatch(receiveItems(response.data));
-//       });
-//   };
-// };
 
 export const loadCart = userId => {
   return (dispatch) => {

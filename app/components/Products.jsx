@@ -22,8 +22,11 @@ export default function (props) {
                   <p>Category: {product.category}</p>
                 </Link>
                 <button className="btn btn-primary btn-outline-success my-2 my-sm-0" onClick={() => {
-                    console.log(product);
-                    props.unAuthAddToCart(product)
+                    if (props.auth) {
+                     props.saveItem()
+                    }else {
+                     props.unAuthAddToCart(product);
+                    }
                     props.toggleShoppingCart(props.showShoppingCart);
                   }}>
                   Add to cart

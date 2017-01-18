@@ -43,8 +43,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     toggleShoppingCart(toggle) {
       dispatch(toggleShoppingCart(toggle));
     },
-    saveItem(orderId) {
-      dispatch(saveItem(orderId));
+    saveItem(product) {
+      dispatch(saveItem(product));
     }
   };
 }
