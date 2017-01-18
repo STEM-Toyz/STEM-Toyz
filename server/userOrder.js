@@ -54,6 +54,19 @@ module.exports = require('express').Router()
     .post('/:userId/orders', (req, res, next) => {
           req.body.user_id = req.params.userId;
           console.log('IN THE POST ROUTE',req.params.userId);
-          return Order.create(req.body)
-          .then(createdOrder => res.status(201).json(createdOrder))
+          return Order.findOrCreate({
+            where:{
+              status: 'in cart',
+              user_id: req.body.user_id
+            }
+          })
+          .spread((order, created) => {
+            Promise.all(req.body.items.map(item => {
+              Item.create(item)
+              .then(createdItem => {
+                createdItem.setOrder(order);
+              })
+            }))
+            res.status(201).json(order)
+          })
           .catch(next)})

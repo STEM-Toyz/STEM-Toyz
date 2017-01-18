@@ -33,14 +33,18 @@ const mapStateToProps = (state, ownProps) => {
   const allProducts = state.products.allProducts;
   const filteredProducts = state.products.filteredProducts;
   const showShoppingCart = state.showShoppingCart
+  const auth = state.auth;
 
-  return { allProducts, filteredProducts, unAuthAddToCart,showShoppingCart};
+  return { allProducts, filteredProducts, unAuthAddToCart,showShoppingCart, auth};
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     toggleShoppingCart(toggle) {
       dispatch(toggleShoppingCart(toggle));
+    },
+    saveItem(product) {
+      dispatch(saveItem(product));
     }
   };
 }

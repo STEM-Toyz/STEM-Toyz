@@ -10,6 +10,7 @@ function mapStateToProps(state){
     state.shoppingCart = JSON.parse(window.localStorage.getItem('order'))
   }
   return {
+    auth: state.auth,
     order: state.shoppingCart,
     items: state.shoppingCart.items,
     selectedUser: state.user.selectUser
