@@ -16,9 +16,10 @@ nav {
 
 .cart-icon {
   font-size: 3em;
-  color: #00E571;
+  color: #30BD21;
   margin: auto;
 }
+
 
 .logo {
   color: #0C18B3;
@@ -145,7 +146,10 @@ nav {
 
 
 .shopping-cart {
-  margin: 10px 0;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   float: right;
   background: white;
   width: 430px;
@@ -154,6 +158,7 @@ nav {
   padding: 20px;
   right: 0px;
   z-index: 40;
+
 
 
 
@@ -215,15 +220,20 @@ nav {
   margin-left: -8px;
 }
 
+.cart-icon1 {
+  color: #FFFF00;
+  font-size: 30px;
+}
+
 .cart-icon {
-  color: #515783;
+  color: #0F9E00;
   font-size: 24px;
-  margin-right: 7px;
+  margin-right: 3px;
   float: left;
 }
 
 .button {
-  background: $main-color;
+  background: #30BD21;
   color:white;
   text-align: center;
   padding: 12px;
