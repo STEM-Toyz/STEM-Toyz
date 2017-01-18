@@ -288,8 +288,25 @@ nav {
 .productReviews {
   display: inline;
 }
+
 .product-section {
   width: 200px;
   height: 350px;
   margin-bottom: 20px;
+
+.addressRow {
+  margin-left: 10px;
+  margin-bottom: 20px;
+  font-size: 16pt;
+}
+
+.accountInfo {
+  font-size: 16pt;
+  font-weight: bold;
+  display: inline;
+}
+
+.accountDetails {
+  width: 400px;
+  margin: 0 auto;
 }

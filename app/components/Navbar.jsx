@@ -34,7 +34,7 @@ export default (props) => {
     <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
       <Link to='/products'><img src="/img/STEM-Logo.png" width="355" height="95"/></Link>
       <div id="search" className="item">
-        <form className="form-inline" onSubmit={handleSubmit}>
+        <form className="form-inline" onSubmit={(event) => handleSubmit(event, props.allProducts)}>
           <input className="form-control mr-sm-2" type="text" placeholder="Search" onChange={handleChange}></input>
           <button className="btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>

@@ -202,7 +202,23 @@ nav {
 .productReviews {
   display: inline; }
 
+<<<<<<< HEAD
 .product-section {
   width: 200px;
   height: 350px;
   margin-bottom: 20px; }
+=======
+.addressRow {
+  margin-left: 10px;
+  margin-bottom: 20px;
+  font-size: 16pt; }
+
+.accountInfo {
+  font-size: 16pt;
+  font-weight: bold;
+  display: inline; }
+
+.accountDetails {
+  width: 400px;
+  margin: 0 auto; }
+>>>>>>> 3d62d5aa14452bd99f1eab4d680ca7de3bdfcfd6

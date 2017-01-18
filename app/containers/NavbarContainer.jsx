@@ -4,17 +4,25 @@ import { connect } from 'react-redux';
 
 import {toggleLogin} from 'APP/app/reducers/login';
 import {toggleShoppingCart} from 'APP/app/reducers/toggleShoppingCart';
+import store from '../store';
+import { filterProducts } from '../reducers/products';
+
 
 // Does nothing right now!!!
-const searchProducts = (state) => {
-  console.log(state);
+const searchProducts = (products, query) => {
+  if(query) {
+    const queryString = query.toLowerCase();
+    const filtered = products.filter(product => product.name.toLowerCase().indexOf(queryString) !== -1);
+    store.dispatch(filterProducts(filtered));
+  }
 };
 
 const mapStateToProps = (state) => {
   return {
     user: state.auth,
     showLogin: state.showLogin,
-    showShoppingCart: state.showShoppingCart
+    showShoppingCart: state.showShoppingCart,
+    allProducts: state.products.allProducts
   };
 };
 
@@ -52,10 +60,10 @@ export default connect(
     this.setState({ productQuery: value.target.value });
   }
 
-  handleSubmit (evt) {
+  handleSubmit (evt, products) {
     evt.preventDefault();
     // a theoretical function imported to search the database
-    searchProducts(this.state);
+    searchProducts(products, this.state.productQuery);
   }
 
   render () {
