@@ -59,7 +59,8 @@ nav {
   margin-left: 10px;
   margin-right: 10px;
   float: right;
-  background: grey;
+  background: white;
+  border: #FF8700 3px solid;
   width: 320px;
   position: absolute;
   border-radius: 10px;
@@ -158,6 +159,8 @@ nav {
   width: 430px;
   position: absolute;
   border-radius: 8px;
+  border-size: 10px;
+  border: 3px green solid;
   padding: 20px;
   right: 0px;
   z-index: 40;
