@@ -22,11 +22,11 @@ export default function (props) {
           }
           <Link to="/products" ><button>back to Products</button></Link>
         </div>
-        <div>
+        <div className="col-xs-8">
           {
-            reviews.map(review => <div key={review.id} className="thumbnail reviews"><Review review={review} /></div>)
+            reviews.map(review => <div key={review.id} className="productReviews"><Review review={review} /></div>)
           }
-    </div>
+        </div>
     </div>
   )
 }

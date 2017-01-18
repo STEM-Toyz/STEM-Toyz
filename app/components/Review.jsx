@@ -13,6 +13,7 @@ export default function(props) {
         </div>
         <br/>
         <div>{review.content}</div>
+        <hr/>
       </div>
     )
 }
