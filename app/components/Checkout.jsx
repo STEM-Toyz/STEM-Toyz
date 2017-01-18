@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import CheckoutLineItemContainer from '../containers/CheckoutLineItemContainer'
+import CheckoutLineItem from '../components/CheckoutLineItem'
 
 export default function (props) {
+  console.log(props.order.totalPrice)
   const placeOrder = props.placeOrder;
   return (
     <div className="row">
@@ -12,12 +13,13 @@ export default function (props) {
         {
           props.order.items && props.order.items.map((item) => {
             return (
-              <CheckoutLineItemContainer item={item} key={item.id} order={props.order} />
+              <CheckoutLineItem item={item} key={item.id} order={props.order} />
             )
           })
         }
-        <button onClick={event => placeOrder(event, props.order)}> Place Order </button>
-      <Link to="/products" ><button> Back to Products </button></Link>
+        <div>total order:{props.order.totalPrice}</div>
+        <div><button onClick={event => placeOrder(event, props.order)} className="button"> Place Order </button></div>
+      <Link to="/products" ><div><button className="small-button"> Back to Products </button></div></Link>
     </div>
     </div>
   )

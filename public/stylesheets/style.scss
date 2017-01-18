@@ -261,11 +261,6 @@ nav {
   color: grey;
 }
 
-.quantity-update-btn {
-  font-size: 15px;
-  background: $main-color;
-  color: white;
-}
 .small-button {
   font-size: 15px;
   background: $main-color;
@@ -292,4 +287,9 @@ nav {
 
 .reviews {
   width: 750px;
+}
+.product-section {
+  width: 200px;
+  height: 350px;
+  margin-bottom: 20px;
 }
