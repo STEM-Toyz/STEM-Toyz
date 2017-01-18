@@ -3,17 +3,25 @@
 import React from 'react';
 import { Link } from 'react-router';
 import ProductsFilterContainer from '../containers/ProductsFilterContainer'
-export default function (props) {
+export default class Products extends React.Component {
 
-  return (
+  constructor (props) {
+    super(props)
+  }
+
+  render () {
+    const order = this.props.shoppingCart;
+
+    return (
+
     <div className="row">
       <div className="col-xs-2">
-        <ProductsFilterContainer allProducts={props.allProducts} />
+        <ProductsFilterContainer allProducts={this.props.allProducts} />
       </div>
       <div className="col-xs-10">
         {
-          props.filteredProducts.length
-          ? props.filteredProducts.map(product => {
+          this.props.filteredProducts.length
+          ? this.props.filteredProducts.map(product => {
             return (
               <div className="col-xs-2" key={ product.id }>
                 <Link className="thumbnail" to={`/products/${product.id}`}>
@@ -23,12 +31,17 @@ export default function (props) {
                   <p>Category: {product.category}</p>
                 </Link>
                 <button className="btn btn-primary btn-outline-success my-2 my-sm-0" onClick={() => {
-                    if (props.auth) {
-                     props.saveItem()
-                    }else {
-                     props.unAuthAddToCart(product);
+                    order.product = product;
+                    if (this.props.auth) {
+                      this.props.saveItem(order)
+                      setTimeout(() => {
+                        this.props.toggleShoppingCart(!this.props.showShoppingCart);
+                        this.props.toggleShoppingCart(!this.props.showShoppingCart);
+                      }, 0);
+                    } else {
+                      this.props.unAuthAddToCart(product);
+                      this.props.toggleShoppingCart(this.props.showShoppingCart);
                     }
-                    props.toggleShoppingCart(props.showShoppingCart);
                   }}>
                   Add to cart
                 </button>
@@ -39,5 +52,5 @@ export default function (props) {
         }
       </div>
     </div>
-  )
+  )}
 }

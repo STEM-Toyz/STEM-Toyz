@@ -28,9 +28,9 @@ export const deleteItem = (orderId, itemId) =>{
   }
 }
 
-export const saveItem = orderId => {
+export const saveItem = order => {
   return (dispatch) => {
-    axios.post(`/api/order/${orderId}/items`)
+    axios.post(`/api/order/${order.id}/items`, order)
     .then(response => {
       dispatch(addItem(response.data));
     });
@@ -56,7 +56,11 @@ export const loadCart = userId => {
   };
 };
 
-const reducer = (state = {}, action) => {
+const initialState = {
+  // items: []
+}
+
+const reducer = (state = initialState, action) => {
 
   const newState = Object.assign({}, state);
 

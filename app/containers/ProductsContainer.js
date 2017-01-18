@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import Products from '../components/Products';
 import {toggleShoppingCart} from 'APP/app/reducers/toggleShoppingCart';
+import {saveItem} from 'APP/app/reducers/shoppingCart';
 
 function unAuthAddToCart (product) {
   const order = JSON.parse(window.localStorage.getItem('order'));
@@ -32,10 +33,11 @@ function unAuthAddToCart (product) {
 const mapStateToProps = (state, ownProps) => {
   const allProducts = state.products.allProducts;
   const filteredProducts = state.products.filteredProducts;
-  const showShoppingCart = state.showShoppingCart
+  const showShoppingCart = state.showShoppingCart;
+  const shoppingCart = state.shoppingCart;
   const auth = state.auth;
 
-  return { allProducts, filteredProducts, unAuthAddToCart,showShoppingCart, auth};
+  return { allProducts, filteredProducts, unAuthAddToCart, showShoppingCart, shoppingCart, auth};
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

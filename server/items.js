@@ -2,6 +2,8 @@
 
 const db = require('APP/db')
 const Item = db.model('items')
+const Order = db.model('orders')
+const Product = db.model('product')
 const router = require('express').Router()
 
 module.exports = router;
@@ -29,14 +31,34 @@ router.route('/:order_id/items')
 		res.send(req.orderItems)
 	})
 	.post((req, res, next) => {
-		console.log('IN THE ITEM POST', req.body);
-		Item.create(req.body)
-		.then(newItem => {
-			newItem.setOrder()
-			res.send(newItem);
+		Item.findAll({
+			where: {
+				product_id: req.body.product.id,
+				order_id: req.params.order_id
+			}
 		})
-		.catch(next)
-	})
+		.then(item => {
+			if (item.length) {
+				item[0].increment('quantity', {by: 1});
+				res.send(item);
+			} else {
+				const price = req.body.product.price;
+				Item.create({price: price})
+				.then(newItem => {
+					Order.findById(req.body.id)
+					.then(order => {
+						newItem.setOrder(order);
+						Product.findById(req.body.product.id)
+						.then(product => {
+							newItem.setProduct(product);
+							res.send(newItem);
+						});
+					});
+				});
+			}
+		})
+		.catch(next);
+	});
 
 router.route('/:order_id/items/:item_id')
 	.put((req, res, next) => {

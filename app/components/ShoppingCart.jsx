@@ -9,7 +9,9 @@ export default class ShoppingCart extends React.Component {
   }
 
   componentDidMount(){
-    this.props.loadCart(this.props.auth.id);
+    if (this.props.auth) {
+      this.props.loadCart(this.props.auth.id);
+    }
   }
 
   render(){
@@ -19,14 +21,14 @@ export default class ShoppingCart extends React.Component {
       <div className="shopping-cart">
       <div className="shopping-cart-header">
         <i className="glyphicon glyphicon-shopping-cart cart-icon"></i>
-        <span className="badge">{this.props.items.reduce(function(acc,curr){
+        <span className="badge">{this.props.items && this.props.items.reduce(function(acc,curr){
               return acc + curr.quantity
             }, 0)}</span>
         <div className="shopping-cart-total">
           <span className="lighter-text">Total: </span>
           <span className="main-color-text"> ${
             this.props.items && numeral(this.props.items.reduce(function(acc,curr){
-              return acc + (curr.quantity*curr.product.price)
+              return acc + (curr.quantity * curr.product.price)
             }, 0)).format('0,0')
 
           }</span>
