@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import ProductsFilterContainer from '../containers/ProductsFilterContainer'
 
 export default function (props) {
+  const order = JSON.parse(window.localStorage.getItem('order'));
   return (
     <div className="row">
       <div className="col-xs-2">
