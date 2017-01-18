@@ -11,12 +11,12 @@ export const receiveCart = order => ({
   type: RECEIVE_CART, order
 });
 
-export const addItem = order => ({
+export const createOrder = order => ({
   type: CREATE_ORDER, order
 });
 
-export const createOrder = item => ({
-  type: ADD_ITEM, item
+export const addItem = items => ({
+  type: ADD_ITEM, items
 });
 
 export const deleteItem = (orderId, itemId) =>{
@@ -37,23 +37,15 @@ export const saveItem = orderId => {
   };
 };
 
-export const saveOrder = userId => {
+export const saveOrder = (cart) => {
   return (dispatch) => {
-    axios.post(`/api/user/${userId}/orders`)
+    axios.post(`/api/user/${cart.userId}/orders`, cart)
     .then(response => {
-      dispatch(createOrder(response.data));
-    });
+      dispatch(createOrder(cart));
+    })
   };
 };
 
-// export const loadAllItems = orderId => {
-//   return (dispatch) => {
-//     axios.get(`/api/order/${orderId}/items`)
-//       .then(response => {
-//         dispatch(receiveItems(response.data));
-//       });
-//   };
-// };
 
 export const loadCart = userId => {
   return (dispatch) => {
@@ -99,7 +91,7 @@ const reducer = (state = {}, action) => {
       return Object.assign({}, state, action.order);
 
     case ADD_ITEM:
-      return Object.assign({}, state, action.item);
+      return Object.assign({}, state, action.items);
 
     default:
       return state;

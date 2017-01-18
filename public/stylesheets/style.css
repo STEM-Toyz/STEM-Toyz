@@ -189,7 +189,9 @@ nav {
   color: red; }
 
 .singleReview {
-  font-size: 14pt; }
+  font-size: 14pt;
+  margin-bottom: 20px;
+  width: 700px; }
 
 .reviewFirstItem {
   display: inline;
@@ -199,8 +201,8 @@ nav {
   display: inline;
   margin-left: 2em; }
 
-.reviews {
-  width: 750px; }
+.productReviews {
+  display: inline; }
 
 .product-section {
   width: 200px;

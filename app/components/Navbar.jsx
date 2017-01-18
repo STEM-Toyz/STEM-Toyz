@@ -40,7 +40,7 @@ export default (props) => {
         </form>
       </div>
       <div id="login" className="item pull-right">
-        {user ? <Link to={`/account/${user.id}`}><WhoAmI /> </Link> : loginButton}
+        {user ? <WhoAmI /> : loginButton}
       </div>
       <div id="cart" className="item pull-right">
         {cartButton}

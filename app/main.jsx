@@ -23,7 +23,7 @@ import WhoAmI from './components/WhoAmI'
 
 import { fetchUser } from './reducers/user';
 import { fetchReviews } from './reducers/reviews';
-import { getAllProducts, getSelectedProduct } from './reducers/products';
+import { getAllProducts, getSelectedProduct, getProductReviews } from './reducers/products';
 import { fetchOrderHistory } from './reducers/orderHistory';
 import { loadCart } from './reducers/shoppingCart';
 
@@ -42,6 +42,7 @@ const onProductsEnter = (nextRouterState) => {
 const onProductEnter = (nextRouterState) => {
   const productId = nextRouterState.params.product_id;
   store.dispatch(getSelectedProduct(productId));
+  store.dispatch(getProductReviews(productId));
 }
 
 function onCheckoutEnter(nextRouterState) {

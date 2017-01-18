@@ -9,7 +9,7 @@ export default class ShoppingCart extends React.Component {
   }
 
   componentDidMount(){
-    this.props.loadCart(1);
+    this.props.loadCart(this.props.auth.id);
   }
 
   render(){
