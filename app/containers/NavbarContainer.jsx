@@ -15,6 +15,9 @@ const searchProducts = (products, query) => {
     const filtered = products.filter(product => product.name.toLowerCase().indexOf(queryString) !== -1);
     store.dispatch(filterProducts(filtered));
   }
+  else {
+    store.dispatch(filterProducts(products));
+  }
 };
 
 const mapStateToProps = (state) => {
