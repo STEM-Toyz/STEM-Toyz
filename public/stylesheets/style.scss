@@ -1,5 +1,8 @@
 $main-color: #6394F8;
 $light-text: #ABB0BE;
+$views-background-color: #DBE6F6;
+$product-background-color: #CCCCCC;
+
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
@@ -80,13 +83,13 @@ nav {
 }
 
 #nav {
-  // padding: 0;
-  // margin: 0;
+  background-color: $views-background-color;
 }
 
 #views {
   height: 52em;
   position: relative;
+  background-color: $views-background-color;
 }
 
 #footer {
@@ -266,7 +269,6 @@ nav {
 }
 
 .sidebar {
-    background: white;
     padding: 0px;
     min-height: 100%;
 }
@@ -338,6 +340,21 @@ nav {
 
 .product-section {
   width: 200px;
-  height: 350px;
+  height: 250px;
   margin-bottom: 20px;
+  background-color: $product-background-color;
+  border-radius: 5%;
+  text-align: center;
+  margin: 10px;
+  box-shadow: 5px;
+}
+
+.product-image {
+  height: 100px;
+  width: 150px;
+  margin-top: 8px;
+}
+
+.filter-button {
+  width: 120px;
 }

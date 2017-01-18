@@ -16,10 +16,10 @@ export default function (props) {
           props.filteredProducts.length
           ? props.filteredProducts.map(product => {
             return (
-              <div className="col-md-2 thumbnail product-section" key={ product.id }>
+              <div className="col-md-2 product-section" key={ product.id }>
                 <Link to={`/products/${product.id}`}>
-                <img src={`/img/${product.imageUrl}`} height="100" width="170" />
                 <div className="product-content">
+                  <img src={`/img/${product.imageUrl}`} className="product-image" />
                   <h4>{product.name}</h4>
                   <h5>Price: {product.price}</h5>
                   <p>Category: {product.category}</p>
