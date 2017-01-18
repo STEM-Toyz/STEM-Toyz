@@ -41,10 +41,12 @@ nav {
   float: right;
   background: blue;
   width: 320px;
-  position: relative;
+  position: absolute;
   border-radius: 3px;
   padding: 20px;
-  display: flex; }
+  display: flex;
+  right: 200px;
+  z-index: 30; }
 
 .logout {
   margin: 10px 10px;
@@ -55,7 +57,8 @@ nav {
   position: relative; }
 
 #footer {
-  height: 9em; }
+  height: 9em;
+  margin-left: 50px; }
 
 #search {
   width: 50%;
@@ -98,9 +101,11 @@ nav {
   float: right;
   background: white;
   width: 430px;
-  position: relative;
+  position: absolute;
   border-radius: 3px;
-  padding: 20px; }
+  padding: 20px;
+  right: 0px;
+  z-index: 40; }
   .shopping-cart .shopping-cart-header {
     border-bottom: 1px solid #E8E8E8;
     padding-bottom: 15px; }
@@ -162,26 +167,21 @@ nav {
   display: table;
   clear: both; }
 
-.checkout-line-item-sec {
-  display: inline;
-  margin-right: 2em; }
-
-.checkout-line-item {
-  display: inline;
-  margin-bottom: 1em; }
-
-.checkout-form-input {
-  width: 25px; }
-
 .orderHistoryItemName {
   border-width: 100px;
   box-sizing: border-box; }
 
 .sidebar {
-  color: grey; }
+  background: white;
+  padding: 0px;
+  min-height: 100%; }
 
-.filter-button {
-  width: 100px; }
+.list > li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-left: 5px solid white;
+  color: white;
+  font-weight: bolder;
+  padding-left: 5px; }
 
 .errorText {
   color: red; }
@@ -202,12 +202,6 @@ nav {
 .productReviews {
   display: inline; }
 
-<<<<<<< HEAD
-.product-section {
-  width: 200px;
-  height: 350px;
-  margin-bottom: 20px; }
-=======
 .addressRow {
   margin-left: 10px;
   margin-bottom: 20px;
@@ -221,4 +215,19 @@ nav {
 .accountDetails {
   width: 400px;
   margin: 0 auto; }
->>>>>>> 3d62d5aa14452bd99f1eab4d680ca7de3bdfcfd6
+
+.checkout-line-item-sec {
+  display: inline;
+  margin-right: 2em; }
+
+.checkout-line-item {
+  display: inline;
+  margin-bottom: 1em; }
+
+.checkout-form-input {
+  width: 25px; }
+
+.product-section {
+  width: 200px;
+  height: 350px;
+  margin-bottom: 20px; }
