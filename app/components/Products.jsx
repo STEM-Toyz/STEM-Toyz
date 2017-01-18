@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import ProductsFilterContainer from '../containers/ProductsFilterContainer'
+
 export default function (props) {
   return (
     <div className="row">
@@ -23,12 +24,21 @@ export default function (props) {
                   <p>Category: {product.category}</p>
                 </div>
                 </Link>
-                  <button className="btn btn-primary btn-outline-success my-2 my-sm-0" onClick={() => {
-                      props.unAuthAddToCart(product)
+                <button className="btn btn-primary btn-outline-success my-2 my-sm-0" onClick={() => {
+                    order.product = product;
+                    if (props.auth) {
+                      props.saveItem(order)
+                      setTimeout(() => {
+                        props.toggleShoppingCart(!props.showShoppingCart);
+                        props.toggleShoppingCart(!props.showShoppingCart);
+                      }, 0);
+                    } else {
+                      props.unAuthAddToCart(product);
                       props.toggleShoppingCart(props.showShoppingCart);
-                    }}>
-                    Add to cart
-                  </button>
+                    }
+                  }}>
+                  Add to cart
+                </button>
               </div>
             );
           })
@@ -36,5 +46,4 @@ export default function (props) {
         }
       </div>
     </div>
-  )
-}
+  )}
