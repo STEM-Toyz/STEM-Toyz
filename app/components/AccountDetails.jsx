@@ -10,7 +10,7 @@ export default class AccountDetails extends React.Component {
     const addresses = user.addresses;
 
     return (
-      <div>
+      <div className="accountDetails">
         {
           !Object.keys(user).length
           ? null
@@ -18,19 +18,16 @@ export default class AccountDetails extends React.Component {
           (
             <div>
               <div>
-                <label>Name:</label><label>{`${profile.firstName} ${profile.lastName}`}</label>
+                <p className="accountInfo">Name: {`${profile.firstName} ${profile.lastName}`}</p>
               </div>
               <div>
                 <h2>Addresses</h2>
-                <ul>
                   {
-                    addresses.map(address => <li key={address.id}>{address.fullAddress}</li>)
+                    addresses.map(address => <div className="addressRow thumbnail" key={address.id}>{address.fullAddress}</div>)
                   }
-                </ul>
               </div>
               <div>
-                <label>Email: {profile.email}</label>
-                <div><button>Change Password</button></div>
+                <div><p className="accountInfo">Email: {profile.email}</p></div>
               </div>
               <br/>
               <div>
