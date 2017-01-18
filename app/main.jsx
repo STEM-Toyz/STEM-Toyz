@@ -12,6 +12,7 @@ import Reviews from './components/Reviews';
 
 import AccountDetailsContainer from './containers/AccountDetailsContainer'
 import ReviewsContainer from './containers/ReviewsContainer';
+import CheckoutContainer from './containers/CheckoutContainer'
 import ProductsContainer from './containers/ProductsContainer';
 import ProductContainer from './containers/ProductContainer';
 import OrderHistoryContainer from './containers/OrderHistoryContainer';
@@ -24,6 +25,7 @@ import { fetchUser } from './reducers/user';
 import { fetchReviews } from './reducers/reviews';
 import { getAllProducts, getSelectedProduct, getProductReviews } from './reducers/products';
 import { fetchOrderHistory } from './reducers/orderHistory';
+import { loadCart } from './reducers/shoppingCart';
 
 function onAccountEnter(nextRouterState) {
   store.dispatch(fetchUser(nextRouterState.params.userId));
@@ -43,6 +45,12 @@ const onProductEnter = (nextRouterState) => {
   store.dispatch(getProductReviews(productId));
 }
 
+function onCheckoutEnter(nextRouterState) {
+  //loading the current user's cart
+  const currentUserId = store.getState().auth.id;
+  store.dispatch(loadCart(currentUserId));
+}
+
 const unAuthOrder = () => {
   const order = JSON.parse(window.localStorage.getItem('order'));
   let items;
@@ -55,6 +63,7 @@ const unAuthOrder = () => {
     status: 'in cart',
     items: items
   }));
+
 }
 
 const onOrderHistoryEnter = (nextRouterState) => {
@@ -70,6 +79,7 @@ render(
         <IndexRedirect to="/products" />
         <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter} />
         <Route path="/products/:product_id" component={ProductContainer} onEnter={onProductEnter} />
+        <Route path="/checkout" component={CheckoutContainer} onEnter={onCheckoutEnter} />
         <Route path="/makeReview" component={ReviewFormContainer} />
         <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
         <Route path="/account/:userId/orders" component={OrderHistoryContainer} onEnter={onOrderHistoryEnter}/>

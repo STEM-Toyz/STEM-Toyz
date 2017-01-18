@@ -28,9 +28,9 @@ export const deleteItem = (orderId, itemId) =>{
   }
 }
 
-export const saveItem = orderId => {
+export const saveItem = order => {
   return (dispatch) => {
-    axios.post(`/api/order/${orderId}/items`)
+    axios.post(`/api/order/${order.id}/items`, order)
     .then(response => {
       dispatch(addItem(response.data));
     });
@@ -56,8 +56,25 @@ export const loadCart = userId => {
   };
 };
 
-const reducer = (state = {}, action) => {
+export const updateItem = (itemId, order, update) => {
+  return (dispatch) => {
+    axios.put(`/api/order/${order.id}/items/${itemId}`, update)
+    .then(() => {
+      dispatch(loadCart(order.user_id));
+    })
+  };
+};
 
+export const updateOrder = (order, update) => {
+  return (dispatch) => {
+    axios.put(`/api/orders/${order.id}`, update)
+    .then(() => {
+      dispatch(loadCart(order.user_id));
+    })
+  };
+}
+
+const reducer = (state = {}, action) => {
   const newState = Object.assign({}, state);
 
   switch(action.type){
