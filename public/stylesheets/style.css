@@ -56,9 +56,13 @@ nav {
   margin: 10px 10px;
   color: red; }
 
+#nav {
+  background-color: #DBE6F6; }
+
 #views {
   height: 52em;
-  position: relative; }
+  position: relative;
+  background-color: #DBE6F6; }
 
 #footer {
   height: 9em;
@@ -186,7 +190,6 @@ nav {
   box-sizing: border-box; }
 
 .sidebar {
-  background: white;
   padding: 0px;
   min-height: 100%; }
 
@@ -243,5 +246,18 @@ nav {
 
 .product-section {
   width: 200px;
-  height: 350px;
-  margin-bottom: 20px; }
+  height: 250px;
+  margin-bottom: 20px;
+  background-color: #CCCCCC;
+  border-radius: 5%;
+  text-align: center;
+  margin: 10px;
+  box-shadow: 5px; }
+
+.product-image {
+  height: 100px;
+  width: 150px;
+  margin-top: 8px; }
+
+.filter-button {
+  width: 120px; }
