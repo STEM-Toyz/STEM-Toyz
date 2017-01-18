@@ -22,7 +22,7 @@ import WhoAmI from './components/WhoAmI'
 
 import { fetchUser } from './reducers/user';
 import { fetchReviews } from './reducers/reviews';
-import { getAllProducts, getSelectedProduct } from './reducers/products';
+import { getAllProducts, getSelectedProduct, getProductReviews } from './reducers/products';
 import { fetchOrderHistory } from './reducers/orderHistory';
 
 function onAccountEnter(nextRouterState) {
@@ -40,6 +40,7 @@ const onProductsEnter = (nextRouterState) => {
 const onProductEnter = (nextRouterState) => {
   const productId = nextRouterState.params.product_id;
   store.dispatch(getSelectedProduct(productId));
+  store.dispatch(getProductReviews(productId));
 }
 
 const unAuthOrder = () => {
@@ -69,11 +70,11 @@ render(
         <IndexRedirect to="/products" />
         <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter} />
         <Route path="/products/:product_id" component={ProductContainer} onEnter={onProductEnter} />
+        <Route path="/makeReview" component={ReviewFormContainer} />
+        <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
+        <Route path="/account/:userId/orders" component={OrderHistoryContainer} onEnter={onOrderHistoryEnter}/>
+        <Route path="/account/:userId/reviews" component={ReviewsContainer} onEnter={onReviewsEnter}/>
       </Route>
-      <Route path="/makeReview" component={ReviewFormContainer} />
-      <Route path="/account/:userId" component={AccountDetailsContainer} onEnter={onAccountEnter} />
-      <Route path="/account/:userId/orders" component={OrderHistoryContainer} onEnter={onOrderHistoryEnter}/>
-      <Route path="/account/:userId/reviews" component={ReviewsContainer} onEnter={onReviewsEnter}/>
     </Router>
   </Provider>,
   document.getElementById('main')

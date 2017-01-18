@@ -81,6 +81,13 @@ nav {
 #orderHistoryPrice {
   color: red; }
 
+#orderHistoryQuantity {
+  color: gray; }
+
+#reviewForm {
+  margin: 0 auto;
+  width: 400px; }
+
 .singleOrder {
   display: block; }
 
@@ -175,3 +182,22 @@ nav {
   color: white;
   font-weight: bolder;
   padding-left: 5px; }
+
+.errorText {
+  color: red; }
+
+.singleReview {
+  font-size: 14pt;
+  margin-bottom: 20px;
+  width: 700px; }
+
+.reviewFirstItem {
+  display: inline;
+  font-weight: bold; }
+
+.reviewFirstLine {
+  display: inline;
+  margin-left: 2em; }
+
+.productReviews {
+  display: inline; }
