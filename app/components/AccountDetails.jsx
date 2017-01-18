@@ -31,8 +31,8 @@ export default class AccountDetails extends React.Component {
               </div>
               <br/>
               <div>
-                <Link to={`/account/${profile.id}/orders`}><button>View Orders</button></Link>
-                <Link to={`/account/${profile.id}/reviews`}><button>View Reviews</button></Link>
+                <Link to={`/account/${profile.id}/orders`}><button className="btn btn-primary btn-outline-success">View Orders</button></Link>
+                <Link to={`/account/${profile.id}/reviews`}><button className="btn btn-primary btn-outline-success">View Reviews</button></Link>
               </div>
             </div>
           )
