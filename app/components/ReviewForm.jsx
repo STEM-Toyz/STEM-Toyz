@@ -79,7 +79,7 @@ export default class MakeReview extends React.Component {
                 <textarea id="title" rows="5" cols="50" onChange={this.onContentChange}></textarea>
               </div>
               <div>
-                <input type="submit"></input>
+                <input type="submit" className="btn btn-primary btn-outline-success"></input>
               </div>
             </div>
           </form>
